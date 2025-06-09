@@ -623,7 +623,7 @@ const AllContent = () => {
       resolutionCurrent: 20,
     },
   ];
-  
+
 
   const CustomResolutionDots = ({ data }) => {
     return (
@@ -648,12 +648,92 @@ const AllContent = () => {
       </>
     );
   };
-  
 
 
+  const sitesk = [
+    "Sai Radhe, Bund Garden",
+    "Westport, Baner",
+    "Max House",
+    "Peninsula Corporate Park",
+    "Koncord, Bund Garden",
+    "Raheja Mindspace",
+    "Technopolis",
+    "Bani - The statement",
+    "Aeromall, Viman nagar",
+    "Nandan Probiz"
+  ];
 
+  const itemss = [
+    {
+      name: "Tissue Paper",
+      capital: [10, 20, 15, 20, 10, 15, 20, 10, 15, 15],
+      stock: [29, 29, 29, 29, 29, 29, 29, 29, 29, 29]
+    },
+    {
+      name: "Marker",
+      capital: [10, 20, 15, 20, 10, 15, 20, 10, 15, 15],
+      stock: [29, 29, 29, 29, 29, 29, 29, 29, 29, 29]
+    },
+    {
+      name: "Mouse",
+      capital: [10, 20, 15, 20, 10, 15, 20, 10, 15, 15],
+      stock: [29, 29, 29, 29, 29, 29, 29, 29, 29, 29]
+    },
+    {
+      name: "Barista Coffee",
+      capital: [20, 19, 43, 21, 28, 112, 24, 32, 40, 34],
+      stock: [29, 29, 29, 29, 29, 29, 29, 29, 33, 111]
+    },
+    {
+      name: "Amul Butter",
+      capital: Array(10).fill(19),
+      stock: [29, 69, 29, 29, 29, 29, 29, 29, 29, 29]
+    },
+    {
+      name: "Sketch Pen",
+      capital: Array(10).fill(19),
+      stock: [29, 29, 29, 29, 29, 29, 29, 29, 29, 29]
+    },
+    {
+      name: "Steel Basket",
+      capital: Array(10).fill(19),
+      stock: [29, 29, 29, 29, 29, 29, 29, 29, 29, 29]
+    },
+    {
+      name: "Air Freshner",
+      capital: Array(10).fill(19),
+      stock: [29, 29, 29, 29, 29, 29, 29, 29, 28, 29]
+    },
+    {
+      name: "Water Gallon",
+      capital: Array(10).fill(19),
+      stock: [29, 29, 29, 29, 29, 29, 29, 29, 28, 29]
+    }
+  ];
 
-
+  const Block = ({ capital, stock }) => (
+    <td
+      className="relative border border-black w-20 h-14 text-xs overflow-hidden mx-0 my-0 
+        print:border-black print:w-20 print:h-16 print:overflow-hidden print:absolute print:relative print:mx-1 print:my-1 print:text-left"
+    >
+      <div className="absolute top-0 left-0 w-full h-full">
+        <svg
+          className="absolute top-0 left-0 w-full h-full"
+          viewBox="0,0 100,100"
+          preserveAspectRatio="none"
+          style={{ pointerEvents: 'none' }}
+        >
+          <polygon points="0,0 100,0 100,100" style={{ fill: '#C4B89D' }} />
+        </svg>
+      </div>
+      <div className="absolute top-[2px] right-[4px] text-white font-semibold text-xs print:text-white">
+        {capital}k
+      </div>
+      <div className="absolute bottom-[2px] left-[4px] text-black text-xs print:text-black">
+        {stock}%
+      </div>
+    </td>
+  );
 
   return (
     <>
@@ -2007,13 +2087,13 @@ const AllContent = () => {
 
       {/* Inventory Management */}
       <div className="print-page break-before-page">
-        <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
+        <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-0">
           Inventory Management
         </h1>
-        <div className="bg-white p-6 print:p-2 print:mb-2 print:w-[95%] print:mx-auto print:break-inside-avoid no-break">
+        <div className="bg-white p-6 print:p-2 print:mb-2 print:w-[95%] print:mx-auto  no-break">
 
           <div className="border border-gray-300 p-3">
-            <h2 className="text-xl font-semibold mb-4 print:text-[12px] print:mb-1 print:py-1.5">
+            <h2 className="text-xl font-semibold mb-4 print:text-[12px] print:mb-1 print:py-0">
               Overview Summary
             </h2>
             <hr className="border-t border-gray-300 mb-6 print:mb-2" />
@@ -2039,71 +2119,86 @@ const AllContent = () => {
           </div>
 
           {/* OverstockGridExact Component */}
-          <div className="p-6 bg-white relative border-2 mt-2 print:mt-3 border-gray-200 print:p-4 print:border print:border-gray-300">
-            <div className="flex justify-between items-center mb-4 print:mb-2">
-              <h2 className="text-xl font-semibold text-left print:text-[14px]">
-                Overstock Analysis – Top 10 Items
-              </h2>
-              <div className="flex items-center space-x-2 print:space-x-2">
+          <div className="p-6 print:p-0">
+            <style>{`
+                /* Screen view styles only, scoped to overstock-table class */
+                .overstock-table {
+                  border-collapse: separate !important;
+                        border-spacing: 1px !important; /* Increased gap to 8px */
+                }
+                .legend-circle-capital {
+                    background-color: #8B7D47; /* Darker shade for Capital Book */
+                    width: 12px;
+                    height: 5px;
+                    border-radius: 50%;
+                    display: inline-block;
+                    margin-right: 4px;
+                }
+                .legend-circle-stock {
+                    background-color: #D3D3D3; /* Lighter shade for Current Stock */
+                    width: 12px;
+                    height: 5px;
+                    border-radius: 50%;
+                    display: inline-block;
+                    margin-right: 4px;
+                }
+            `}</style>
+            <div className="mb-4 print:mb-1">
+              <h1 className="text-xl font-semibold mb-4 print:text-[12px] print:mb-1 print:py-0">
+                Inventory Overstock Report – Top 10 Items
+              </h1>
+              <hr className="my-2 border-gray-300 print:border-gray-300" />
+              <div className="flex justify-end items-center space-x-4 print:space-x-4">
                 <div className="flex items-center">
-                  <span className="w-4 h-4 bg-[#d6c7ae] inline-block mr-1 print:w-4 print:h-4"></span>
-                  <span className="text-sm print:text-[10px]">Capital Block</span>
+                  <span className="legend-circle-capital print:bg-[#8B7D47]"></span>
+                  <span className="text-sm print:text-xs">Capital Book</span>
                 </div>
                 <div className="flex items-center">
-                  <span className="w-4 h-4 bg-white border border-gray-300 inline-block mr-1 print:w-4 print:h-4"></span>
-                  <span className="text-sm print:text-[10px]">Current Stock</span>
+                  <span className="legend-circle-stock print:bg-[#8B7D47]"></span>
+                  <span className="text-sm print:text-xs">Current Stock</span>
                 </div>
               </div>
             </div>
-
-            <div className="overflow-x-auto p-2 print:overflow-visible print:p-2">
-              <div
-                className="inline-grid gap-x-3 print:gap-x-2"
-                style={{ gridTemplateColumns: `120px repeat(${sites.length}, 60px)` }}
-              >
-                {items.map((item, rowIdx) => (
-                  <React.Fragment key={item}>
-                    <div className="p-4 text-sm font-medium flex items-center print:p-3 print:text-[12px] print:h-[50px]">
-                      {item}
-                    </div>
-                    {sites.map((_, colIdx) => (
-                      <div
-                        key={`${item}-${colIdx}`}
-                        className="relative w-[60px] h-[50px] print:w-[60px] print:h-[50px]"
+            <div className="overflow-x-auto print:overflow-x-visible">
+              <table className="overstock-table print:border-separate">
+                <tbody>
+                  {itemss.map((item, rowIdx) => (
+                    <tr key={rowIdx}>
+                      <td
+                        className="p-2 text-xs font-semibold bg-white w-[150px] mx-0 my-0 
+                                    print:text-[10px] print:font-semibold print:bg-white print:w-[150px] print:text-left print:mx-2 print:my-1"
                       >
-                        {/* Capital Block (Top Right) */}
-                        <div className="absolute border top-0 left-0 w-full h-full bg-[#d6c7ae] clip-triangle-tr flex items-start justify-end p-1 text-[10px] font-semibold print:p-1 print:text-[10px] z-10">
-                          {getCapital(item, colIdx)}
-                        </div>
-                        {/* Current Stock - lower left triangle */}
-                        <div className="absolute border top-0 left-0 w-full h-full bg-white clip-triangle-bl flex items-end justify-start p-1 text-[10px] font-semibold print:p-1 print:text-[10px] z-0">
-                          {getStock(item, colIdx)}
-                        </div>
-                      </div>
+                        {item.name}
+                      </td>
+                      {item.capital.map((cap, colIdx) => (
+                        <Block
+                          key={colIdx}
+                          capital={cap}
+                          stock={item.stock[colIdx]}
+                        />
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th
+                      className="w-[150px] bg-white mx-0 my-0 
+                                print:w-[150px] print:bg-white print:mx-1 print:my-1"
+                    ></th>
+                    {sitesk.map((site, idx) => (
+                      <th
+                        key={idx}
+                        className="p-2 text-[10px] font-medium text-center bg-white w-20 mx-0 my-0 
+                                    print:text-[8px] print:font-medium print:text-center print:bg-white print:w-20 print:mx-1 print:my-1"
+                      >
+                        {site}
+                      </th>
                     ))}
-                  </React.Fragment>
-                ))}
-
-                {/* Bottom Header Row */}
-                <div className="bg-white p-2 font-medium text-sm print:p-2 print:text-[12px]" />
-                {sites.map((site, i) => (
-                  <div
-                    key={`bottom-${i}`}
-                    className="bg-white text-[10px] leading-tight text-center p-2 whitespace-pre-wrap font-medium print:text-[10px] print:p-2"
-                  >
-                    {site}
-                  </div>
-                ))}
-              </div>
+                  </tr>
+                </tfoot>
+              </table>
             </div>
-
-            <div className="mt-2 font-semibold w-full text-center text-sm print:mt-2 print:text-[12px]">
-              Sites
-            </div>
-
-            <p className="text-[12px] mt-4 text-gray-700 text-center print:text-[10px] print:mt-3">
-              <strong>Note:</strong> This table shows the top 10 overstock items with their capital block (upper section) and current stock (lower section), highlighting excess inventory tied up in high-value items.
-            </p>
           </div>
 
 
@@ -2392,86 +2487,90 @@ const AllContent = () => {
       </div>
 
       <div className="print-page break-before-page px-6 py-8 print:px-4 print:py-6 bg-white">
-      <h2 className="text-xl font-bold mb-4 text-center">
-        Response TAT Performance by Center – Quarterly Comparison
-      </h2>
+        <h2 className="text-xl font-bold mb-4 text-center">
+          Response TAT Performance by Center – Quarterly Comparison
+        </h2>
 
-      {/* Legend */}
-      <div className="flex justify-end gap-6 text-sm mb-6 text-gray-700">
-        <div>
-          <span className="inline-block w-3 h-3 mr-1 border border-black rounded-full"></span>
-          Response Achieved: Last Quarter
-          <span className="inline-block w-3 h-3 ml-2 bg-[#cbb9a2] border border-black rounded-full"></span>
-          Current Quarter
+        {/* Legend */}
+        <div className="flex justify-end gap-6 text-sm mb-6 text-gray-700">
+          <div>
+            <span className="inline-block w-3 h-3 mr-1 border border-black rounded-full"></span>
+            Response Achieved: Last Quarter
+            <span className="inline-block w-3 h-3 ml-2 bg-[#cbb9a2] border border-black rounded-full"></span>
+            Current Quarter
+          </div>
+          <div>
+            <span className="inline-block w-3 h-0.5 bg-black mr-1"></span>
+            Resolution Achieved: Last Quarter
+            <span className="inline-block w-3 h-0.5 bg-[#c72030] ml-2"></span>
+            Current Quarter
+          </div>
         </div>
-        <div>
-          <span className="inline-block w-3 h-0.5 bg-black mr-1"></span>
-          Resolution Achieved: Last Quarter
-          <span className="inline-block w-3 h-0.5 bg-[#c72030] ml-2"></span>
-          Current Quarter
+
+        <div className="text-center font-semibold mb-2">TAT in Percentage</div>
+
+        <div className="h-[900px] print:h-[500px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={Bardata}
+              layout="vertical"
+              margin={{ top: 0, right: 60, bottom: 0, left: 160 }}
+            >
+              <CartesianGrid stroke="#ddd" horizontal={true} vertical={false} />
+              <XAxis
+                type="number"
+                domain={[0, 100]}
+                tickFormatter={(tick) => `${tick}%`}
+                tick={{ fontSize: 12 }}
+              />
+              <YAxis
+                dataKey="site"
+                type="category"
+                tick={{ fontSize: 13, fontWeight: 500 }}
+                width={150}
+              />
+
+              {/* Response Bars */}
+              <Bar dataKey="responseLast" fill="url(#pattern)" barSize={20} radius={[0, 4, 4, 0]} />
+              <Bar dataKey="responseCurrent" fill="#cbb9a2" barSize={20} radius={[0, 4, 4, 0]} />
+
+              {/* Resolution Lines */}
+              <Line
+                type="monotone"
+                dataKey="resolutionLast"
+                stroke="#000"
+                dot={{ r: 4, stroke: "#000", strokeWidth: 1.5, fill: "#fff" }}
+                strokeWidth={1.5}
+              />
+              <Line
+                type="monotone"
+                dataKey="resolutionCurrent"
+                stroke="#c72030"
+                dot={{ r: 4, stroke: "#c72030", strokeWidth: 1.5, fill: "#fff" }}
+                strokeWidth={1.5}
+              />
+
+              {/* Custom Connection Lines */}
+              <Customized component={() => <CustomResolutionDots data={Bardata} />} />
+
+              <defs>
+                <pattern id="pattern" patternUnits="userSpaceOnUse" width="6" height="6">
+                  <path d="M0,0 L6,6 M6,0 L0,6" stroke="#cbb9a2" strokeWidth="1" />
+                </pattern>
+              </defs>
+            </BarChart>
+          </ResponsiveContainer>
         </div>
+
+        <p className="text-xs text-gray-700 mt-6 border-t pt-2">
+          <span className="font-bold">Note:</span> The bar graph represents the response TAT achieved in the current and previous quarter,
+          while the line graph indicates the resolution TAT achieved over the same period.
+        </p>
       </div>
 
-      <div className="text-center font-semibold mb-2">TAT in Percentage</div>
+      <div className='print-page break-before-page'>
 
-      <div className="h-[900px] print:h-[500px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={Bardata}
-            layout="vertical"
-            margin={{ top: 0, right: 60, bottom: 0, left: 160 }}
-          >
-            <CartesianGrid stroke="#ddd" horizontal={true} vertical={false} />
-            <XAxis
-              type="number"
-              domain={[0, 100]}
-              tickFormatter={(tick) => `${tick}%`}
-              tick={{ fontSize: 12 }}
-            />
-            <YAxis
-              dataKey="site"
-              type="category"
-              tick={{ fontSize: 13, fontWeight: 500 }}
-              width={150}
-            />
-
-            {/* Response Bars */}
-            <Bar dataKey="responseLast" fill="url(#pattern)" barSize={20} radius={[0, 4, 4, 0]} />
-            <Bar dataKey="responseCurrent" fill="#cbb9a2" barSize={20} radius={[0, 4, 4, 0]} />
-
-            {/* Resolution Lines */}
-            <Line
-              type="monotone"
-              dataKey="resolutionLast"
-              stroke="#000"
-              dot={{ r: 4, stroke: "#000", strokeWidth: 1.5, fill: "#fff" }}
-              strokeWidth={1.5}
-            />
-            <Line
-              type="monotone"
-              dataKey="resolutionCurrent"
-              stroke="#c72030"
-              dot={{ r: 4, stroke: "#c72030", strokeWidth: 1.5, fill: "#fff" }}
-              strokeWidth={1.5}
-            />
-
-            {/* Custom Connection Lines */}
-            <Customized component={() => <CustomResolutionDots data={Bardata} />} />
-
-            <defs>
-              <pattern id="pattern" patternUnits="userSpaceOnUse" width="6" height="6">
-                <path d="M0,0 L6,6 M6,0 L0,6" stroke="#cbb9a2" strokeWidth="1" />
-              </pattern>
-            </defs>
-          </BarChart>
-        </ResponsiveContainer>
       </div>
-
-      <p className="text-xs text-gray-700 mt-6 border-t pt-2">
-        <span className="font-bold">Note:</span> The bar graph represents the response TAT achieved in the current and previous quarter,
-        while the line graph indicates the resolution TAT achieved over the same period.
-      </p>
-    </div>
     </>
   );
 };
