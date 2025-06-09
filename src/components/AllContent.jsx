@@ -744,7 +744,7 @@ const AllContent = () => {
           <img
             src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1200"
             alt="Meeting Room"
-            className="w-full h-full object-cover print:h-screen print:object-cover print:scale-95"
+            className="w-full h-full object-cover print:object-cover print:h-[600px] print:scale-95"
           />
 
           <div className="absolute bottom-6 right-10 text-white text-sm leading-relaxed print:text-white">
@@ -759,14 +759,14 @@ const AllContent = () => {
 
         <div className="relative flex flex-col items-center justify-center py-24 px-6 bg-white print:py-24 print:px-6">
           {/* Red Rectangle */}
-          <div className="absolute left-[200px] top-[-120px] w-[450px] h-[600px] bg-[#bf0c0c] z-10 flex flex-col items-end justify-center space-y-6 print:bg-[#bf0c0c] print:text-white">
+          <div className="absolute left-[200px] print:left-[80px] print:top-[-700px] top-[-120px] w-[450px] h-[600px] bg-[#bf0c0c] z-10 flex flex-col items-end justify-center space-y-6 print:bg-[#bf0c0c] print:text-white">
             <div className="text-5xl font-bold text-white print:text-white">QUART</div>
             <div className="text-6xl font-extrabold text-white print:text-white">REP</div>
           </div>
 
           {/* White Content Box */}
-          <div className="z-0 border border-gray-300 px-10 py-12 text-center w-[55vw] h-[60vh] bg-white flex flex-col items-center justify-center space-y-6 print:bg-white print:border print:border-gray-300">
-            <div className="absolute top-[-120px] left-[45%] w-[450px] h-[600px] z-10 flex flex-col items-start justify-center space-y-6 text-left print:text-red-700">
+          <div className=" border border-gray-300 px-10 py-12 text-center w-[55vw] h-[60vh] bg-white flex flex-col items-center justify-center space-y-6  print:border print:bg-[#bf0c0c] print:border-gray-300">
+            <div className="absolute print:top-[-900px] top-[-120px] left-[45%] w-[450px] h-[600px] z-10 flex flex-col items-start justify-center space-y-6 text-left print:text-red-700">
               <div className="text-5xl font-bold text-red-700 ml-2 print:text-red-700">ERLY</div>
               <div className="text-6xl font-extrabold text-red-700 ml-2 print:text-red-700">ORT</div>
             </div>
@@ -1534,6 +1534,89 @@ const AllContent = () => {
             </p>
           </div>
         </div>
+      </div>
+
+
+      <div className="print-page break-before-page px-6 py-8 print:px-4 print:py-6 bg-white">
+        <h2 className="text-xl font-bold mb-4 text-center">
+          Response TAT Performance by Center – Quarterly Comparison
+        </h2>
+
+        {/* Legend */}
+        <div className="flex justify-end gap-6 text-sm mb-6 text-gray-700">
+          <div>
+            <span className="inline-block w-3 h-3 mr-1 border border-black rounded-full"></span>
+            Response Achieved: Last Quarter
+            <span className="inline-block w-3 h-3 ml-2 bg-[#cbb9a2] border border-black rounded-full"></span>
+            Current Quarter
+          </div>
+          <div>
+            <span className="inline-block w-3 h-0.5 bg-black mr-1"></span>
+            Resolution Achieved: Last Quarter
+            <span className="inline-block w-3 h-0.5 bg-[#c72030] ml-2"></span>
+            Current Quarter
+          </div>
+        </div>
+
+        <div className="text-center font-semibold mb-2">TAT in Percentage</div>
+
+        <div className="h-[900px] print:h-[500px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={Bardata}
+              layout="vertical"
+              margin={{ top: 0, right: 60, bottom: 0, left: 160 }}
+            >
+              <CartesianGrid stroke="#ddd" horizontal={true} vertical={false} />
+              <XAxis
+                type="number"
+                domain={[0, 100]}
+                tickFormatter={(tick) => `${tick}%`}
+                tick={{ fontSize: 12 }}
+              />
+              <YAxis
+                dataKey="site"
+                type="category"
+                tick={{ fontSize: 13, fontWeight: 500 }}
+                width={150}
+              />
+
+              {/* Response Bars */}
+              <Bar dataKey="responseLast" fill="url(#pattern)" barSize={20} radius={[0, 4, 4, 0]} />
+              <Bar dataKey="responseCurrent" fill="#cbb9a2" barSize={20} radius={[0, 4, 4, 0]} />
+
+              {/* Resolution Lines */}
+              <Line
+                type="monotone"
+                dataKey="resolutionLast"
+                stroke="#000"
+                dot={{ r: 4, stroke: "#000", strokeWidth: 1.5, fill: "#fff" }}
+                strokeWidth={1.5}
+              />
+              <Line
+                type="monotone"
+                dataKey="resolutionCurrent"
+                stroke="#c72030"
+                dot={{ r: 4, stroke: "#c72030", strokeWidth: 1.5, fill: "#fff" }}
+                strokeWidth={1.5}
+              />
+
+              {/* Custom Connection Lines */}
+              <Customized component={() => <CustomResolutionDots data={Bardata} />} />
+
+              <defs>
+                <pattern id="pattern" patternUnits="userSpaceOnUse" width="6" height="6">
+                  <path d="M0,0 L6,6 M6,0 L0,6" stroke="#cbb9a2" strokeWidth="1" />
+                </pattern>
+              </defs>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        <p className="text-xs text-gray-700 mt-6 border-t pt-2">
+          <span className="font-bold">Note:</span> The bar graph represents the response TAT achieved in the current and previous quarter,
+          while the line graph indicates the resolution TAT achieved over the same period.
+        </p>
       </div>
 
       {/* Ninth Section: Asset Management (New Section) */}
@@ -2486,91 +2569,7 @@ const AllContent = () => {
         </div>
       </div>
 
-      <div className="print-page break-before-page px-6 py-8 print:px-4 print:py-6 bg-white">
-        <h2 className="text-xl font-bold mb-4 text-center">
-          Response TAT Performance by Center – Quarterly Comparison
-        </h2>
 
-        {/* Legend */}
-        <div className="flex justify-end gap-6 text-sm mb-6 text-gray-700">
-          <div>
-            <span className="inline-block w-3 h-3 mr-1 border border-black rounded-full"></span>
-            Response Achieved: Last Quarter
-            <span className="inline-block w-3 h-3 ml-2 bg-[#cbb9a2] border border-black rounded-full"></span>
-            Current Quarter
-          </div>
-          <div>
-            <span className="inline-block w-3 h-0.5 bg-black mr-1"></span>
-            Resolution Achieved: Last Quarter
-            <span className="inline-block w-3 h-0.5 bg-[#c72030] ml-2"></span>
-            Current Quarter
-          </div>
-        </div>
-
-        <div className="text-center font-semibold mb-2">TAT in Percentage</div>
-
-        <div className="h-[900px] print:h-[500px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              data={Bardata}
-              layout="vertical"
-              margin={{ top: 0, right: 60, bottom: 0, left: 160 }}
-            >
-              <CartesianGrid stroke="#ddd" horizontal={true} vertical={false} />
-              <XAxis
-                type="number"
-                domain={[0, 100]}
-                tickFormatter={(tick) => `${tick}%`}
-                tick={{ fontSize: 12 }}
-              />
-              <YAxis
-                dataKey="site"
-                type="category"
-                tick={{ fontSize: 13, fontWeight: 500 }}
-                width={150}
-              />
-
-              {/* Response Bars */}
-              <Bar dataKey="responseLast" fill="url(#pattern)" barSize={20} radius={[0, 4, 4, 0]} />
-              <Bar dataKey="responseCurrent" fill="#cbb9a2" barSize={20} radius={[0, 4, 4, 0]} />
-
-              {/* Resolution Lines */}
-              <Line
-                type="monotone"
-                dataKey="resolutionLast"
-                stroke="#000"
-                dot={{ r: 4, stroke: "#000", strokeWidth: 1.5, fill: "#fff" }}
-                strokeWidth={1.5}
-              />
-              <Line
-                type="monotone"
-                dataKey="resolutionCurrent"
-                stroke="#c72030"
-                dot={{ r: 4, stroke: "#c72030", strokeWidth: 1.5, fill: "#fff" }}
-                strokeWidth={1.5}
-              />
-
-              {/* Custom Connection Lines */}
-              <Customized component={() => <CustomResolutionDots data={Bardata} />} />
-
-              <defs>
-                <pattern id="pattern" patternUnits="userSpaceOnUse" width="6" height="6">
-                  <path d="M0,0 L6,6 M6,0 L0,6" stroke="#cbb9a2" strokeWidth="1" />
-                </pattern>
-              </defs>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
-        <p className="text-xs text-gray-700 mt-6 border-t pt-2">
-          <span className="font-bold">Note:</span> The bar graph represents the response TAT achieved in the current and previous quarter,
-          while the line graph indicates the resolution TAT achieved over the same period.
-        </p>
-      </div>
-
-      <div className='print-page break-before-page'>
-
-      </div>
     </>
   );
 };

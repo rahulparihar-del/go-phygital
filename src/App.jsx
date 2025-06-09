@@ -6,9 +6,9 @@ function App() {
 
   return (
    <>
-    {/* <AllContent/> */}
+    <AllContent/>
 
-    <NewCom/>
+    {/* <NewCom/> */}
 
    </>
   )
