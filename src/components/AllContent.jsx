@@ -10,6 +10,8 @@ import {
   ResponsiveContainer,
   Label,
   LabelList,
+  Line,
+  Customized,
 } from "recharts";
 
 import logo from "../assets/urbon.svg"
@@ -349,7 +351,7 @@ const AllContent = () => {
     if (value >= 40) return "border-b-2 border-yellow-500";
     return "border-b-2 border-red-500";
   };
-  
+
 
   const siteNames = [
     "Site Name",
@@ -376,11 +378,11 @@ const AllContent = () => {
   ];
 
   const customerExperienceData = [
-    { label: "Excellent", value: 56, percent: "8.52%", bg: "#f4f1e9" },
-    { label: "Good", value: 19, percent: "2.89%", bg: "#dad2c3" },
-    { label: "Average", value: 14, percent: "2.13%", bg: "#c7b89c" },
-    { label: "Bad", value: 8, percent: "1.22%", bg: "#b89c86" },
-    { label: "Poor", value: 3, percent: "0.36%", bg: "#c9252c", text: "black" }
+    { label: "Excellent", value: 56, percent: "8.52%", bg: "#F6F4EE" },
+    { label: "Good", value: 19, percent: "2.89%", bg: "#DAD6C9" },
+    { label: "Average", value: 14, percent: "2.13%", bg: "#C4B89D" },
+    { label: "Bad", value: 8, percent: "1.22%", bg: "#C4AE9D" },
+    { label: "Poor", value: 3, percent: "0.36%", bg: "#D5DBDB", text: "black" }
   ];
 
   const customerRatingTable = {
@@ -549,10 +551,161 @@ const AllContent = () => {
 
 
 
+  const Bardata = [
+    {
+      site: 'Sai Radhe',
+      responseLast: 35,
+      responseCurrent: 45,
+      resolutionLast: 20,
+      resolutionCurrent: 55,
+    },
+    {
+      site: 'Baani–The Statement',
+      responseLast: 49,
+      responseCurrent: 35,
+      resolutionLast: 32,
+      resolutionCurrent: 60,
+    },
+    {
+      site: 'AeroMall',
+      responseLast: 64,
+      responseCurrent: 70,
+      resolutionLast: 50,
+      resolutionCurrent: 66,
+    },
+    {
+      site: 'Max House',
+      responseLast: 45,
+      responseCurrent: 5,
+      resolutionLast: 40,
+      resolutionCurrent: 70,
+    },
+    {
+      site: 'Nandan Probiz',
+      responseLast: 52,
+      responseCurrent: 65,
+      resolutionLast: 48,
+      resolutionCurrent: 72,
+    },
+    {
+      site: 'Peninsula Corporate Park',
+      responseLast: 40,
+      responseCurrent: 51,
+      resolutionLast: 35,
+      resolutionCurrent: 95,
+    },
+    {
+      site: 'Raheja Mindspace',
+      responseLast: 40,
+      responseCurrent: 35,
+      resolutionLast: 38,
+      resolutionCurrent: 43,
+    },
+    {
+      site: 'Koncord Tower',
+      responseLast: 15,
+      responseCurrent: 10,
+      resolutionLast: 8,
+      resolutionCurrent: 19,
+    },
+    {
+      site: 'Technopolis, Salt Lake',
+      responseLast: 5,
+      responseCurrent: 10,
+      resolutionLast: 4,
+      resolutionCurrent: 16,
+    },
+    {
+      site: 'Baani–The Statement',
+      responseLast: 1,
+      responseCurrent: 10,
+      resolutionLast: 3,
+      resolutionCurrent: 20,
+    },
+  ];
+  
+
+  const CustomResolutionDots = ({ data }) => {
+    return (
+      <>
+        {Bardata.map((entry, index) => {
+          const y = 80 + index * 80; // rough vertical spacing
+          return (
+            <g key={index}>
+              <circle cx={`${entry.resolutionLast}%`} cy={y - 8} r={3} fill="#000" />
+              <circle cx={`${entry.resolutionCurrent}%`} cy={y + 8} r={3} fill="#c72030" />
+              <line
+                x1={`${entry.resolutionLast}%`}
+                y1={y - 8}
+                x2={`${entry.resolutionCurrent}%`}
+                y2={y + 8}
+                stroke="#d9cbb0"
+                strokeWidth={1}
+              />
+            </g>
+          );
+        })}
+      </>
+    );
+  };
+  
+
+
+
+
 
 
   return (
     <>
+
+      {/* main page */}
+      <div className="font-sans bg-white min-h-screen print:break-before-page print:h-screen print:scale-95">
+        <div className="relative h-[700px] w-full print:h-screen print:overflow-hidden">
+          <img
+            src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            alt="Meeting Room"
+            className="w-full h-full object-cover print:h-screen print:object-cover print:scale-95"
+          />
+
+          <div className="absolute bottom-6 right-10 text-white text-sm leading-relaxed print:text-white">
+            <p>
+              <span className="font-semibold">Company</span>: UrbanWrk
+            </p>
+            <p>
+              <span className="font-semibold">Industry</span>: Coworking Space
+            </p>
+          </div>
+        </div>
+
+        <div className="relative flex flex-col items-center justify-center py-24 px-6 bg-white print:py-24 print:px-6">
+          {/* Red Rectangle */}
+          <div className="absolute left-[200px] top-[-120px] w-[450px] h-[600px] bg-[#bf0c0c] z-10 flex flex-col items-end justify-center space-y-6 print:bg-[#bf0c0c] print:text-white">
+            <div className="text-5xl font-bold text-white print:text-white">QUART</div>
+            <div className="text-6xl font-extrabold text-white print:text-white">REP</div>
+          </div>
+
+          {/* White Content Box */}
+          <div className="z-0 border border-gray-300 px-10 py-12 text-center w-[55vw] h-[60vh] bg-white flex flex-col items-center justify-center space-y-6 print:bg-white print:border print:border-gray-300">
+            <div className="absolute top-[-120px] left-[45%] w-[450px] h-[600px] z-10 flex flex-col items-start justify-center space-y-6 text-left print:text-red-700">
+              <div className="text-5xl font-bold text-red-700 ml-2 print:text-red-700">ERLY</div>
+              <div className="text-6xl font-extrabold text-red-700 ml-2 print:text-red-700">ORT</div>
+            </div>
+
+            <div className="flex justify-end items-end mb-4 w-full">
+              <p className="text-md font-medium text-red-700 print:text-red-700">
+                Jan 2025 to Mar 2025
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center pb-8 text-sm text-gray-700 print:text-gray-700">
+          <span className="font-bold text-red-700 print:text-red-700">go</span>
+          <span className="font-semibold">Phygital</span>
+          <span>.work</span>
+        </div>
+      </div>
+
       {/* Disclaimer Page */}
       <div className="flex flex-col min-h-screen font-sans bg-white px-6 py-10 relative">
         <div className="flex justify-center w-full">
@@ -580,6 +733,11 @@ const AllContent = () => {
           </p>
         </div>
         <div className="flex-grow" />
+        <div className="text-center flex justify-center align-bottom pb-8 text-sm text-gray-700 print:text-gray-700">
+          <span className="font-bold text-red-700 print:text-red-700">go</span>
+          <span className="font-semibold">Phygital</span>
+          <span>.work</span>
+        </div>
         <div className="absolute bottom-0 left-0 w-full h-4 bg-red-700 print-footer-bar"></div>
         <div className="absolute bottom-6 right-0 w-30 h-3 bg-red-700 print-footer-small"></div>
       </div>
@@ -682,6 +840,11 @@ const AllContent = () => {
         </div>
 
         <div className="flex-grow" />
+        <div className="text-center flex justify-center align-bottom pb-5 text-sm text-gray-700 print:text-gray-700">
+          <span className="font-bold text-red-700 print:text-red-700">go</span>
+          <span className="font-semibold">Phygital</span>
+          <span>.work</span>
+        </div>
         <div className="absolute bottom-0 left-0 w-full h-4 bg-red-700 print-footer-bar"></div>
         <div className="absolute bottom-6 right-0 w-30 h-3 bg-red-700 print-footer-small"></div>
       </div>
@@ -1353,8 +1516,8 @@ const AllContent = () => {
                   ["Technopolis, Salt Lake", 654, 476, 4, 325, 4],
                   ["Bani - The Statement", 876, 476, 8, 542, 6],
                 ].map(([name, total, cBreak, cAvg, ncBreak, ncAvg], idx) => (
-                  <tr key={idx} className="odd:bg-white even:bg-[#f2f0eb]">
-                    <td className="border border-black px-2 py-1.5 text-left print:px-1 print:py-[8px]">{name}</td>
+                  <tr key={idx}>
+                    <td className="border border-black px-2 py-1.5 text-left print:px-1 print:py-[8px] bg-[#F3F1EB80]">{name}</td>
                     <td className="border border-black px-2 py-1.5 print:px-1 print:py-[8px]">{total}</td>
                     <td className="border border-black px-2 py-1.5 print:px-1 print:py-[8px]">{cBreak}</td>
                     <td className="border border-black px-2 py-1.5 print:px-1 print:py-[8px]">{cAvg}</td>
@@ -2228,7 +2391,87 @@ const AllContent = () => {
         </div>
       </div>
 
+      <div className="print-page break-before-page px-6 py-8 print:px-4 print:py-6 bg-white">
+      <h2 className="text-xl font-bold mb-4 text-center">
+        Response TAT Performance by Center – Quarterly Comparison
+      </h2>
 
+      {/* Legend */}
+      <div className="flex justify-end gap-6 text-sm mb-6 text-gray-700">
+        <div>
+          <span className="inline-block w-3 h-3 mr-1 border border-black rounded-full"></span>
+          Response Achieved: Last Quarter
+          <span className="inline-block w-3 h-3 ml-2 bg-[#cbb9a2] border border-black rounded-full"></span>
+          Current Quarter
+        </div>
+        <div>
+          <span className="inline-block w-3 h-0.5 bg-black mr-1"></span>
+          Resolution Achieved: Last Quarter
+          <span className="inline-block w-3 h-0.5 bg-[#c72030] ml-2"></span>
+          Current Quarter
+        </div>
+      </div>
+
+      <div className="text-center font-semibold mb-2">TAT in Percentage</div>
+
+      <div className="h-[900px] print:h-[500px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={Bardata}
+            layout="vertical"
+            margin={{ top: 0, right: 60, bottom: 0, left: 160 }}
+          >
+            <CartesianGrid stroke="#ddd" horizontal={true} vertical={false} />
+            <XAxis
+              type="number"
+              domain={[0, 100]}
+              tickFormatter={(tick) => `${tick}%`}
+              tick={{ fontSize: 12 }}
+            />
+            <YAxis
+              dataKey="site"
+              type="category"
+              tick={{ fontSize: 13, fontWeight: 500 }}
+              width={150}
+            />
+
+            {/* Response Bars */}
+            <Bar dataKey="responseLast" fill="url(#pattern)" barSize={20} radius={[0, 4, 4, 0]} />
+            <Bar dataKey="responseCurrent" fill="#cbb9a2" barSize={20} radius={[0, 4, 4, 0]} />
+
+            {/* Resolution Lines */}
+            <Line
+              type="monotone"
+              dataKey="resolutionLast"
+              stroke="#000"
+              dot={{ r: 4, stroke: "#000", strokeWidth: 1.5, fill: "#fff" }}
+              strokeWidth={1.5}
+            />
+            <Line
+              type="monotone"
+              dataKey="resolutionCurrent"
+              stroke="#c72030"
+              dot={{ r: 4, stroke: "#c72030", strokeWidth: 1.5, fill: "#fff" }}
+              strokeWidth={1.5}
+            />
+
+            {/* Custom Connection Lines */}
+            <Customized component={() => <CustomResolutionDots data={Bardata} />} />
+
+            <defs>
+              <pattern id="pattern" patternUnits="userSpaceOnUse" width="6" height="6">
+                <path d="M0,0 L6,6 M6,0 L0,6" stroke="#cbb9a2" strokeWidth="1" />
+              </pattern>
+            </defs>
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+
+      <p className="text-xs text-gray-700 mt-6 border-t pt-2">
+        <span className="font-bold">Note:</span> The bar graph represents the response TAT achieved in the current and previous quarter,
+        while the line graph indicates the resolution TAT achieved over the same period.
+      </p>
+    </div>
     </>
   );
 };

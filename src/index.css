@@ -54,7 +54,15 @@
       .clip-triangle-bl {
         clip-path: polygon(0 100%, 0 0, 100% 100%);
       }
-      
+      img {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    
+      .print-bg-force {
+        background-color: #bf0c0c !important;
+        color: white !important;
+      }      
       
       
 }
