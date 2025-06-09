@@ -1,4 +1,19 @@
 import React from 'react';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  Label,
+  LabelList,
+} from "recharts";
+
+import logo from "../assets/urbon.svg"
+
 
 const AllContent = () => {
 
@@ -330,10 +345,11 @@ const AllContent = () => {
   ];
 
   const getColor = (value) => {
-    if (value >= 70) return "text-green-600 font-semibold";
-    if (value >= 40) return "text-yellow-500 font-semibold";
-    return "text-red-500 font-semibold";
+    if (value >= 70) return "border-b-2 border-green-600";
+    if (value >= 40) return "border-b-2 border-yellow-500";
+    return "border-b-2 border-red-500";
   };
+  
 
   const siteNames = [
     "Site Name",
@@ -390,16 +406,161 @@ const AllContent = () => {
   };
 
 
+  const items = [
+    "Tissue Paper", "Marker", "Mouse", "Barista Coffee", "Amul Butter",
+    "Sketch Pen", "Steel Basket", "Air Freshner", "Water Gallon"
+  ];
+
+  const baristaData = ['20k', '19k', '43k', '21k', '19k', '11k', '118k', '118k', '34k', '34k'];
+  const baristaStock = [29, 100, 29, 29, 112, 24, 32, 40, 33, 111];
+
+  const getCapital = (item, i) => {
+    if (item === "Barista Coffee") return baristaData[i];
+    return i % 2 === 0 ? "10k" : "15k";
+  };
+
+  const getStock = (item, i) => {
+    if (item === "Barista Coffee") return baristaStock[i];
+    return 29;
+  };
+
+  const Cell = ({ capital, stock }) => (
+    <div className="relative w-[80px] h-[80px]">
+      {/* Top Right Triangle (Capital Block) */}
+      <div className="absolute top-0 left-0  w-full border h-full bg-[#d6c7ae] clip-triangle-tr flex items-start justify-end p-1 text-xs font-semibold">
+        {capital}
+      </div>
+      {/* Bottom Left Triangle (Current Stock) */}
+      <div className="absolute top-0 border left-0 w-full h-full clip-triangle-bl flex items-end justify-start p-1 text-xs font-semibold">
+        {stock}
+      </div>
+    </div>
+  );
+
+  const headers = [
+    "High\nlighter",
+    "Coffee",
+    "Jaggery Stirrer",
+    "Sticky Notes",
+    "Whitener Pen",
+    "Sugar",
+    "Dura Cell",
+    "Green Tea",
+    "Caustic Soda",
+  ];
+
+
+  const tablesData = [
+    {
+      inventory: "Sai Radhe, Bund Garden",
+      values: [23.4, 14.3, 44.4, 7.6, 33.3, 12.4, 45.6, 35.6, 25.6],
+    },
+    {
+      inventory: "Westport,Baner",
+      values: [8.9, 8.9, 8.9, 93.1, 8.9, 43.2, 8.9, 8.9, 8.9],
+    },
+    {
+      inventory: "Max House",
+      values: [3.2, 3.2, 3.2, 26.3, 3.2, 3.2, 3.2, 3.2, 3.2],
+    },
+    {
+      inventory: "Peninsula Corporate Park,",
+      values: [4.5, 4.5, 4.5, 11.1, 4.5, 4.5, 4.5, 4.5, 4.5],
+    },
+    {
+      inventory: "Koncord, Bund Garden",
+      values: [35.2, 35.2, 35.2, 18.9, 35.2, 35.2, 35.2, 35.2, 35.2],
+    },
+    {
+      inventory: "Raheja Mindspace",
+      values: [34.6, 34.6, 34.6, 34.5, 34.6, 34.6, 34.6, 34.6, 34.6],
+    },
+    {
+      inventory: "Technopolis",
+      values: [78.6, 78.6, 78.6, 38.9, 78.6, 78.6, 78.6, 78.6, 78.6],
+    },
+    {
+      inventory: "Baani-The Statement",
+      values: [54.3, 54.3, 54.3, 45.6, 54.3, 54.3, 54.3, 54.3, 54.3],
+    },
+    {
+      inventory: "AeroMall",
+      values: [23.4, 23.4, 23.4, 65.4, 23.4, 23.4, 23.4, 23.4, 23.4],
+    },
+    {
+      inventory: "Nandan Probiz",
+      values: [12.5, 12.5, 12.5, 43.1, 12.5, 12.5, 12.5, 12.5, 12.5],
+    },
+  ];
+
+
+  const inventoryData = [
+    { site: "Sai Radhe, Bund Garden", lastQuarter: 15000, currentQuarter: 14000 },
+    { site: "Westport, Baner", lastQuarter: 10000, currentQuarter: 9000 },
+    { site: "Peninsula Corporate Park, Lower Parel", lastQuarter: 13000, currentQuarter: 12000 },
+    { site: "Koncord Towers, Bund Garden", lastQuarter: 7000, currentQuarter: 8000 },
+    { site: "Nandan Probiz, Balewadi", lastQuarter: 11000, currentQuarter: 13000 },
+    { site: "Aeromall, Viman nagar", lastQuarter: 7500, currentQuarter: 7000 },
+    { site: "Raheja Mindspace, Hitec City", lastQuarter: 12000, currentQuarter: 10000 },
+    { site: "Technopolis, Salt Lake", lastQuarter: 8500, currentQuarter: 7000 },
+    { site: "Max House, Okhla", lastQuarter: 10500, currentQuarter: 9000 },
+    { site: "Baani- The Statement, Gurgaon", lastQuarter: 10000, currentQuarter: 8500 },
+  ];
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white border text-sm px-3 py-1 rounded shadow">
+          <p className="font-semibold">{label}</p>
+          <p>Last Quarter: {payload[0].value}</p>
+          <p>Current Quarter: {payload[1].value}</p>
+        </div>
+      );
+    }
+    return null;
+  };
+
+
+  const visitorData = [
+    { site: 'Sai Radhe, Bund Garden', lastQuarter: 150, currentQuarter: 140 },
+    { site: 'Westport, Baner', lastQuarter: 100, currentQuarter: 90 },
+    { site: 'Peninsula Corporate Park, Lower Parel', lastQuarter: 130, currentQuarter: 125 },
+    { site: 'Koncord Towers, Bund Garden', lastQuarter: 70, currentQuarter: 80 },
+    { site: 'Nandan Probiz, Balewadi', lastQuarter: 110, currentQuarter: 125 },
+    { site: 'Aeromall, Vimannagar', lastQuarter: 70, currentQuarter: 60 },
+    { site: 'Raheja Mindspace, Hitec City', lastQuarter: 120, currentQuarter: 100 },
+    { site: 'Technopolis, Salt lake', lastQuarter: 70, currentQuarter: 60 },
+    { site: 'Max House, Okhla', lastQuarter: 80, currentQuarter: 70 },
+    { site: 'Baani– The Statement, Gurgaon', lastQuarter: 90, currentQuarter: 85 },
+  ];
+
+  const Perdata = [
+    { site: "Sai Radhe, Bund Garden", Free: 80, Paid: 55, Vacant: 143 },
+    { site: "Westport, Baner", Free: 90, Paid: 50, Vacant: 90 },
+    { site: "Peninsula Corporate Park, Lower Parel", Free: 125, Paid: 20, Vacant: 90 },
+    { site: "Koncord Towers, Bund Garden", Free: 60, Paid: 40, Vacant: 80 },
+    { site: "Nandan Probiz, Balewadi", Free: 90, Paid: 30, Vacant: 110 },
+    { site: "Aeromall, Vimaan nagar", Free: 70, Paid: 30, Vacant: 70 },
+    { site: "Raheja Mindspace, Hitec City", Free: 80, Paid: 70, Vacant: 90 },
+    { site: "Technopolis, Salt lake", Free: 70, Paid: 50, Vacant: 40 },
+    { site: "Max House, Okhla", Free: 75, Paid: 70, Vacant: 10 },
+    { site: "Baani- The Statement, Gurgaon", Free: 80, Paid: 40, Vacant: 85 },
+  ];
+
+
+
+
+
   return (
     <>
       {/* Disclaimer Page */}
       <div className="flex flex-col min-h-screen font-sans bg-white px-6 py-10 relative">
         <div className="flex justify-center w-full">
-          <h1 className="text-4xl font-bold print:font-extrabold text-red-700 tracking-wider">
-            URB
-            <span className="inline-block transform rotate-180">Z</span>
-            NWRK
-          </h1>
+          <img
+            src={logo} // change this path as per your folder structure
+            alt="URBZ NWRK Logo"
+            className="h-12 md:h-16" // adjust height as needed
+          />
         </div>
         <div className="mt-6 flex justify-start">
           <div className="inline-block font-bold px-6 py-2 border-2 border-red-700 text-white bg-red-700 transform -skew-x-12">
@@ -428,12 +589,13 @@ const AllContent = () => {
         {/* Header */}
         <div>
           <div className="flex justify-center w-full mt-0">
-            <h1 className="text-4xl font-bold text-red-700 tracking-wider">
-              URB
-              <span className="inline-block transform rotate-180">Z</span>
-              NWRK
-            </h1>
+            <img
+              src={logo} // change this path as per your folder structure
+              alt="URBZ NWRK Logo"
+              className="h-12 md:h-16" // adjust height as needed
+            />
           </div>
+
 
           {/* Table of Content Title */}
           <div className="mb-2 mt-4">
@@ -575,22 +737,28 @@ const AllContent = () => {
           </h2>
           <div className="overflow-x-auto print:overflow-visible">
             <table className="min-w-full border text-sm text-center print:text-xs print:w-full print:table-fixed">
-              <thead className="bg-red-700 text-white print-bg-red">
+              <thead className="bg-[#ded9cd] text-[#b62527] font-semibold text-sm">
                 <tr>
-                  <th className="p-2 border print:p-1 print:w-[14%]">Site Name</th>
-                  <th colSpan="3" className="p-2 border print:p-1">Meeting Room</th>
-                  <th colSpan="3" className="p-2 border print:p-1">Hot Desk</th>
+                  <th className="border border-black p-3 text-left align-middle" rowSpan={2}>
+                    Site Name
+                  </th>
+                  <th className="border border-black p-3 text-center" colSpan={3}>
+                    Meeting Room
+                  </th>
+                  <th className="border border-black p-3 text-center" colSpan={3}>
+                    Day Pass
+                  </th>
                 </tr>
-                <tr className="bg-red-600 text-white print-bg-red">
-                  <th className="p-2 border print:p-1"></th>
-                  <th className="p-2 border print:p-1 print:w-[12%]">Utilization Rate (%)</th>
-                  <th className="p-2 border print:p-1 print:w-[12%]">Cancellation Rate (%)</th>
-                  <th className="p-2 border print:p-1 print:w-[12%]">Revenue (₹)</th>
-                  <th className="p-2 border print:p-1 print:w-[12%]">Utilization Rate (%)</th>
-                  <th className="p-2 border print:p-1 print:w-[12%]">Cancellation Rate (%)</th>
-                  <th className="p-2 border print:p-1 print:w-[12%]">Revenue (₹)</th>
+                <tr>
+                  <th className="border border-black p-2 text-center">Utilization<br />Rate (in %)</th>
+                  <th className="border border-black p-2 text-center">Cancellation<br />Rate (in %)</th>
+                  <th className="border border-black p-2 text-center">Revenue<br />(in ₹)</th>
+                  <th className="border border-black p-2 text-center">Utilization<br />Rate (in %)</th>
+                  <th className="border border-black p-2 text-center">Cancellation<br />Rate (in %)</th>
+                  <th className="border border-black p-2 text-center">Revenue<br />(in ₹)</th>
                 </tr>
               </thead>
+
               <tbody>
                 {revenueData.table.map((row, idx) => (
                   <tr key={idx} className="border-t">
@@ -743,22 +911,27 @@ const AllContent = () => {
             <div className="overflow-x-auto print:overflow-visible">
               <table className="min-w-full divide-y divide-gray-300 border print:text-[10px] print:w-full print:table-fixed">
                 <thead>
-                  <tr className="bg-[#d7262e] text-white text-left text-sm print-bg-red">
+                  <tr className="bg-[#dfdbcf] text-[#b61624] text-center text-xs font-semibold border border-black print:text-[10px]">
                     {[
                       "Site Name",
-                      "Total Wallet Balance",
+                      "Total Wallet\nBalance",
                       "Top-ups",
                       "Usage",
-                      "Comp. Points",
+                      "Comp.\nPoints",
                       "Refunds",
                       "Expiry Point",
                     ].map((header, i) => (
-                      <th key={i} className="py-3 print:py-1 print:w-[14%]">
+                      <th
+                        key={i}
+                        className="py-1 px-1 whitespace-pre-line border border-black print:py-[2px] print:px-[2px]"
+                      >
                         {header}
                       </th>
                     ))}
                   </tr>
                 </thead>
+
+
                 <tbody className="text-sm text-black print:text-[10px]">
                   {siteWiseData.map((row, idx) => (
                     <tr key={idx} className="bg-white border-b border-gray-300 print:border-b print:border-black">
@@ -788,7 +961,7 @@ const AllContent = () => {
             <h2 className="text-lg font-semibold mb-2 print:text-sm print:font-semibold print:mb-1">Top 10 Customers by Wallet Usage</h2>
             <div className="overflow-auto print:overflow-visible">
               <table className="min-w-full table-auto border border-gray-300 print:text-[10px] print:w-full print:table-fixed">
-                <thead className="bg-red-600 text-white print-bg-red">
+                <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030] print-bg-red">
                   <tr>
                     <th className="px-4 py-2 print:px-1 print:py-0.5 print:w-[25%]">Customer Name</th>
                     <th className="px-4 py-2 print:px-1 print:py-0.5 print:w-[25%]">Site</th>
@@ -894,8 +1067,7 @@ const AllContent = () => {
           </div>
 
           {/* Section Heading & Divider */}
-          <h2 className="text-xl font-semibold text-gray-700 mb-4 print:text-black print:text-[8.8px] print:mb-1">
-            Site Wise Adoption Rate
+          <h2 className="text-xl font-semibold text-gray-700 mb-4 print:text-black print:text-sm print:mb-1">            Site Wise Adoption Rate
           </h2>
           <hr className="border-t border-gray-400 mb-4 print:border-black print:mb-1" />
 
@@ -1017,7 +1189,7 @@ const AllContent = () => {
           <div className="table-section w-full overflow-x-auto print:overflow-visible border py-3 px-3 mb-5 print:p-2 print:mb-0">
             <h2 className="text-xl font-semibold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Ticket Ageing, Closure Efficiency & Feedback Overview by Center</h2>
             <table className="w-full border text-sm text-center break-words print:table-fixed print:w-full print:text-[8px]">
-              <thead className="bg-[#C72030] text-white font-semibold print-bg-red">
+              <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030] font-semibold print-bg-red">
                 <tr>
                   {siteNames.map((site, idx) => (
                     <th
@@ -1080,7 +1252,7 @@ const AllContent = () => {
           <div className="site-performance bg-white border p-6 overflow-auto no-break print:p-2">
             <h2 className="text-lg font-semibold mb-4 print:text-sm print:mb-1">Site Performance: Customer Rating Overview</h2>
             <table className="min-w-full text-sm text-center border print:table-fixed print:w-full print:text-[8px]">
-              <thead className="bg-[#C72030] text-white print-bg-red">
+              <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030] print-bg-red">
                 <tr>
                   <th className="border border-gray-200 px-2 py-3 print:px-1 print:py-2 print:w-[15%] print:min-h-[24px]">
                     Site Name
@@ -1205,7 +1377,7 @@ const AllContent = () => {
             </h2>
             <div className="overflow-x-auto print:overflow-visible">
               <table className="min-w-full border border-black text-sm text-center print:text-[10px]">
-                <thead className="bg-[#d62828] text-white print-bg-red">
+                <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030] print-bg-red">
                   <tr>
                     {["Rank", "Asset Name/ID", "Asset Category", "Site name", "Maintenance Cost₹", "Total Maintenance%", "Remark"].map((col) => (
                       <th key={col} className="border border-black px-2 py-1 print:px-0.5 print:py-1">{col}</th>
@@ -1254,13 +1426,15 @@ const AllContent = () => {
 
       </div>
 
+
+      {/*  Active AMC Contracts */}
       <div className="print-page break-before-page print:w-[95%] print:m-auto">
         <div className="bg-white amc-summary no-break print:p-4 print:px-0 mt-1 print:mt-4">
           <h2 className="text-2xl font-semibold mb-6 print:text-[14px] print:mb-2">
             AMC Contract Summary
           </h2>
           <div className="grid grid-cols-3 text-center text-white font-bold bg-[#f2f0eb] divide-x divide-gray-300">
-          <div className=" p-8 m-2 text-black rounded print:p-4 print:text-[14px] ">
+            <div className=" p-8 m-2 text-black rounded print:p-4 print:text-[14px] ">
               Active AMC Contracts<br />
               <span className="text-4xl text-red-500 print:text-2xl print:text-red-500">60</span>
             </div>
@@ -1476,6 +1650,582 @@ const AllContent = () => {
         </div>
 
 
+      </div>
+
+      {/* Checklist Management */}
+      <div className="print-page break-before-page">
+        <div className="p-6 bg-white min-h-screen text-black print:bg-white print:text-black print:p-2 print:w-[95%] print:mx-auto no-break">
+
+          <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
+            Checklist Management
+          </h1>
+
+          {/* Table 1: Checklist Progress Status */}
+          <div className="border border-gray-300 rounded mb-10 comment  print:mb-2 min-h-[300px]">
+            <div className="p-4 font-semibold border-b border-gray-300 print:p-2 print:text-[12px] ">
+              Checklist Progress Status – Center-Wise Quarterly Comparison
+            </div>
+            <table className="w-full border print:table-fixed print:w-full print:text-[11px] ">
+              <thead>
+                <tr className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030] text-left print-bg-red">
+                  <th className="py-4 px-4 print:py-2 print:px-2 print:w-[16%]">Site Name</th>
+                  <th className="py-4 px-4 print:py-2 print:px-2 print:w-[16%]">Open</th>
+                  <th className="py-4 px-4 print:py-2 print:px-2 print:w-[16%]">In Progress</th>
+                  <th className="py-4 px-4 print:py-2 print:px-2 print:w-[16%]">Overdue</th>
+                  <th className="py-4 px-4 print:py-2 print:px-2 print:w-[16%]">Partially Closed</th>
+                  <th className="py-4 px-4 print:py-2 print:px-2 print:w-[16%]">Closed</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  {
+                    site: "Sai Radhe, Bund Garden",
+                    open: "38%",
+                    inProgress: "38%",
+                    overdue: { current: "38%", last: "40%", change: "down" },
+                    partiallyClosed: "38%",
+                    closed: { current: "38%", last: "40%", change: "up" },
+                  },
+                  {
+                    site: "Westport, Baner",
+                    open: "22%",
+                    inProgress: "22%",
+                    overdue: { current: "22%", last: "10%", change: "up" },
+                    partiallyClosed: "22%",
+                    closed: { current: "22%", last: "10%", change: "down" },
+                  },
+                  {
+                    site: "Peninsula Corporate Park",
+                    open: "38%",
+                    inProgress: "38%",
+                    overdue: { current: "38%", last: "10%", change: "up" },
+                    partiallyClosed: "38%",
+                    closed: { current: "38%", last: "10%", change: "down" },
+                  },
+                  {
+                    site: "Koncord Towers, Bund Garden",
+                    open: "22%",
+                    inProgress: "22%",
+                    overdue: { current: "22%", last: "12%", change: "up" },
+                    partiallyClosed: "22%",
+                    closed: { current: "22%", last: "12%", change: "down" },
+                  },
+                  {
+                    site: "Westport, Baner",
+                    open: "38%",
+                    inProgress: "38%",
+                    overdue: { current: "38%", last: "10%", change: "up" },
+                    partiallyClosed: "38%",
+                    closed: { current: "38%", last: "10%", change: "down" },
+                  },
+                  {
+                    site: "Westport, Baner",
+                    open: "22%",
+                    inProgress: "22%",
+                    overdue: { current: "22%", last: "10%", change: "down" },
+                    partiallyClosed: "22%",
+                    closed: { current: "22%", last: "10%", change: "up" },
+                  },
+                ].map((row, i) => (
+                  <tr key={i} className={i % 2 === 0 ? "bg-gray-50 print:bg-gray-50" : ""}>
+                    <td className="py-5 px-4 bg-[#F6F4EE] print:py-2 print:px-2 print:bg-[#F6F4EE]">
+                      {row.site}
+                    </td>
+                    <td className="py-5 px-4 print:py-2 print:px-2">{row.open}</td>
+                    <td className="py-5 px-4 print:py-2 print:px-2">{row.inProgress}</td>
+                    <td className="py-5 px-4 flex items-center gap-1 print:py-2 print:px-2">
+                      {row.overdue.current} | {row.overdue.last}{" "}
+                      {row.overdue.change === "up" ? (
+                        <span className="text-red-600">▲</span>
+                      ) : (
+                        <span className="text-green-600">▼</span>
+                      )}
+                    </td>
+                    <td className="py-5 px-4 print:py-2 print:px-2">{row.partiallyClosed}</td>
+                    <td className="py-5 px-4 flex items-center gap-1 print:py-2 print:px-2">
+                      {row.closed.current} | {row.closed.last}{" "}
+                      {row.closed.change === "up" ? (
+                        <span className="text-green-600">▲</span>
+                      ) : (
+                        <span className="text-red-600">▼</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="text-sm mt-4 px-4 py-2 italic text-gray-700 print:text-[12px] print:mt-2 print:px-2 print:py-1 print:text-black">
+              <strong>Note :</strong> This table shows checklist progress by status across centers, comparing the current and last quarter. The "Change in Closed" column highlights the shift in closed checklists since the previous quarter.
+            </div>
+          </div>
+
+          {/* Table 2: Top 10 Overdue Checklists */}
+          <div className="border border-gray-300 rounded comment  min-h-[300px]">
+            <div className="p-4 font-semibold border-b border-gray-300 print:p-2 print:text-[12px] ">
+              Top 10 Overdue Checklists – Center-wise Contribution Comparison
+            </div>
+            <table className="w-full border text-sm print:table-fixed print:w-full print:text-[11px] ">
+              <thead>
+                <tr className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030] text-left print-bg-red">
+                  <th className="py-4 px-4 print:py-2 print:px-2 print:w-[15%]">Category</th>
+                  <th className="py-4 px-2 print:py-2 print:px-1 print:w-[8.5%]">Pest Control Checklist</th>
+                  <th className="py-4 px-2 print:py-2 print:px-1 print:w-[8.5%]">Plants Hydration</th>
+                  <th className="py-4 px-2 print:py-2 print:px-1 print:w-[8.5%]">Fire Alarm</th>
+                  <th className="py-4 px-2 print:py-2 print:px-1 print:w-[8.5%]">Sanitary Bins</th>
+                  <th className="py-4 px-2 print:py-2 print:px-1 print:w-[8.5%]">Pest Control</th>
+                  <th className="py-4 px-2 print:py-2 print:px-1 print:w-[8.5%]">Plants Hydration</th>
+                  <th className="py-4 px-2 print:py-2 print:px-1 print:w-[8.5%]">Fire Alarm</th>
+                  <th className="py-4 px-2 print:py-2 print:px-1 print:w-[8.5%]">Pest Control</th>
+                  <th className="py-4 px-2 print:py-2 print:px-1 print:w-[8.5%]">Pest Control</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  {
+                    category: "Sai Radhe, Bund Garden",
+                    values: ["38%", "12%", "8%", "27%", "25%", "13%", "20%", "11%", "56%"],
+                  },
+                  {
+                    category: "Westport,Baner",
+                    values: ["22%", "24%", "12%", "17%", "1%", "63%", "96%", "7%", "14%"],
+                  },
+                  {
+                    category: "Westport,Baner",
+                    values: ["10%", "30%", "12%", "3%", "8%", "63%", "96%", "3%", "20%"],
+                  },
+                  {
+                    category: "Peninsula Corporate Park,",
+                    values: ["4%", "6%", "8%", "0%", "15%", "63%", "96%", "2%", "5%"],
+                  },
+                  {
+                    category: "Koncord, Bund Garden",
+                    values: ["0%", "4%", "8%", "10%", "1%", "20%", "20%", "0%", "4%"],
+                  },
+                  {
+                    category: "Koncord, Bund Garden",
+                    values: ["0%", "4%", "8%", "10%", "1%", "20%", "20%", "0%", "4%"],
+                  },
+                  {
+                    category: "Koncord, Bund Garden",
+                    values: ["0%", "4%", "8%", "10%", "1%", "20%", "20%", "0%", "4%"],
+                  },
+                  {
+                    category: "Koncord, Bund Garden",
+                    values: ["0%", "4%", "8%", "10%", "1%", "20%", "20%", "0%", "4%"],
+                  },
+                  {
+                    category: "Koncord, Bund Garden",
+                    values: ["0%", "4%", "8%", "10%", "1%", "20%", "20%", "0%", "4%"],
+                  },
+                  {
+                    category: "Koncord, Bund Garden",
+                    values: ["0%", "4%", "8%", "10%", "1%", "20%", "20%", "0%", "4%"],
+                  },
+                ].map((row, i) => (
+                  <tr key={i} className={i % 2 === 0 ? "bg-gray-50 print:bg-gray-50" : ""}>
+                    <td className="py-5 px-4 bg-[#F6F4EE] print:py-2 print:px-2 print:bg-[#F6F4EE]">{row.category}</td>
+                    {row.values.map((value, index) => (
+                      <td key={index} className="py-5 px-2 text-center print:py-2 print:px-1">
+                        {value}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="text-sm mt-4 px-4 py-2 italic text-gray-700 print:text-[12px] print:mt-2 print:px-2 print:py-1 print:text-black">
+              <strong>Note :</strong> The table displays the top 10 most overdue checklists, with a center-wise
+              breakdown of their contribution to the overall overdue count, helping identify key areas of concern.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Inventory Management */}
+      <div className="print-page break-before-page">
+        <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
+          Inventory Management
+        </h1>
+        <div className="bg-white p-6 print:p-2 print:mb-2 print:w-[95%] print:mx-auto print:break-inside-avoid no-break">
+
+          <div className="border border-gray-300 p-3">
+            <h2 className="text-xl font-semibold mb-4 print:text-[12px] print:mb-1 print:py-1.5">
+              Overview Summary
+            </h2>
+            <hr className="border-t border-gray-300 mb-6 print:mb-2" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 print:grid-cols-2 gap-6 print:gap-3 print:w-[92%] print:mx-auto">
+              {[
+                { label: "Over Stock Items", value: "220" },
+                { label: "Under Stock Items", value: "326" },
+                { label: "Total Value Of Inventory", value: "₹ 3,27,35,227" },
+                { label: "Capital Blocked In Overstocking", value: "₹ 3,12,54,499" },
+                { label: "Total Value Of Spares", value: "₹ 2,04,004" },
+                { label: "Total Value Of Consumables", value: "₹ 3,25,31,223" },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-[#f2eee9] p-6 text-center shadow-sm print:bg-[#f2eee9] print:p-3 print:shadow-none print:text-[10px] print:leading-relaxed"
+                >
+                  <div className="text-xl font-extrabold mb-1 print:text-[12px] print:mb-2">{item.value}</div>
+                  <div className="text-gray-700 text-sm print:text-[10px]">{item.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* OverstockGridExact Component */}
+          <div className="p-6 bg-white relative border-2 mt-2 print:mt-3 border-gray-200 print:p-4 print:border print:border-gray-300">
+            <div className="flex justify-between items-center mb-4 print:mb-2">
+              <h2 className="text-xl font-semibold text-left print:text-[14px]">
+                Overstock Analysis – Top 10 Items
+              </h2>
+              <div className="flex items-center space-x-2 print:space-x-2">
+                <div className="flex items-center">
+                  <span className="w-4 h-4 bg-[#d6c7ae] inline-block mr-1 print:w-4 print:h-4"></span>
+                  <span className="text-sm print:text-[10px]">Capital Block</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="w-4 h-4 bg-white border border-gray-300 inline-block mr-1 print:w-4 print:h-4"></span>
+                  <span className="text-sm print:text-[10px]">Current Stock</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="overflow-x-auto p-2 print:overflow-visible print:p-2">
+              <div
+                className="inline-grid gap-x-3 print:gap-x-2"
+                style={{ gridTemplateColumns: `120px repeat(${sites.length}, 60px)` }}
+              >
+                {items.map((item, rowIdx) => (
+                  <React.Fragment key={item}>
+                    <div className="p-4 text-sm font-medium flex items-center print:p-3 print:text-[12px] print:h-[50px]">
+                      {item}
+                    </div>
+                    {sites.map((_, colIdx) => (
+                      <div
+                        key={`${item}-${colIdx}`}
+                        className="relative w-[60px] h-[50px] print:w-[60px] print:h-[50px]"
+                      >
+                        {/* Capital Block (Top Right) */}
+                        <div className="absolute border top-0 left-0 w-full h-full bg-[#d6c7ae] clip-triangle-tr flex items-start justify-end p-1 text-[10px] font-semibold print:p-1 print:text-[10px] z-10">
+                          {getCapital(item, colIdx)}
+                        </div>
+                        {/* Current Stock - lower left triangle */}
+                        <div className="absolute border top-0 left-0 w-full h-full bg-white clip-triangle-bl flex items-end justify-start p-1 text-[10px] font-semibold print:p-1 print:text-[10px] z-0">
+                          {getStock(item, colIdx)}
+                        </div>
+                      </div>
+                    ))}
+                  </React.Fragment>
+                ))}
+
+                {/* Bottom Header Row */}
+                <div className="bg-white p-2 font-medium text-sm print:p-2 print:text-[12px]" />
+                {sites.map((site, i) => (
+                  <div
+                    key={`bottom-${i}`}
+                    className="bg-white text-[10px] leading-tight text-center p-2 whitespace-pre-wrap font-medium print:text-[10px] print:p-2"
+                  >
+                    {site}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-2 font-semibold w-full text-center text-sm print:mt-2 print:text-[12px]">
+              Sites
+            </div>
+
+            <p className="text-[12px] mt-4 text-gray-700 text-center print:text-[10px] print:mt-3">
+              <strong>Note:</strong> This table shows the top 10 overstock items with their capital block (upper section) and current stock (lower section), highlighting excess inventory tied up in high-value items.
+            </p>
+          </div>
+
+
+        </div>
+      </div>
+
+      {/*Consumables Overview */}
+      <div className="print-page break-before-page">
+        <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
+          Consumables Overview
+        </h1>
+        <div className="bg-white p-6 no-break print:p-4 print:w-[99%] print:mx-auto">
+
+
+          {/* Top Consumables – Centre-wise Overview */}
+          <div className="border border-gray-300 rounded comment p-4 mt-8 print:border-gray-300 print:rounded print:p-4 print:mt-0">
+            <div className="p-4 font-semibold border-b border-gray-300 print:p-3 print:text-[14px] print:border-gray-300">
+              Top Consumables – Centre-wise Overview
+            </div>
+            <div className="overflow-auto print:overflow-visible">
+              <table className="w-full border text-sm print:table-fixed print:w-full print:text-[13px] print:leading-relaxed">
+                <thead>
+                  <tr className="bg-[#DAD6C9] text-[#C72030] text-left print:bg-[#DAD6C9] print:text-[#C72030]">
+                    <th className="py-1 px-4 print:py-1 print:px-2 print:w-[17%]">Inventory</th>
+                    {headers.map((header, index) => (
+                      <th
+                        key={index}
+                        className="py-1 px-2 text-left print:py-1 print:px-2 print:w-[9%]"
+                      >
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {tablesData.map((row, i) => (
+                    <tr key={i} className={i % 2 === 0 ? "bg-gray-50 print:bg-gray-50" : ""}>
+                      <td className="py-1 px-4 bg-[#F6F4EE] font-medium print:py-1 print:px-2 print:bg-[#F6F4EE]">
+                        {row.inventory}
+                      </td>
+                      {row.values.map((value, j) => (
+                        <td key={j} className="py-1 px-2 text-center print:py-1 print:px-2">
+                          {value}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+
+            <div className="text-sm mt-4 px-4 py-2 italic text-gray-700 print:text-[11px] print:mt-0 print:px-3 print:py-2 print:text-black">
+              <strong>Note :</strong> This table highlights the top 10 consumable rate used across each
+              centre, helping to monitor usage patterns and manage inventory more effectively.
+              <br />
+              <strong>Formula:</strong> Total consumable x( Average Sqft (1000) / Site Sqft )
+            </div>
+          </div>
+
+          {/* Consumable Inventory Value – Quarterly Comparison */}
+          {/* Consumable Inventory Value – Quarterly Comparison */}
+          <div className="p-8 bg-white border border-gray-300 rounded shadow print-page-break print:p-3 print:border-gray-300 print:rounded print:shadow-none print:mt-2">
+            <h2 className="text-xl font-bold mb-4 text-gray-900 border-b pb-2 print:text-[14px] print:mb-1 print:pb-1 print:border-gray-300">
+              Consumable Inventory Value – Quarterly Comparison
+            </h2>
+            <div className="h-[500px] print:h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={inventoryData}
+                  margin={{ top: 20, right: 20, left: 20, bottom: 80 }}
+                  barCategoryGap={20}
+                >
+                  <CartesianGrid stroke="#ddd" strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="site"
+                    angle={-45}
+                    textAnchor="end"
+                    interval={0}
+                    height={100}
+                    tick={{ fontSize: 14 }}
+                  />
+                  <YAxis
+                    domain={[0, 16000]}
+                    ticks={[0, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000]}
+                    tickFormatter={(v) => `${v / 1000}k`}
+                  >
+                    <Label
+                      value="Total Value of Consumption"
+                      angle={-90}
+                      position="insideLeft"
+                      className="text-sm"
+                    />
+                  </YAxis>
+                  <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(0, 0, 0, 0.05)" }} />
+                  <Legend
+                    iconType="circle"
+                    wrapperStyle={{ fontSize: "14px" }}
+                    verticalAlign="top"
+                    align="right"
+                  />
+                  <Bar
+                    dataKey="lastQuarter"
+                    fill="#D6BBAF" // Light Beige
+                    name="Last Quarter"
+                    barSize={40}
+                    label={{ position: "top", formatter: (val) => `${val / 1000}k`, fill: "#444" }}
+                  />
+                  <Bar
+                    dataKey="currentQuarter"
+                    fill="#D3D6D4" // Light Grey like your screenshot
+                    name="Current Quarter"
+                    barSize={40}
+                    label={{ position: "top", formatter: (val) => `${val / 1000}k`, fill: "#444" }}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <p className="text-sm text-gray-700 mt-6 border-t pt-4 print:text-[11px] print:mt-1 print:pt-1 print:border-gray-300">
+              <strong>Note:</strong> This graph illustrates total consumable inventory usage with a comparison to the previous quarter, highlighting trends in consumption.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Parking and vistor Management */}
+      <div className="print-page break-before-page">
+        {/* Parking Management */}
+        <div className="no-break print:w-[95%] print:mx-auto">
+          <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
+            Parking Management
+          </h1>
+          <div className="bg-white max-w-8xl mx-auto shadow-md border p-6 rounded print:p-4 print:shadow-none print:border-gray-300">
+            <h2 className="text-left font-semibold text-xl mb-2 print:text-[16px] print:mb-2">
+              Parking Allocation Overview – Paid, Free & Vacant
+            </h2>
+
+            <div className="h-[500px] print:h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={Perdata} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="site"
+                    interval={0}
+                    height={100}
+                    tick={({ x, y, payload }) => {
+                      const lines = payload.value.split(', ');
+                      return (
+                        <g transform={`translate(${x},${y + 10})`}>
+                          {lines.map((line, index) => (
+                            <text
+                              key={index}
+                              x={0}
+                              y={index * 14}
+                              textAnchor="middle"
+                              fontSize="14"
+                              fill="#000"
+                            >
+                              {line}
+                            </text>
+                          ))}
+                        </g>
+                      );
+                    }}
+                    label={{
+                      value: "Sites",
+                      position: "bottom",
+                      offset: 50,
+                      fontSize: 16,
+                      fontWeight: "bold",
+                    }}
+                  />
+                  <YAxis
+                    domain={[0, 160]}
+                    tickCount={9}
+                    label={{
+                      value: "Counts of Parking Slots",
+                      angle: -90,
+                      position: "insideLeft",
+                    }}
+                  />
+
+                  <Tooltip />
+                  <Legend verticalAlign="top" align="right" wrapperStyle={{ top: 0 }} />
+
+                  <Bar dataKey="Free" fill="#dad8cf">
+                    <LabelList dataKey="Free" position="top" />
+                  </Bar>
+                  <Bar dataKey="Paid" fill="#c5ae94">
+                    <LabelList dataKey="Paid" position="top" />
+                  </Bar>
+                  <Bar dataKey="Vacant" fill="#a0b5c1">
+                    <LabelList dataKey="Vacant" position="top" />
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div className="text-left text-sm print:text-[11px] print:mt-2">
+              <span className="font-bold">Note :</span> This graph presents the current status of parking
+              allocation, showing the distribution between paid, free, and vacant slots.
+            </div>
+          </div>
+        </div>
+        {/* Visitor Management */}
+        <div className="print-page-break no-break print:w-[95%] print:mx-auto print:mt-3">
+          <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
+            Visitor Management
+          </h1>
+          <div className="bg-white max-w-8xl mx-auto shadow-md border p-6 rounded print:p-4 print:shadow-none print:border-gray-300">
+            <h2 className="text-left font-semibold text-xl mb-2 print:text-[16px] print:mb-2">
+              Visitor Trend Analysis
+            </h2>
+
+            <div className="h-[500px] print:h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={visitorData}
+                  margin={{ top: 20, right: 30, left: 20, bottom: 100 }}
+                  barCategoryGap="30%" // space between categories (bar groups)
+                  barGap={5} // space between bars inside a group
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="site"
+                    interval={0}
+                    height={90}
+                    tick={({ x, y, payload }) => {
+                      const lines = payload.value.split(', ');
+                      return (
+                        <g transform={`translate(${x},${y + 10})`}>
+                          {lines.map((line, index) => (
+                            <text
+                              key={index}
+                              x={0}
+                              y={index * 14}
+                              textAnchor="middle"
+                              fontSize="14"
+                              fill="#000"
+                            >
+                              {line}
+                            </text>
+                          ))}
+                        </g>
+                      );
+                    }}
+                    label={{
+                      value: 'Sites',
+                      position: 'bottom',
+                      offset: 50,
+                      fontSize: 16,
+                      fontWeight: 'bold'
+                    }}
+                  />
+                  <YAxis
+                    domain={[0, 160]}
+                    ticks={[0, 20, 40, 60, 80, 100, 120, 140, 160]}
+                    tick={{ fontSize: 14 }}
+                    label={{
+                      value: 'Counts',
+                      angle: -90,
+                      position: 'insideLeft',
+                      fontSize: 14,
+                      offset: 10
+                    }}
+                  />
+                  <Tooltip />
+                  <Legend verticalAlign="top" align="right" />
+                  <Bar dataKey="lastQuarter" name="Last Quarter" fill="#c5ae94">
+                    <LabelList dataKey="lastQuarter" position="top" />
+                  </Bar>
+                  <Bar dataKey="currentQuarter" name="Current Quarter" fill="#dad8cf">
+                    <LabelList dataKey="currentQuarter" position="top" />
+                  </Bar>
+                </BarChart>
+
+              </ResponsiveContainer>
+            </div>
+
+            <div className="mt-6 text-left text-sm print:text-[11px] print:mt-2">
+              <span className="font-bold">Note :</span> This graph shows the total visitor count compared to the previous quarter, providing a clear view of trends and changes in footfall over time for performance comparison.
+            </div>
+          </div>
+        </div>
       </div>
 
 
