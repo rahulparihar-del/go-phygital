@@ -20,67 +20,64 @@ import logo from "../assets/urbon.svg"
 const AllContent = () => {
 
   const revenueData = {
-    revenue: {
-      urbanWrk: '₹1,00,000',
-      myHQ: '₹60,000',
-    },
     table: [
       {
-        site: 'Sai Radhe, Bund garden',
-        meeting: { util: '78%', cancel: '12%', revenue: '₹12,083 | 12%', utilUp: true, cancelUp: true, revenueUp: true },
-        hotDesk: { util: '78%', cancel: '12%', revenue: '₹12,083 | 12%', utilUp: true, cancelUp: true, revenueUp: true },
+        site: "Sai Radhe, Bund garden",
+        meeting: { util: "78%", cancel: "12%", revenue: "12,083 | 12%", utilUp: true, cancelUp: false, revenueUp: true },
+        hotDesk: { util: "78%", cancel: "12%", revenue: "12,083 | 12%", utilUp: true, cancelUp: false, revenueUp: true }
       },
       {
-        site: 'Westport, Baner',
-        meeting: { util: '19%', cancel: '1%', revenue: '₹19,840 | 10%', utilUp: false, cancelUp: false, revenueUp: true },
-        hotDesk: { util: '19%', cancel: '1%', revenue: '₹19,840 | 10%', utilUp: false, cancelUp: false, revenueUp: true },
+        site: "Westport, Baner",
+        meeting: { util: "19%", cancel: "1%", revenue: "19,840 | 10%", utilUp: false, cancelUp: true, revenueUp: false },
+        hotDesk: { util: "19%", cancel: "1%", revenue: "19,840 | 10%", utilUp: false, cancelUp: true, revenueUp: false }
       },
       {
-        site: 'Peninsula Corporate Park',
-        meeting: { util: '13%', cancel: '13%', revenue: '₹13,840 | 11%', utilUp: false, cancelUp: false, revenueUp: false },
-        hotDesk: { util: '13%', cancel: '13%', revenue: '₹13,840 | 11%', utilUp: false, cancelUp: false, revenueUp: false },
+        site: "Peninsula Corporate Park",
+        meeting: { util: "13%", cancel: "13%", revenue: "13,840 | 11%", utilUp: false, cancelUp: true, revenueUp: false },
+        hotDesk: { util: "13%", cancel: "13%", revenue: "13,840 | 11%", utilUp: false, cancelUp: true, revenueUp: false }
       },
       {
-        site: 'Koncord Probiz',
-        meeting: { util: '38%', cancel: '8%', revenue: '₹38,760 | 5%', utilUp: false, cancelUp: true, revenueUp: false },
-        hotDesk: { util: '38%', cancel: '8%', revenue: '₹38,760 | 5%', utilUp: false, cancelUp: true, revenueUp: false },
+        site: "Koncord Probiz",
+        meeting: { util: "38%", cancel: "8%", revenue: "38,760 | 5%", utilUp: false, cancelUp: true, revenueUp: false },
+        hotDesk: { util: "38%", cancel: "8%", revenue: "38,760 | 5%", utilUp: false, cancelUp: true, revenueUp: false }
       },
       {
-        site: 'AeroMall',
-        meeting: { util: '66%', cancel: '6%', revenue: '₹66,390 | 12%', utilUp: false, cancelUp: true, revenueUp: false },
-        hotDesk: { util: '66%', cancel: '6%', revenue: '₹66,390 | 12%', utilUp: false, cancelUp: true, revenueUp: false },
+        site: "AeroMall",
+        meeting: { util: "66%", cancel: "6%", revenue: "66,390 | 12%", utilUp: false, cancelUp: true, revenueUp: true },
+        hotDesk: { util: "66%", cancel: "6%", revenue: "66,390 | 12%", utilUp: false, cancelUp: true, revenueUp: true }
       },
       {
-        site: 'Raheja Mindspace',
-        meeting: { util: '54%', cancel: '1%', revenue: '₹14,140 | 15%', utilUp: true, cancelUp: false, revenueUp: true },
-        hotDesk: { util: '54%', cancel: '1%', revenue: '₹14,140 | 15%', utilUp: true, cancelUp: false, revenueUp: true },
+        site: "Raheja Mindspace",
+        meeting: { util: "54%", cancel: "1%", revenue: "14,140 | 15%", utilUp: true, cancelUp: false, revenueUp: true },
+        hotDesk: { util: "54%", cancel: "1%", revenue: "14,140 | 15%", utilUp: true, cancelUp: false, revenueUp: true }
       },
       {
-        site: 'Nandan Probiz',
-        meeting: { util: '60%', cancel: '14%', revenue: '₹14,140 | 15%', utilUp: true, cancelUp: false, revenueUp: true },
-        hotDesk: { util: '60%', cancel: '14%', revenue: '₹14,140 | 15%', utilUp: true, cancelUp: false, revenueUp: true },
+        site: "Nandan Probiz",
+        meeting: { util: "60%", cancel: "14%", revenue: "14,140 | 15%", utilUp: true, cancelUp: false, revenueUp: true },
+        hotDesk: { util: "60%", cancel: "14%", revenue: "14,140 | 15%", utilUp: true, cancelUp: false, revenueUp: true }
       },
       {
-        site: 'Max House',
-        meeting: { util: '64%', cancel: '1%', revenue: '₹14,140 | 15%', utilUp: true, cancelUp: false, revenueUp: true },
-        hotDesk: { util: '64%', cancel: '1%', revenue: '₹14,140 | 15%', utilUp: true, cancelUp: false, revenueUp: true },
+        site: "Max House",
+        meeting: { util: "64%", cancel: "1%", revenue: "14,140 | 15%", utilUp: true, cancelUp: false, revenueUp: true },
+        hotDesk: { util: "64%", cancel: "1%", revenue: "14,140 | 15%", utilUp: true, cancelUp: false, revenueUp: true }
       },
       {
-        site: 'Bani-Statement Gurgaon',
-        meeting: { util: '34%', cancel: '1%', revenue: '₹14,140 | 15%', utilUp: true, cancelUp: false, revenueUp: true },
-        hotDesk: { util: '34%', cancel: '1%', revenue: '₹14,140 | 15%', utilUp: true, cancelUp: false, revenueUp: true },
+        site: "Bani-Statement Gurgaon",
+        meeting: { util: "34%", cancel: "1%", revenue: "14,140 | 15%", utilUp: false, cancelUp: true, revenueUp: false },
+        hotDesk: { util: "34%", cancel: "1%", revenue: "14,140 | 15%", utilUp: false, cancelUp: true, revenueUp: false }
       },
       {
-        site: 'Technopolis',
-        meeting: { util: '74%', cancel: '14%', revenue: '₹14,140 | 15%', utilUp: true, cancelUp: false, revenueUp: true },
-        hotDesk: { util: '74%', cancel: '14%', revenue: '₹14,140 | 15%', utilUp: true, cancelUp: false, revenueUp: true },
-      },
-    ],
+        site: "Technopolis",
+        meeting: { util: "74%", cancel: "14%", revenue: "14,140 | 15%", utilUp: false, cancelUp: false, revenueUp: false },
+        hotDesk: { util: "74%", cancel: "14%", revenue: "14,140 | 15%", utilUp: false, cancelUp: false, revenueUp: false }
+      }
+    ]
   };
 
+
   const Arrow = ({ up }) => (
-    <span className={up ? 'text-green-600' : 'text-red-600'}>
-      {up ? '▲' : '▼'}
+    <span style={{ color: up ? "green" : "red" }}>
+      {up ? "▲" : "▼"}
     </span>
   );
 
@@ -933,7 +930,7 @@ const AllContent = () => {
       {/* First Section: Meeting Room / Hot Desk Performance Overview */}
       <div className="print-only-enhanced print-page break-before-page revenue-section">
         <h1 className="report-title text-2xl font-bold text-center mb-6 py-4 bg-[#C4B89D33]">
-          Meeting Room / Hot Desk Management
+          Meeting Room / Day Pass
         </h1>
 
         <div className="border p-6 bg-white text-black shadow print:text-black print:bg-white print:p-6 print:border print:shadow-none print:w-[95%] print:mx-auto">
@@ -976,7 +973,7 @@ const AllContent = () => {
 
         <div className="bg-white shadow rounded-lg p-4 mt-4 avoid-break">
           <h2 className="text-lg font-semibold text-red-600 mb-4">
-            Center Wise - Meeting Room / Hot Desk Performance Overview
+            Center Wise - Meeting Room / Day Pass Performance Overview
           </h2>
           <div className="overflow-x-auto print:overflow-visible">
             <table className="min-w-full border text-sm text-center print:text-xs print:w-full print:table-fixed">
@@ -1214,8 +1211,8 @@ const AllContent = () => {
                 </thead>
                 <tbody>
                   {topCustomersData.map((cust, i) => (
-                    <tr key={i} className="text-center border-t">
-                      <td className="px-4 py-2 print:px-1 print:py-0.5">{cust.name}</td>
+                    <tr key={i} className="text-center">
+                      <td className="px-4 py-2 print:px-1 print:py-0.5 bg-[#F3F1EB]">{cust.name}</td>
                       <td className="px-4 py-2 print:px-1 print:py-0.5">{cust.site}</td>
                       <td className="px-4 py-2 print:px-1 print:py-0.5">{cust.usage}</td>
                       <td className="px-4 py-2 print:px-1 print:py-0.5">{cust.users}</td>
@@ -1283,8 +1280,7 @@ const AllContent = () => {
                 <tr>
                   {[
                     "Center Name", "Events Held", "Event Attendance %", "Active Chat Users",
-                    "Chat Group Activity", "Post", "Avg Interaction", "Total Members",
-                    "Android Use", "iOS User"
+                    "Chat Group Activity", "Post", "Avg Interaction", "Total Members"
                   ].map((header, idx) => (
                     <th key={idx} className="p-2 border border-black print:p-1 print:w-[10%] text-center">{header}</th>
                   ))}
@@ -1301,8 +1297,6 @@ const AllContent = () => {
                     <td className="p-2 border border-black print:p-1">{row.posts}</td>
                     <td className="p-2 border border-black print:p-1">{row.interaction}</td>
                     <td className="p-2 border border-black print:p-1">{row.members}</td>
-                    <td className="p-2 border border-black print:p-1">{row.android}</td>
-                    <td className="p-2 border border-black print:p-1">{row.ios}</td>
                   </tr>
                 ))}
               </tbody>
@@ -1341,7 +1335,7 @@ const AllContent = () => {
                   {[
                     "Site Name", "Helpdesk", "Assets", "Checklist (Tech)",
                     "Checklist (Non-Tech)", "Inventory", "Meeting Room",
-                    "Hot Desk"
+                    "Day Pass"
                   ].map((header, idx) => (
                     <th
                       key={idx}
@@ -1380,7 +1374,7 @@ const AllContent = () => {
             <span className="block mt-3 print:mt-0"><strong>Checklist (Nontech)</strong> : Total Checklist Completed / Total Schedule Checklist * 100</span>
             <span className="block mt-3 print:mt-0"><strong>Inventory</strong> : (Number Of Items Used / Total Items Available) × 100</span>
             <span className="block mt-3 print:mt-0"><strong>Meeting Room</strong> : (Booked Slots / Total Available Slots) * 100</span>
-            <span className="block mt-3 print:mt-0"><strong>Hot Desk</strong> : (Occupied Desks / Total Available Desks) * 100</span>
+            <span className="block mt-3 print:mt-0"><strong>Day Pass</strong> : (Occupied Desks / Total Available Desks) * 100</span>
             <span className="block mt-3 print:mt-0"><strong>Customer users</strong> : Total Count Of Active Customer Users</span>
           </p>
 
@@ -1511,21 +1505,35 @@ const AllContent = () => {
                 </tr>
               </thead>
               <tbody>
-                {customerRatingTable.rows.map((row, idx) => (
-                  <tr key={idx} className={row.label === "Total %" ? "font-semibold" : ""}>
-                    <td className="border border-gray-200 px-2 py-3 font-medium bg-[#F3F1EB80] print:px-1 print:py-2 print:bg-[#F3F1EB80] print:min-h-[24px]">
-                      {row.label}
-                    </td>
-                    {row.values.map((val, vIdx) => (
+                {customerRatingTable.rows.map((row, idx) => {
+                  const isTotal = row.label === "Total %";
+
+                  return (
+                    <tr key={idx} className={isTotal ? "font-semibold bg-[#DAD6C9]" : ""}>
                       <td
-                        key={vIdx}
-                        className="border border-gray-200 px-2 py-3 print:px-1 print:py-2 print:min-h-[24px]"
+                        className={`px-2 py-3 print:px-1 print:py-2 print:min-h-[24px] font-medium ${isTotal
+                          ? "border border-gray-300"
+                          : "border-l border-r border-gray-200 bg-[#F3F1EB80] print:bg-[#F3F1EB80]"
+                          }`}
                       >
-                        {val}
+                        {row.label}
                       </td>
-                    ))}
-                  </tr>
-                ))}
+                      {row.values.map((val, vIdx) => (
+                        <td
+                          key={vIdx}
+                          className={`px-2 py-3 print:px-1 print:py-2 print:min-h-[24px] ${isTotal
+                            ? "border border-gray-300"
+                            : "border-l border-r border-gray-200"
+                            }`}
+                        >
+                          {val}
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+
+
               </tbody>
             </table>
 
@@ -1538,7 +1546,7 @@ const AllContent = () => {
 
 
       <div className="print-page break-before-page px-6 py-8 print:px-4 print:py-6 bg-white">
-        <h2 className="text-xl font-bold mb-4 text-center">
+        <h2 className="text-xl font-bold mb-4 text-left">
           Response TAT Performance by Center – Quarterly Comparison
         </h2>
 
@@ -1650,51 +1658,54 @@ const AllContent = () => {
           {/* Table 1 */}
           <div className="center-metrics-table overflow-x-auto print:overflow-visible no-break print:p-1 print:mb-1">
             <h2 className="text-xl font-semibold py-4 border-b border-black mb-4 print:text-[10px] print:py-1 print:mb-1">
-              Center Wise - Assets And Downtime Metrics
+              Center Wise – Assets And Downtime Metrics
             </h2>
+
             <table className="min-w-full border border-black text-sm text-center print:table-fixed print:w-full print:text-[10px] print:leading-tight">
               <thead>
-                <tr className="bg-[#DAD6C9] text-[#C72030] font-bold">
-                  <th rowSpan="2" className="border border-black px-2 py-1 print:px-0.5 print:py-1 print:w-[15%]">Site Name</th>
-                  <th rowSpan="2" className="border border-black px-2 py-1 print:px-0.5 print:py-1 print:w-[15%]">Total Assets</th>
-                  <th colSpan="2" className="border border-black px-2 py-1 print:px-0.5 print:py-1 print:w-[30%]">Critical</th>
-                  <th colSpan="2" className="border border-black px-2 py-1 print:px-0.5 print:py-1 print:w-[30%]">Non-Critical</th>
+                <tr className="bg-[#DAD6C9] text-[#C72030] font-bold text-[14px] print:text-[10px]">
+                  <th rowSpan="2" className="border border-black px-2 py-1 print:px-1 print:py-1 w-[20%] text-left">Site Name</th>
+                  <th rowSpan="2" className="border border-black px-2 py-1 print:px-1 print:py-1">Total No. of Assets</th>
+                  <th colSpan="2" className="border border-black px-2 py-1 print:px-1 print:py-1">Critical</th>
+                  <th colSpan="2" className="border border-black px-2 py-1 print:px-1 print:py-1">Non-Critical</th>
                 </tr>
-                <tr className="bg-[#DAD6C9] text-[#C72030] font-bold">
-                  <th className="border border-black px-2 py-1 print:px-0.5 print:py-1">Breakdowns</th>
-                  <th className="border border-black px-2 py-1 print:px-0.5 print:py-1">Avg Days</th>
-                  <th className="border border-black px-2 py-1 print:px-0.5 print:py-1">Breakdowns</th>
-                  <th className="border border-black px-2 py-1 print:px-0.5 print:py-1">Avg Days</th>
+                <tr className="bg-[#DAD6C9] text-[#C72030] font-bold text-[13px] print:text-[10px]">
+                  <th className="border border-black px-2 py-1 print:px-1 print:py-1">Total No. of Breakdown</th>
+                  <th className="border border-black px-2 py-1 print:px-1 print:py-1">Average day</th>
+                  <th className="border border-black px-2 py-1 print:px-1 print:py-1">Total No. of Breakdown</th>
+                  <th className="border border-black px-2 py-1 print:px-1 print:py-1">Average day</th>
                 </tr>
               </thead>
+
               <tbody>
                 {[
                   ["Sai Radhe Bund Garden", 1000, 300, 10, 300, 8],
                   ["Westport, Baner", 500, 450, 15, 450, 10],
                   ["Peninsula", 324, 245, 5, 245, 8],
                   ["Koncord", 542, 170, 12, 170, 7],
-                  ["Aero Mall", 896, 476, 9, 234, 3],
+                  ["AeroMall", 896, 476, 9, 234, 3],
                   ["Nandan Probiz", 987, 476, 9, 432, 7],
                   ["Raheja Mindspace", 678, 476, 7, 222, 8],
                   ["Technopolis, Salt Lake", 654, 476, 4, 325, 4],
                   ["Bani - The Statement", 876, 476, 8, 542, 6],
-                ].map(([name, total, cBreak, cAvg, ncBreak, ncAvg], idx) => (
-                  <tr key={idx}>
-                    <td className="border border-black px-2 py-1.5 text-left print:px-1 print:py-[8px] bg-[#F3F1EB80]">{name}</td>
-                    <td className="border border-black px-2 py-1.5 print:px-1 print:py-[8px]">{total}</td>
-                    <td className="border border-black px-2 py-1.5 print:px-1 print:py-[8px]">{cBreak}</td>
-                    <td className="border border-black px-2 py-1.5 print:px-1 print:py-[8px]">{cAvg}</td>
-                    <td className="border border-black px-2 py-1.5 print:px-1 print:py-[8px]">{ncBreak}</td>
-                    <td className="border border-black px-2 py-1.5 print:px-1 print:py-[8px]">{ncAvg}</td>
+                ].map(([site, assets, cBreak, cAvg, ncBreak, ncAvg], idx) => (
+                  <tr key={idx} className="text-[13px] print:text-[10px]">
+                    <td className="border border-black px-2 py-2 text-left bg-[#F3F1EB80] print:px-1 print:py-1">{site}</td>
+                    <td className="border border-black px-2 py-2 print:px-1 print:py-1">{assets}</td>
+                    <td className="border border-black px-2 py-2 print:px-1 print:py-1">{cBreak}</td>
+                    <td className="border border-black px-2 py-2 print:px-1 print:py-1">{cAvg}</td>
+                    <td className="border border-black px-2 py-2 print:px-1 print:py-1">{ncBreak}</td>
+                    <td className="border border-black px-2 py-2 print:px-1 print:py-1">{ncAvg}</td>
                   </tr>
                 ))}
               </tbody>
-
             </table>
+
             <p className="text-xs text-gray-700 mt-2 print:text-[9px] print:mt-1">
-              <strong>Note:</strong> Asset count with breakdowns and average downtime per center.
+              <strong>Note:</strong> This table presents the center-wise total asset count along with the number of breakdown occurrences. It also includes the average downtime for both critical and non-critical assets, offering insights into operational efficiency and helping identify areas that require maintenance prioritization.
             </p>
           </div>
+
 
           {/* Table 2 */}
           <div className="bg-white border border-black mt-4 mb-6 print:mt-2 print:p-1 print:mb-1">
@@ -1755,27 +1766,29 @@ const AllContent = () => {
 
       {/*  Active AMC Contracts */}
       <div className="print-page break-before-page print:w-[95%] print:m-auto">
-        <div className="bg-white amc-summary no-break print:p-4 print:px-0 mt-1 print:mt-4">
-          <h2 className="text-2xl font-semibold mb-6 print:text-[14px] print:mb-2">
+        <div className="bg-white p-2 amc-summary no-break print:p-4 print:px-0 mt-1 print:mt-4 border border-gray-300">
+          <h2 className="text-xl font-semibold px-4 py-3 border-gray-400 print:text-[14px] print:py-2">
             AMC Contract Summary
           </h2>
-          <div className="grid grid-cols-3 text-center text-white font-bold bg-[#f2f0eb] divide-x divide-gray-300">
-            <div className=" p-8 m-2 text-black rounded print:p-4 print:text-[14px] ">
+
+          <div className="grid grid-cols-3  border py-4 text-center bg-[#f2f0eb] text-black font-semibold">
+            <div className="border-r border-gray-300 px-4 py-6 print:py-3 print:px-2 print:text-[12px]">
               Active AMC Contracts<br />
-              <span className="text-4xl text-red-500 print:text-2xl print:text-red-500">60</span>
+              <span className="text-4xl text-[#C72030] font-bold print:text-2xl">60</span>
             </div>
-            <div className=" p-8 m-2 text-black rounded print:p-4 print:text-[14px] ">
+            <div className="border-r border-gray-300 px-4 py-6 print:py-3 print:px-2 print:text-[12px]">
               Contract Expiry in 90 Days<br />
-              <span className="text-4xl text-red-500 print:text-2xl print:text-red-500">23</span>
+              <span className="text-4xl text-[#C72030] font-bold print:text-2xl">23</span>
             </div>
-            <div className=" p-8 m-2 text-black rounded print:p-4 print:text-[14px] ">
+            <div className="px-4 py-6 print:py-3 print:px-2 print:text-[12px]">
               Contract Expired<br />
-              <span className="text-4xl text-red-500 print:text-2xl print:text-red-500">14</span>
+              <span className="text-4xl text-[#C72030] font-bold print:text-2xl">14</span>
             </div>
           </div>
         </div>
 
-        <div className="border print:border py-3 px-3 print:border mb-6 break-inside-avoid print:break-inside-avoid">
+
+        <div className="border print:border py-3 px-3 mb-6 break-inside-avoid print:break-inside-avoid">
           <h2 className="bg-white font-bold print:text-2xl text-lg p-3 border-b border-gray-300 print:text-[8px] print:p-1 print:leading-relaxed">
             AMC Contract Summary – Expiry in 90 Days
           </h2>
@@ -1856,7 +1869,7 @@ const AllContent = () => {
                     highlight: false,
                   },
                 ].map((row, i) => (
-                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-[#f8f7f5]"}>
+                  <tr key={i} className= "bg-white">
                     <td className="border px-4 py-3 print:px-1 print:py-2">{row.site}</td>
                     <td className="border px-4 py-3 print:px-1 print:py-2">{row.amc}</td>
                     <td className="border px-4 py-3 print:px-1 print:py-2">{row.start}</td>
@@ -1956,7 +1969,7 @@ const AllContent = () => {
                     contact: "Linda Green",
                   },
                 ].map((row, i) => (
-                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-[#f2f0eb]"}>
+                  <tr key={i} className={"bg-white"}>
                     <td className="border px-4 py-3 print:px-1 print:py-2">{row.siteName}</td>
                     <td className="border px-4 py-3 print:px-1 print:py-2">{row.amcName}</td>
                     <td className="border px-4 py-3 print:px-1 print:py-2">{row.startDate}</td>
