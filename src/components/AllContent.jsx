@@ -1869,7 +1869,7 @@ const AllContent = () => {
                     highlight: false,
                   },
                 ].map((row, i) => (
-                  <tr key={i} className= "bg-white">
+                  <tr key={i} className="bg-white">
                     <td className="border px-4 py-3 print:px-1 print:py-2">{row.site}</td>
                     <td className="border px-4 py-3 print:px-1 print:py-2">{row.amc}</td>
                     <td className="border px-4 py-3 print:px-1 print:py-2">{row.start}</td>
