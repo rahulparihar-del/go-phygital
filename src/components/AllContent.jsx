@@ -13,6 +13,7 @@ import {
   Line,
   Customized,
 } from "recharts";
+import { ArrowRightLeft } from "lucide-react";
 
 import logo from "../assets/urbon.svg"
 
@@ -732,6 +733,134 @@ const AllContent = () => {
     </td>
   );
 
+  const categories = [
+    "Air Conditioning",
+    "IT",
+    "Hardware",
+    "Others",
+    "Cleaning",
+    "Plumbing",
+    "Electrical",
+    "Gophygital",
+  ];
+
+  const Newsites = [
+    "Sai Radhe, Bund Garden",
+    "Westport, Baner",
+    "Peninsula Corporate Park, Lower Parel",
+    "Koncord Towers, Bund Garden",
+    "Nandan Probiz, Balewadi",
+    "AeroMall, Hager",
+    "Rahjea Mindspace, HiTech City",
+    "Technopolis, Salt Lake",
+    "Max House, Okhla",
+    "Baani-The Statement, Gurgaon",
+  ];
+
+  const Newdata = [
+    { volume: 55, closure: 80, aging: "0-10" }, // Index 0 (Row 1)
+    { volume: 65, closure: 29, aging: "21-30" }, // Index 1
+    { volume: 59, closure: 29, aging: "0-10" }, // Index 2
+    { volume: 39, closure: 29, aging: "21-30" }, // Index 3
+    { volume: 9, closure: 29, aging: "0-10" }, // Index 4
+    { volume: 16, closure: 29, aging: "0-10" }, // Index 5
+    { volume: 19, closure: 29, aging: "0-10" },
+    { volume: 6, closure: 29, aging: "21-30" }, // Index 6
+    { volume: 15, closure: 29, aging: "0-10" }, // Index 7
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 8
+    { volume: 19, closure: 79, aging: "0-10" }, // Index 10 (Row 2)
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 11
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 12
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 13
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 14
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 15
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 16
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 17
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 18
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 19
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 20 (Row 3)
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 21
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 22
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 23
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 24
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 25
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 26
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 27
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 28
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 29
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 30 (Row 4)
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 31
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 32
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 33
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 34
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 35
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 36
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 37
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 38
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 39
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 40 (Row 5)
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 41
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 42
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 43
+    { volume: 29, aging: "0-10" }, // Index 44
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 45
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 46
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 47
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 48
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 49
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 50 (Row 6)
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 51
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 52
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 53
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 54
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 55
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 56
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 57
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 58
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 59
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 60 (Row 7)
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 61
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 62
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 63
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 64
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 65
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 66
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 67
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 68
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 69
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 70 (Row 8)
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 71
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 72
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 73
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 74
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 75
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 76
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 77
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 78
+    { volume: 19, closure: 29, aging: "0-10" }, // Index 79
+  ];
+
+  const agingColors = {
+    "0-10": "bg-[#C4B89D]", // Beige
+    "11-20": "bg-[#D5DBDB]", // Light gray
+    "21-30": "bg-[#DAD6C9]", // Light grayish-beige
+    "31-40": "bg-[#C4B89D]", // Light beige
+    "40+": "bg-[#FFFFFF]", // White
+  };
+
+  const getTextColor = (aging) => {
+    switch (aging) {
+      case "0-10":
+      case "11-20":
+      case "21-30":
+      case "31-40":
+      case "40+":
+        return "text-black"; // All colors are light, so black text is readable
+      default:
+        return "text-black";
+    }
+  };
+
   return (
     <>
 
@@ -1389,41 +1518,41 @@ const AllContent = () => {
         </h1>
         <div className="bg-white border p-8 print:border print:border-gray-300 print:p-2 print:w-[95%] print:mx-auto no-break">
           {/* Snapshot Section */}
-          <div className="mb-10 print:mb-3">
+          <div className="mb-10 print:mb-1">
             <h2 className="text-xl font-semibold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Snapshot</h2>
             <div className="grid grid-cols-3 gap-6 print:gap-1">
-              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-2">
+              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-1">
                 <div className="text-3xl font-bold print:text-xl">657</div>
                 <div className="text-sm font-medium print:text-[10px]">100.0 %</div>
                 <div className="text-sm font-bold print:text-[10px]">Total Tickets</div>
               </div>
-              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-2">
+              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-1">
                 <div className="text-3xl font-bold text-green-600 print:text-xl print:text-green-600">555</div>
                 <div className="text-sm font-medium print:text-[10px]">84.47 %</div>
                 <div className="text-sm font-bold print:text-[10px]">Closed Tickets</div>
               </div>
-              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-2">
+              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-1">
                 <div className="text-3xl font-bold text-red-600 print:text-xl print:text-red-600">102</div>
                 <div className="text-sm font-medium print:text-[10px]">15.53 %</div>
                 <div className="text-sm font-bold print:text-[10px]">Open Tickets</div>
               </div>
-              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-2">
+              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-1">
                 <div className="text-3xl font-bold print:text-xl">9</div>
                 <div className="text-sm font-bold print:text-[10px]">Customer Tickets</div>
               </div>
-              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-2">
+              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-1">
                 <div className="text-3xl font-bold print:text-xl">49</div>
                 <div className="text-sm font-bold print:text-[10px]">FM Tickets</div>
               </div>
-              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-2">
+              <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-1">
                 <div className="text-3xl font-bold print:text-xl">0</div>
                 <div className="text-sm font-bold print:text-[10px]">Total Average Customer Rating</div>
               </div>
             </div>
           </div>
 
-          {/* Table Section */}
-          <div className="table-section w-full overflow-x-auto print:overflow-visible border py-3 px-3 mb-5 print:p-2 print:mb-0">
+          {/* Table Section 1 */}
+          <div className="table-section w-full overflow-x-auto print:overflow-visible border py-3 px-3 mb-5 print:p-1 print:mb-1">
             <h2 className="text-xl font-semibold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Ticket Ageing, Closure Efficiency & Feedback Overview by Center</h2>
             <table className="w-full border text-sm text-center break-words print:table-fixed print:w-full print:text-[8px]">
               <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030] font-semibold print-bg-red">
@@ -1431,7 +1560,7 @@ const AllContent = () => {
                   {siteNames.map((site, idx) => (
                     <th
                       key={idx}
-                      className="border border-gray-200 px-2 py-3 text-[10px] print:text-[7px] print:px-1 print:py-2 print:w-[10%] print:min-h-[24px]"
+                      className="border border-gray-200 px-2 py-3 text-[10px] print:text-[7px] print:px-1 print:py-1 print:w-[10%] print:min-h-[20px]"
                       style={{ wordWrap: "break-word", whiteSpace: "normal" }}
                     >
                       {site}
@@ -1443,16 +1572,15 @@ const AllContent = () => {
                 {tableData.map(([label, values], idx) => (
                   <tr
                     key={idx}
-                    className={`${idx === 5 ? "bg-[#DAD6C9] font-semibold print:bg-[#DAD6C9]" : ""
-                      }`}
+                    className={`${idx === 5 ? "bg-[#DAD6C9] font-semibold print:bg-[#DAD6C9]" : ""}`}
                   >
-                    <td className="border border-gray-200 px-2 py-3 font-medium bg-[#F3F1EB80] print:px-1 print:py-2 print:bg-[#F3F1EB80] print:min-h-[24px]">
+                    <td className="border border-gray-200 px-2 py-3 font-medium bg-[#F3F1EB80] print:px-1 print:py-1 print:bg-[#F3F1EB80] print:min-h-[20px]">
                       {label}
                     </td>
                     {values.map((value, vIdx) => (
                       <td
                         key={vIdx}
-                        className="border border-gray-200 px-2 py-3 print:px-1 print:py-2 print:min-h-[24px]"
+                        className="border border-gray-200 px-2 py-3 print:px-1 print:py-1 print:min-h-[20px]"
                       >
                         {value}
                       </td>
@@ -1461,12 +1589,105 @@ const AllContent = () => {
                 ))}
               </tbody>
             </table>
-
             <p className="text-xs mt-2 text-gray-600 print:text-[8px] print:mt-1">
               <strong>Note</strong> : This chart illustrates the number of tickets closed below or above the average aging time, along with the number of customer responses received. It also reflects the percentage of responded tickets relative to the total tickets raised.
             </p>
           </div>
 
+          {/* Ticket Performance Metrics Section */}
+          <div className="ticket-metrics-section mb-10 print:mb-1">
+            <div className="border border-gray-300 flex flex-col justify-center m-auto w-[100%] p-10 print:w-[100%] print:mx-auto print:p-2">
+              <style>{`
+          .clip-triangle-tr { clip-path: polygon(100% 0, 0 0, 100% 100%); }
+          .clip-triangle-bl { clip-path: polygon(0 0, 0 100%, 100% 100%); }
+
+          @media print {
+            .clip-triangle-tr {
+              clip-path: polygon(0 0, 100% 0, 100% 100%);
+              -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%);
+            }
+            .clip-triangle-bl {
+              clip-path: polygon(0 100%, 0 0, 100% 100%);
+              -webkit-clip-path: polygon(0 100%, 0 0, 100% 100%);
+            }
+            .rotate-print {
+              transform: rotate(-45deg);
+              font-size: 9px !important;
+            }
+          }
+        `}</style>
+              <div className="">
+                <h1 className="text-lg font-bold mb-2 print:text-sm print:mb-1">
+                  Ticket Performance Metrics by Category – Volume, Closure Rate & Ageing
+                </h1>
+                <div className="flex items-center justify-between gap-4 flex-wrap text-sm print:text-xs print:gap-2">
+                  <div className="flex items-center gap-1">
+                    <span>% of tickets raised by category</span>
+                    <ArrowRightLeft className="w-4 h-4 rotate-180 text-gray-500" />
+                    <span>% of tickets closure by category</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span>Ageing:</span>
+                    <div className="flex items-center gap-2 print:gap-1">
+                      {Object.entries(agingColors).map(([range, color]) => (
+                        <div key={range} className="flex items-center gap-1">
+                          <span className={`w-4 h-4 rounded-full ${color} print:w-3 print:h-3`}></span>
+                          <span>{range}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Main Grid and Site Row Container */}
+              <div className="flex justify-center mt-10 print:mt-2">
+                <div className="flex">
+                  {/* Left Categories */}
+                  <div className="flex flex-col justify-around gap-[2px]">
+                    {categories.map((cat, idx) => (
+                      <div key={idx} className="h-16 flex items-center justify-end pr-1 text-[10px] font-medium print:text-[8px] print:h-10">
+                        {cat}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Grid and Site Labels */}
+                  <div className="flex flex-col">
+                    {/* Grid Box */}
+                    <div className="grid grid-cols-10 gap-[10px] border-l border-b p-1 print:gap-[10px]">
+                      {Newdata.map((item, index) => (
+                        <div key={index} className="relative w-[100px] h-16 print:w-[50px] print:h-10 border border-[#C4AE9D] bg-white">
+                          <div className={`absolute inset-0 clip-triangle-tr ${agingColors[item.aging]}`}></div>
+                          <div className="absolute inset-0 clip-triangle-bl bg-white"></div>
+
+                          <div className={`absolute top-1 right-1 text-xs print:text-[9px] ${getTextColor(item.aging)} print:rotate-print`}>
+                            <span className="font-bold">{item.volume}%</span>
+                          </div>
+                          <div className={`absolute bottom-1 left-2 text-xs print:text-[9px] ${getTextColor(item.aging)}`}>
+                            <span>{item.closure ?? ""}%</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Site Row */}
+                    <div className="grid grid-cols-10 gap-[2px] print:gap-[2px] mt-2 print:mt-1">
+                      {Newsites.map((site, index) => (
+                        <div key={index} className="text-center text-[10px] font-medium print:text-[8px] w-[100px] print:w-[50px]">
+                          {site}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Customer Experience Feedback and Site Performance on New Page */}
+        <div className="print-page break-before-page  print:w-[95%] print:m-auto">
           {/* Customer Experience Feedback */}
           <div className="border border-gray-300 p-6 mb-10 no-break print:p-2 print:mb-2">
             <h2 className="text-xl font-bold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Customer Experience Feedback</h2>
@@ -1474,7 +1695,7 @@ const AllContent = () => {
               {customerExperienceData.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex flex-col items-center justify-center py-6 border-r last:border-r-0 print:py-2"
+                  className="flex flex-col items-center justify-center h-[140px] print:h-[150px] border-r last:border-r-0"
                   style={{ backgroundColor: item.bg, color: item.text || "#000" }}
                 >
                   <div className="text-3xl font-bold print:text-xl">{item.value}</div>
@@ -1485,19 +1706,21 @@ const AllContent = () => {
             </div>
           </div>
 
-          {/* Site Performance Table */}
+          {/* Site Performance Table 2 */}
           <div className="site-performance bg-white border p-6 overflow-auto no-break print:p-2">
-            <h2 className="text-lg font-semibold mb-4 print:text-sm print:mb-1">Site Performance: Customer Rating Overview</h2>
-            <table className="min-w-full text-sm text-center border print:table-fixed print:w-full print:text-[8px]">
-              <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030] print-bg-red">
+            <h2 className="text-xl font-bold mb-4 print:text-base print:mb-2">
+              Site Performance: Customer Rating Overview
+            </h2>
+            <table className="min-w-full text-base text-center border print:table-fixed print:w-full print:text-[12px]">
+              <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030]">
                 <tr>
-                  <th className="border border-gray-200 px-2 py-3 print:px-1 print:py-2 print:w-[15%] print:min-h-[24px]">
+                  <th className="border border-gray-200 px-3 py-6 print:px-2 print:py-10 print:min-h-[50px]">
                     Site Name
                   </th>
                   {customerRatingTable.headers.map((site, idx) => (
                     <th
                       key={idx}
-                      className="border border-gray-200 px-2 py-3 print:px-1 print:py-2 print:w-[15%] print:min-h-[24px]"
+                      className="border border-gray-200 px-3 py-6 print:px-2 print:py-10 print:min-h-[50px]"
                     >
                       {site}
                     </th>
@@ -1507,11 +1730,10 @@ const AllContent = () => {
               <tbody>
                 {customerRatingTable.rows.map((row, idx) => {
                   const isTotal = row.label === "Total %";
-
                   return (
                     <tr key={idx} className={isTotal ? "font-semibold bg-[#DAD6C9]" : ""}>
                       <td
-                        className={`px-2 py-3 print:px-1 print:py-2 print:min-h-[24px] font-medium ${isTotal
+                        className={`px-3 py-6 print:px-2 print:py-10 print:min-h-[50px] font-medium ${isTotal
                           ? "border border-gray-300"
                           : "border-l border-r border-gray-200 bg-[#F3F1EB80] print:bg-[#F3F1EB80]"
                           }`}
@@ -1521,7 +1743,7 @@ const AllContent = () => {
                       {row.values.map((val, vIdx) => (
                         <td
                           key={vIdx}
-                          className={`px-2 py-3 print:px-1 print:py-2 print:min-h-[24px] ${isTotal
+                          className={`px-3 py-6 print:px-2 print:py-10 print:min-h-[50px] ${isTotal
                             ? "border border-gray-300"
                             : "border-l border-r border-gray-200"
                             }`}
@@ -1532,15 +1754,15 @@ const AllContent = () => {
                     </tr>
                   );
                 })}
-
-
               </tbody>
             </table>
 
-            <p className="text-xs mt-2 text-gray-600 print:text-[8px] print:mt-1">
-              <strong>Note</strong> : This table displays customer rating percentages categorized from Excellent to Bad, with a site-level comparison to evaluate performance and satisfaction trends across locations.
+            <p className="text-sm mt-3 text-gray-600 print:text-[9px] print:mt-2">
+              <strong>Note</strong>: This table displays customer rating percentages categorized from Excellent to Bad, with a site-level comparison to evaluate performance and satisfaction trends across locations.
             </p>
           </div>
+
+
         </div>
       </div>
 
@@ -2580,10 +2802,7 @@ const AllContent = () => {
             </div>
           </div>
         </div>
-      </div>
-
-
-    </>
+      </div></>
   );
 };
 
