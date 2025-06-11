@@ -1,224 +1,125 @@
 import React from "react";
-import { ArrowRightLeft } from "lucide-react";
-
-const categories = [
-  "Air Conditioning",
-  "IT",
-  "Hardware",
-  "Others",
-  "Cleaning",
-  "Plumbing",
-  "Electrical",
-  "Gophygital",
-];
-
-const sites = [
-  "Sai Radhe, Bund Garden",
-  "Westport, Baner",
-  "Peninsula Corporate Park, Lower Parel",
-  "Koncord Towers, Bund Garden",
-  "Nandan Probiz, Balewadi",
-  "AeroMall, Hager",
-  "Rahjea Mindspace, HiTech City",
-  "Technopolis, Salt Lake",
-  "Max House, Okhla",
-  "Baani-The Statement, Gurgaon",
-];
-
-const data = [
-  { volume: 55, closure: 80, aging: "0-10" }, // Index 0 (Row 1, Col 1)
-  { volume: 65, closure: 29, aging: "21-30" }, // Index 1 (Row 1, Col 2)
-  { volume: 59, closure: 29, aging: "0-10" }, // Index 2
-  { volume: 39, closure: 29, aging: "21-30" }, // Index 3
-  { volume: 9, closure: 29, aging: "0-10" }, // Index 4
-  { volume: 16, closure: 29, aging: "0-10" }, // Index 5
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 6
-  { volume: 6, closure: 29, aging: "21-30" }, // Index 7
-  { volume: 15, closure: 29, aging: "0-10" }, // Index 8
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 9
-  { volume: 19, closure: 79, aging: "0-10" }, // Index 10 (Row 2, Col 1)
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 11
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 12
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 13
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 14
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 15
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 16
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 17
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 18
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 19
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 20 (Row 3, Col 1)
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 21
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 22
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 23
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 24
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 25
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 26
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 27
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 28
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 29
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 30 (Row 4, Col 1)
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 31
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 32
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 33
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 34
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 35
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 36
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 37
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 38
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 39
-  { volume: 19, closure: 29, aging: "11-20" }, // Index 40 (Row 5, Col 1)
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 41
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 42
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 43
-  { volume: 29, aging: "0-10" }, // Index 44
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 45
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 46
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 47
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 48
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 49
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 50 (Row 6, Col 1)
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 51
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 52
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 53
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 54
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 55
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 56
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 57
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 58
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 59
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 60 (Row 7, Col 1)
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 61
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 62
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 63
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 64
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 65
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 66
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 67
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 68
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 69
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 70 (Row 8, Col 1)
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 71
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 72
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 73
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 74
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 75
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 76
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 77
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 78
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 79
-];
-
-const agingColors = {
-  "0-10": "bg-red-300", // Light beige
-  "11-20": "bg-yellow-300", // Light gray
-  "21-30": "bg-[#DAD6C9]", // Light grayish-beige
-  "31-40": "bg-[#C4B89D]", // Light beige
-  "40+": "bg-[#FFFFFF]", // White
-};
-
-const getTextColor = (aging) => {
-  switch (aging) {
-    case "0-10":
-    case "11-20":
-    case "21-30":
-    case "31-40":
-    case "40+":
-      return "text-black"; // All colors are light, so black text is readable
-    default:
-      return "text-black";
-  }
-};
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Legend,
+  Tooltip,
+  LabelList,
+  LineChart,
+  Line,
+  Scatter
+} from "recharts";
 
 const TicketMetrics = () => {
-  return (
-    <div className="border border-gray-300 flex flex-col justify-center m-auto w-[1200px] p-10">
-      <style>{`
-        .clip-triangle-tr { clip-path: polygon(100% 0, 0 0, 100% 100%); }
-        .clip-triangle-bl { clip-path: polygon(0 0, 0 100%, 100% 100%); }
+    const data = [
+      { site: "Sai Radhe", responseLast: 35, responseCurrent: 45, resolutionLast: 75, resolutionCurrent: 65 },
+      { site: "Baani-The Statement", responseLast: 41, responseCurrent: 35, resolutionLast: 30, resolutionCurrent: 35 },
+      { site: "AeroMall", responseLast: 65, responseCurrent: 70, resolutionLast: 45, resolutionCurrent: 35 },
+      { site: "Max House", responseLast: 45, responseCurrent: 50, resolutionLast: 30, resolutionCurrent: 35 },
+      { site: "Nandan Probiz", responseLast: 65, responseCurrent: 65, resolutionLast: 45, resolutionCurrent: 40 },
+      { site: "Peninsula Corporate Park", responseLast: 40, responseCurrent: 55, resolutionLast: 40, resolutionCurrent: 45 },
+      { site: "Raheja Mindspace", responseLast: 40, responseCurrent: 35, resolutionLast: 35, resolutionCurrent: 40 },
+      { site: "Koncord Tower", responseLast: 15, responseCurrent: 10, resolutionLast: 65, resolutionCurrent: 60 },
+      { site: "Technopolis, Salt Lake", responseLast: 5, responseCurrent: 10, resolutionLast: 70, resolutionCurrent: 65 },
+      { site: "Baani-The Statement (2)", responseLast: 0, responseCurrent: 10, resolutionLast: 65, resolutionCurrent: 60 },
+    ];
 
-        @media print {
-          .clip-triangle-tr {
-            clip-path: polygon(0 0, 100% 0, 100% 100%);
-            -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%);
-          }
-          .clip-triangle-bl {
-            clip-path: polygon(0 100%, 0 0, 100% 100%);
-            -webkit-clip-path: polygon(0 100%, 0 0, 100% 100%);
-          }
-          .rotate-print {
-            transform: rotate(-45deg);
-            font-size: 9px !important;
-          }
-        }
-      `}</style>
-      <div className="">
-        <h1 className="text-lg font-bold mb-2">
-          Ticket Performance Metrics by Category – Volume, Closure Rate & Ageing
-        </h1>
-        <div className="flex items-center justify-between gap-4 flex-wrap text-sm">
-          <div className="flex items-center gap-1">
-            <span>% of tickets raised by category</span>
-            <ArrowRightLeft className="w-4 h-4 rotate-180 text-gray-500" />
-            <span>% of tickets closure by category</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span>Ageing:</span>
-            <div className="flex items-center gap-2">
-              {Object.entries(agingColors).map(([range, color]) => (
-                <div key={range} className="flex items-center gap-1">
-                  <span className={`w-4 h-4 rounded-full ${color}`}></span>
-                  <span>{range}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+      const scatterDataLast = data.map(item => ({ site: item.site, value: item.resolutionLast }));
+      const scatterDataCurrent = data.map(item => ({ site: item.site, value: item.resolutionCurrent }));
+
+    return (
+      <div className="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <h1 className="text-2xl font-bold text-center mb-4">Response TAT Performance by Center – Quarterly Comparison</h1>
+
+      {/* Legend */}
+      <div className="flex justify-end mb-4">
+        <div className="flex items-center mr-4">
+          <div className="w-4 h-4 bg-gray-300 rounded-full mr-2"></div>
+          <span>Response Achieved: Last Quarter</span>
+        </div>
+        <div className="flex items-center mr-4">
+          <div className="w-4 h-4 bg-[#8B4513] rounded-full mr-2"></div>
+          <span>Response Achieved: Current Quarter</span>
+        </div>
+        <div className="flex items-center mr-4">
+          <div className="w-4 h-4 bg-gray-300 rounded-full mr-2"></div>
+          <span>Resolution Achieved: Last Quarter</span>
+        </div>
+        <div className="flex items-center">
+          <div className="w-4 h-4 bg-[#8B4513] rounded-full mr-2"></div>
+          <span>Resolution Achieved: Current Quarter</span>
         </div>
       </div>
 
-      {/* Main Grid */}
-      <div className="flex justify-center mt-10">
-        {/* Left Categories */}
-        <div className="flex flex-col justify-around gap-[2px]">
-          {categories.map((cat, idx) => (
-            <div key={idx} className="h-16 flex items-center justify-end pr-1 text-[10px] font-medium print:text-[8px]">
-              {cat}
-            </div>
-          ))}
-        </div>
-
-        {/* Grid Box */}
-        <div className="ml-[2px] grid grid-cols-10 gap-[2px]">
-          {data.map((item, index) => (
-            <div key={index} className="relative w-[100px] h-16 print:h-12 border border-[#C4AE9D] bg-white">
-              <div className={`absolute inset-0 clip-triangle-tr ${agingColors[item.aging]}`}></div>
-              <div className="absolute inset-0 clip-triangle-bl bg-white"></div>
-
-              <div className={`absolute top-1 right-1 text-xs print:text-[9px] ${getTextColor(item.aging)} print:rotate-print`}>
-                <span className="font-bold">{item.volume}%</span>
-              </div>
-              <div className={`absolute bottom-1 left-2 text-xs print:text-[9px] ${getTextColor(item.aging)}`}>
-                <span>{item.closure ?? ""}%</span>
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* Response Achieved Bar Chart */}
+      <h2 className="text-xl font-semibold text-center mb-4">Response Achieved (TAT in Percentage)</h2>
+      <div className="w-full h-96 mb-8">
+        <BarChart
+          width={800}
+          height={350}
+          data={data}
+          layout="vertical"
+          margin={{ top: 5, right: 30, left: 150, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            type="number"
+            domain={[0, 100]}
+            label={{ value: "TAT in Percentage", position: "insideBottom", offset: -5 }}
+          />
+          <YAxis
+            type="category"
+            dataKey="site"
+            tick={{ fontSize: 12 }}
+            width={140}
+          />
+          <Tooltip />
+          <Legend verticalAlign="top" align="right" />
+          <Bar dataKey="responseLast" fill="#D3D3D3" name="Last Quarter" />
+          <Bar dataKey="responseCurrent" fill="#8B4513" name="Current Quarter" />
+        </BarChart>
       </div>
 
-      {/* Site Row */}
-      <div className="flex justify-center mt-2 print:mt-0">
-        <div className="flex">
-          <div className="w-[calc(7*1rem)] print:w-[calc(6*1rem)]"></div>
-          <div className="grid grid-cols-10 gap-[2px] print:gap-[2px]" style={{ gap: "44px" }}>
-            {sites.map((site, index) => (
-              <div key={index} className="text-center text-[10px] font-medium print:text-[8px] w-[60px]">
-                {site}
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Resolution Achieved Bar Chart with Dots */}
+      <h2 className="text-xl font-semibold text-center mb-4">Resolution Achieved (TAT in Percentage)</h2>
+      <div className="w-full h-96">
+        <BarChart
+          width={800}
+          height={350}
+          data={data}
+          layout="vertical"
+          margin={{ top: 5, right: 30, left: 150, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            type="number"
+            domain={[0, 100]}
+            label={{ value: "TAT in Percentage", position: "insideBottom", offset: -5 }}
+          />
+          <YAxis
+            type="category"
+            dataKey="site"
+            tick={{ fontSize: 12 }}
+            width={140}
+          />
+          <Tooltip />
+          <Legend verticalAlign="top" align="right" />
+          <Bar dataKey="resolutionLast" fill="#D3D3D3" name="Last Quarter" />
+          <Bar dataKey="resolutionCurrent" fill="#8B4513" name="Current Quarter" />
+          <Scatter data={scatterDataLast} fill="#000000" name="Last Quarter (Dots)" shape="circle" />
+          <Scatter data={scatterDataCurrent} fill="#FF0000" name="Current Quarter (Dots)" shape="circle" />
+        </BarChart>
       </div>
+
+      {/* Note */}
+      <p className="text-sm text-gray-500 mt-4">
+        <strong>Note:</strong> The bar graph represents the response TAT achieved in the current and previous quarter, while the line graph indicates the resolution TAT achieved over the same period. This visual helps track and compare the ticket response and resolution performance between the current and last quarter.
+      </p>
     </div>
-  );
-};
+    );
+  };
 
-export default TicketMetrics;
+  export default TicketMetrics;

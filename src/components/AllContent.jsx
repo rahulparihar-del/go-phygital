@@ -12,6 +12,7 @@ import {
   LabelList,
   Line,
   Customized,
+  Scatter
 } from "recharts";
 import { ArrowRightLeft } from "lucide-react";
 
@@ -521,17 +522,17 @@ const AllContent = () => {
   };
 
 
+
   const visitorData = [
-    { site: 'Sai Radhe, Bund Garden', lastQuarter: 150, currentQuarter: 140 },
-    { site: 'Westport, Baner', lastQuarter: 100, currentQuarter: 90 },
-    { site: 'Peninsula Corporate Park, Lower Parel', lastQuarter: 130, currentQuarter: 125 },
-    { site: 'Koncord Towers, Bund Garden', lastQuarter: 70, currentQuarter: 80 },
-    { site: 'Nandan Probiz, Balewadi', lastQuarter: 110, currentQuarter: 125 },
-    { site: 'Aeromall, Vimannagar', lastQuarter: 70, currentQuarter: 60 },
-    { site: 'Raheja Mindspace, Hitec City', lastQuarter: 120, currentQuarter: 100 },
-    { site: 'Technopolis, Salt lake', lastQuarter: 70, currentQuarter: 60 },
-    { site: 'Max House, Okhla', lastQuarter: 80, currentQuarter: 70 },
-    { site: 'Baani– The Statement, Gurgaon', lastQuarter: 90, currentQuarter: 85 },
+    { site: "Sai Radhe, Bund Garden", last: 150, current: 140 },
+    { site: "Westpo rt, Baner", last: 90, current: 125 },
+    { site: "Peninsula Corporate Park Lower Parel", last: 70, current: 80 },
+    { site: "Koncord Towers, Garden", last: 115, current: 120 },
+    { site: "Nandan Probiz, Balewadi", last: 70, current: 60 },
+    { site: "Aero Mall, Viman nagar, Hitec City", last: 80, current: 70 },
+    { site: "Raheja Mindspace, salt lake", last: 120, current: 100 },
+    { site: "Technopolis, Max House, Okha", last: 90, current: 85 },
+    { site: "Baani The Statement, Gurgaon", last: 80, current: 90 },
   ];
 
   const Perdata = [
@@ -870,10 +871,34 @@ const AllContent = () => {
         return "text-black";
     }
   };
-  const barSize = 25;
-  const barGap = 10;
-  const data = Perdata; // Assuming Perdata is your chartData
-  const containerHeight = data.length * (barSize + barGap) + 40; // 40px padding for top/bottom
+  const ResponseAchieved = [
+    { site: "Sai Radhe", responseLast: 35, responseCurrent: 45 },
+    { site: "Baani-The Statement", responseLast: 41, responseCurrent: 35 },
+    { site: "AeroMall", responseLast: 65, responseCurrent: 70 },
+    { site: "Max House", responseLast: 45, responseCurrent: 50 },
+    { site: "Nandan Probiz", responseLast: 65, responseCurrent: 65 },
+    { site: "Peninsula Corporate Park", responseLast: 40, responseCurrent: 55 },
+    { site: "Raheja Mindspace", responseLast: 40, responseCurrent: 35 },
+    { site: "Koncord Tower", responseLast: 15, responseCurrent: 10 },
+    { site: "Technopolis, Salt Lake", responseLast: 5, responseCurrent: 10 },
+    { site: "Baani-The Statement (2)", responseLast: 5, responseCurrent: 10 },
+  ];
+
+  const ResolutionAchieved = [
+    { site: "Sai Radhe", resolutionLast: 75, resolutionCurrent: 65 },
+    { site: "Baani-The Statement", resolutionLast: 30, resolutionCurrent: 35 },
+    { site: "AeroMall", resolutionLast: 45, resolutionCurrent: 35 },
+    { site: "Max House", resolutionLast: 30, resolutionCurrent: 35 },
+    { site: "Nandan Probiz", resolutionLast: 45, resolutionCurrent: 40 },
+    { site: "Peninsula Corporate Park", resolutionLast: 40, resolutionCurrent: 45 },
+    { site: "Raheja Mindspace", resolutionLast: 35, resolutionCurrent: 40 },
+    { site: "Koncord Tower", resolutionLast: 65, resolutionCurrent: 60 },
+    { site: "Technopolis, Salt Lake", resolutionLast: 70, resolutionCurrent: 65 },
+    { site: "Baani-The Statement (2)", resolutionLast: 65, resolutionCurrent: 60 },
+  ];
+
+  const scatterDataLast = ResolutionAchieved.map(item => ({ site: item.site, value: item.resolutionLast }));
+  const scatterDataCurrent = ResolutionAchieved.map(item => ({ site: item.site, value: item.resolutionCurrent }));
 
   return (
     <>
@@ -1795,86 +1820,202 @@ const AllContent = () => {
       </div>
 
 
-      <div className="print-page break-before-page px-6 py-8 print:px-4 print:py-6 bg-white">
-        <h2 className="text-xl font-bold mb-4 text-left">
-          Response TAT Performance by Center – Quarterly Comparison
-        </h2>
+      <div className="print-page break-before-page">
+        <div className="max-w-9xl bg-white rounded-lg mb-10 flex flex-col print:pb-0">
 
-        {/* Legend */}
-        <div className="flex justify-end gap-6 text-sm mb-6 text-gray-700">
-          <div>
-            <span className="inline-block w-3 h-3 mr-1 border border-black rounded-full"></span>
-            Response Achieved: Last Quarter
-            <span className="inline-block w-3 h-3 ml-2 bg-[#cbb9a2] border border-black rounded-full"></span>
-            Current Quarter
+          {/* Title */}
+          <h1 className="text-2xl font-bold text-center bg-[#F6F4EE] py-3 mb-2 print:text-xl print:py-2 print:mb-0 border-b border-dashed border-gray-300">
+            Response TAT Performance by Center – Quarterly Comparison
+          </h1>
+
+          {/* Legend Row */}
+          <div className="flex flex-col items-end gap-2 px-6 print:px-4 print:py-4 text-sm print:text-xs mb-4">
+            {/* Row 1: Response Achieved */}
+            <div className="flex items-center gap-2">
+              <span className="font-semibold">Response Achieved</span>
+              <span className="font-medium">:</span>
+
+              {/* Striped Circle for Last Quarter */}
+              <div className="w-4 h-4 rounded-full border border-[#8B6D4F] bg-[repeating-linear-gradient(-45deg,#fff,#fff_2px,#8B6D4F_2px,#8B6D4F_4px)]" />
+              <span>Last Quarter</span>
+
+              {/* Solid Circle for Current Quarter */}
+              <div className="w-4 h-4 rounded-full bg-[#C4AD98] ml-6" />
+              <span>Current Quarter</span>
+            </div>
+
+            {/* Row 2: Resolution Achieved */}
+            <div className="flex items-center gap-2">
+              <span className="font-semibold">Resolution Achieved</span>
+              <span className="font-medium">:</span>
+
+              {/* Striped Circle for Last Quarter */}
+              <div className="w-4 h-4 rounded-full border border-[#8B6D4F] bg-[repeating-linear-gradient(-45deg,#fff,#fff_2px,#8B6D4F_2px,#8B6D4F_4px)]" />
+              <span>Last Quarter</span>
+
+              {/* Solid Circle for Current Quarter */}
+              <div className="w-4 h-4 rounded-full bg-[#C4AD98] ml-6" />
+              <span>Current Quarter</span>
+            </div>
           </div>
-          <div>
-            <span className="inline-block w-3 h-0.5 bg-black mr-1"></span>
-            Resolution Achieved: Last Quarter
-            <span className="inline-block w-3 h-0.5 bg-[#c72030] ml-2"></span>
-            Current Quarter
+
+
+          {/* Section Header for Chart */}
+          <div className="flex flex-col px-6 print:p-4 mb-6">
+            <h2 className="text-xl font-semibold mb-2">Response Achieved (TAT in Percentage)</h2>
+            <div className="border-b border-gray-300 w-full" />
           </div>
-        </div>
 
-        <div className="text-center font-semibold mb-2">TAT in Percentage</div>
-
-        <div className="h-[900px] print:h-[500px]">
-          <ResponsiveContainer width="100%" height="100%">
+          <div className="w-full overflow-x-auto">
             <BarChart
-              data={Bardata}
+              width={750}
+              height={700}
+              data={ResponseAchieved}
               layout="vertical"
-              margin={{ top: 0, right: 60, bottom: 0, left: 160 }}
+              margin={{ top: 5, right: 30, left: 10, bottom: 5 }}
             >
-              <CartesianGrid stroke="#ddd" horizontal={true} vertical={false} />
+              {/* 1. Add pattern defs for striped fill */}
+              <defs>
+                <pattern
+                  id="stripedPattern"
+                  patternUnits="userSpaceOnUse"
+                  width="6"
+                  height="6"
+                  patternTransform="rotate(45)"
+                >
+                  <line x1="0" y="0" x2="0" y2="6" stroke="#C4B89D" strokeWidth="2" />
+                </pattern>
+              </defs>
+
+              <CartesianGrid strokeDasharray="3 3" />
+
+              {/* 2. X Axis at top with % */}
               <XAxis
                 type="number"
                 domain={[0, 100]}
+                ticks={[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
                 tickFormatter={(tick) => `${tick}%`}
+                orientation="top"
                 tick={{ fontSize: 12 }}
+                axisLine={{ stroke: '#000' }}
+                tickLine={{ stroke: '#000' }}
               />
+
               <YAxis
-                dataKey="site"
                 type="category"
-                tick={{ fontSize: 13, fontWeight: 500 }}
-                width={150}
+                dataKey="site"
+                tick={{ fontSize: 12 }}
+                width={140}
               />
 
-              {/* Response Bars */}
-              <Bar dataKey="responseLast" fill="url(#pattern)" barSize={20} radius={[0, 4, 4, 0]} />
-              <Bar dataKey="responseCurrent" fill="#cbb9a2" barSize={20} radius={[0, 4, 4, 0]} />
+              <Tooltip />
+              <Legend verticalAlign="top" align="right" />
 
-              {/* Resolution Lines */}
-              <Line
-                type="monotone"
-                dataKey="resolutionLast"
-                stroke="#000"
-                dot={{ r: 4, stroke: "#000", strokeWidth: 1.5, fill: "#fff" }}
-                strokeWidth={1.5}
-              />
-              <Line
-                type="monotone"
-                dataKey="resolutionCurrent"
-                stroke="#c72030"
-                dot={{ r: 4, stroke: "#c72030", strokeWidth: 1.5, fill: "#fff" }}
-                strokeWidth={1.5}
+              {/* 3. Apply striped pattern to Last Quarter bar */}
+              <Bar
+                dataKey="responseLast"
+                fill="url(#stripedPattern)"
+                name="Last Quarter"
               />
 
-              {/* Custom Connection Lines */}
-              <Customized component={() => <CustomResolutionDots data={Bardata} />} />
+              {/* 4. Solid color for Current Quarter bar */}
+              <Bar
+                dataKey="responseCurrent"
+                fill="#C4AE9D"
+                name="Current Quarter"
+              />
+            </BarChart>
+          </div>
 
+        </div>
+      </div>
+
+      <div className="print-page break-before-page">
+        <div className="max-w-9xl bg-white mb-10 rounded-lg flex flex-col print:pb-0">
+
+          <div className="flex p-4 flex-col print:p-4 mb-8">
+            <h2 className="text-xl font-semibold mb-2">Resolution Achieved (TAT in Percentage)</h2>
+            <div className="border-b border-gray-300 w-full" />
+          </div>
+
+          <div className="w-full overflow-x-auto">
+            <BarChart
+              width={780}
+              height={700}
+              data={ResolutionAchieved}
+              layout="vertical"
+              margin={{ top: 5, right: 30, left: 10, bottom: 5 }}
+            >
+              {/* Striped Pattern Def */}
               <defs>
-                <pattern id="pattern" patternUnits="userSpaceOnUse" width="6" height="6">
-                  <path d="M0,0 L6,6 M6,0 L0,6" stroke="#cbb9a2" strokeWidth="1" />
+                <pattern
+                  id="stripedPattern"
+                  patternUnits="userSpaceOnUse"
+                  width="6"
+                  height="6"
+                  patternTransform="rotate(45)"
+                >
+                  <line x1="0" y="0" x2="0" y2="6" stroke="#C4B89D" strokeWidth="2" />
                 </pattern>
               </defs>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
 
-        <p className="text-xs text-gray-700 mt-6 border-t pt-2">
-          <span className="font-bold">Note:</span> The bar graph represents the response TAT achieved in the current and previous quarter,
-          while the line graph indicates the resolution TAT achieved over the same period.
-        </p>
+              <CartesianGrid strokeDasharray="3 3" />
+
+              <XAxis
+                type="number"
+                domain={[0, 100]}
+                ticks={[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
+                tickFormatter={(tick) => `${tick}%`}
+                orientation="top"
+                tick={{ fontSize: 12 }}
+                axisLine={{ stroke: '#000' }}
+                tickLine={{ stroke: '#000' }}
+              />
+
+              <YAxis
+                type="category"
+                dataKey="site"
+                tick={{ fontSize: 12 }}
+                width={140}
+              />
+
+              <Tooltip />
+              <Legend verticalAlign="top" align="right" />
+
+              {/* Last Quarter with Stripes */}
+              <Bar
+                dataKey="resolutionLast"
+                fill="url(#stripedPattern)"
+                name="Last Quarter"
+              />
+
+              {/* Current Quarter with Solid Fill */}
+              <Bar
+                dataKey="resolutionCurrent"
+                fill="#C4AE9D"
+                name="Current Quarter"
+              />
+
+              {/* Scatter dots (optional, will still render over bars) */}
+              <Scatter
+                data={scatterDataLast}
+                fill="#000000"
+                name="Last Quarter (Dots)"
+                shape="circle"
+              />
+              <Scatter
+                data={scatterDataCurrent}
+                fill="#FF0000"
+                name="Current Quarter (Dots)"
+                shape="circle"
+              />
+            </BarChart>
+          </div>
+          <p className="print:text-[12px] text-sm text-gray-500 p-4 mt-4 print:mt-4">
+            <strong>Note:</strong> This graph shows the total visitor count compared to the previous quarter,
+            providing a clear view of trends and changes in footfall over time for performance comparison.
+          </p>
+        </div>
       </div>
 
       {/* Ninth Section: Asset Management (New Section) */}
@@ -2673,154 +2814,108 @@ const AllContent = () => {
 
       {/* Parking and vistor Management */}
       <div className="print-page break-before-page">
-        {/* Parking Management */}
-        <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
-          Parking Management
-        </h1>
-        <div className="bg-white max-w-8xl mx-auto shadow-md border p-6 rounded print:p-4 print:shadow-none print:border-gray-300">
-          <h2 className="text-left font-semibold text-xl mb-2 print:text-[16px] print:mb-2">
-            Parking Allocation Overview – Paid, Free & Vacant
-          </h2>
+        <div className="max-w-9xl bg-white rounded-lg flex flex-col print:pb-0">
+          <div>
+            <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-0 print:py-2">
+              Parking Management            </h1>
+            <div className="flex flex-col print:p-4 mb-8">
+              <h2 className="text-xl  p-4  font-semibold mb-2">Parking Allocation Overview – Paid, Free & Vacant</h2>
+              <div className="border-b border-gray-300 w-full" />
+            </div>
 
-          <div className="h-[500px] print:h-[500px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                layout="vertical"
-                data={Perdata}
-                margin={{ top: 20, right: 30, left: 100, bottom: 20 }}
-                barCategoryGap="90%"
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-
-                <XAxis
-                  type="number"
-                  domain={[0, 140]}
-                  ticks={[0, 20, 40, 60, 80, 100, 120, 140]}
-                  label={{
-                    value: "Counts of Parking Slots",
-                    position: 'insideBottom',
-                    offset: -5,
-                  }}
-                  tick={{ fontSize: 12 }}
-                />
-                <YAxis
-                  dataKey="site"
-                  type="category"
-                  interval={0}
-                  width={120}
-                  tick={({ x, y, payload }) => {
-                    const lines = payload.value.split(', ');
-                    return (
-                      <g transform={`translate(${x},${y})`}>
-                        {lines.map((line, index) => (
-                          <text
-                            key={index}
-                            x={-10}
-                            y={index * 14}
-                            textAnchor="end"
-                            fontSize="12"
-                            fill="#000"
-                          >
-                            {line}
-                          </text>
-                        ))}
-                      </g>
-                    );
-                  }}
-                />
-                <Tooltip />
-                <Legend verticalAlign="top" align="right" />
-                <Bar dataKey="Free" fill="#dad8cf">
-                  <LabelList dataKey="Free" position="right" />
-                </Bar>
-                <Bar dataKey="Paid" fill="#c5ae94">
-                  <LabelList dataKey="Paid" position="right" />
-                </Bar>
-                <Bar dataKey="Vacant" fill="#a0b5c1">
-                  <LabelList dataKey="Vacant" position="right" />
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
           </div>
 
-          <div className="text-left text-sm print:text-[11px] print:mt-2">
-            <span className="font-bold">Note :</span> This graph presents the current status of parking
-            allocation, showing the distribution between paid, free, and vacant slots.
+          {/* Chart */}
+          <div className="w-full overflow-x-auto">
+            <BarChart
+              width={800}
+              height={700}
+              data={Perdata}
+              layout="vertical"
+              margin={{ top: 20, right: 30, left: 10, bottom: 20 }}
+              barCategoryGap="10%"
+              barGap={0}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis
+                type="number"
+                label={{
+                  value: "Count of Parking Slots",
+                  position: "insideBottom",
+                  offset: -5,
+                }}
+                tick={{ fontSize: 12 }}
+              />
+              <YAxis
+                type="category"
+                dataKey="site"
+                tick={{ fontSize: 12 }}
+                width={140}
+              />
+              <Tooltip />
+              <Legend verticalAlign="top" align="right" />
+              <Bar dataKey="Free" fill="#a0b5c1" name="Free">
+                <LabelList dataKey="Free" position="right" />
+              </Bar>
+              <Bar dataKey="Paid" fill="#c5ae94" name="Paid">
+                <LabelList dataKey="Paid" position="right" />
+              </Bar>
+              <Bar dataKey="Vacant" fill="#dad8cf" name="Vacant">
+                <LabelList dataKey="Vacant" position="right" />
+              </Bar>
+            </BarChart>
           </div>
+
+          {/* Bottom note */}
+          <p className="text-sm text-gray-500 p-4 mt-4 print:mt-4">
+            <strong>Note:</strong> This graph presents the current status of parking allocation, showing the distribution between paid, free, and vacant slots.
+          </p>
         </div>
       </div>
       <div className='print-page break-before-page'>
         {/* Visitor Management */}
-        <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
-          Visitor Management
-        </h1>
-        <div className="bg-white max-w-8xl mx-auto shadow-md border p-6 rounded print:p-4 print:shadow-none print:border-gray-300">
-          <h2 className="text-left font-semibold text-xl mb-2 print:text-[16px] print:mb-2">
-            Visitor Trend Analysis
-          </h2>
+        <div className="max-w-9xl bg-white rounded-lg flex flex-col ">
+          {/* Header and legend */}
+          <div>
+            <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-0 print:py-2">
+              Visitor Management
+            </h1>
+            <div className="flex  p-4  flex-col print:p-4 mb-8">
+              <h2 className="text-xl font-semibold mb-2">Visitor Trend Analysis</h2>
+              <div className="border-b border-gray-300 w-full" />
+            </div>
 
-          <div className="h-[500px] print:h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                layout="vertical"
-                data={visitorData}
-                margin={{ top: 20, right: 30, left: 100, bottom: 20 }}
-                barCategoryGap="90%"
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis
-                  type="number"
-                  domain={[0, 140]}
-                  ticks={[0, 20, 40, 60, 80, 100, 120, 140]}
-                  label={{
-                    value: 'Visitor Count',
-                    position: 'insideBottom',
-                    offset: -5,
-                  }}
-                  tick={{ fontSize: 12 }}
-                />
-                <YAxis
-                  dataKey="site"
-                  type="category"
-                  interval={0}
-                  width={120}
-                  tick={({ x, y, payload }) => {
-                    const lines = payload.value.split(', ');
-                    return (
-                      <g transform={`translate(${x},${y})`}>
-                        {lines.map((line, index) => (
-                          <text
-                            key={index}
-                            x={-10}
-                            y={index * 14}
-                            textAnchor="end"
-                            fontSize="12"
-                            fill="#000"
-                          >
-                            {line}
-                          </text>
-                        ))}
-                      </g>
-                    );
-                  }}
-                />
-                <Tooltip />
-                <Legend verticalAlign="top" align="right" />
-                <Bar dataKey="lastQuarter" name="Last Quarter" fill="#c5ae94">
-                  <LabelList dataKey="lastQuarter" position="right" />
-                </Bar>
-                <Bar dataKey="currentQuarter" name="Current Quarter" fill="#dad8cf">
-                  <LabelList dataKey="currentQuarter" position="right" />
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
           </div>
 
-          <div className="mt-6 text-left text-sm print:text-[11px] print:mt-2">
-            <span className="font-bold">Note :</span> This graph shows the total visitor count compared to the previous quarter, providing a clear view of trends and changes in footfall over time for performance comparison.
+          {/* Chart container with max height and scroll in screen if needed */}
+          <div className="w-full overflow-x-auto">
+            <BarChart
+              width={800} // Adjust to avoid overflow
+              height={700}
+              data={visitorData}
+              layout="vertical"
+              barCategoryGap="20%"
+              barGap={5}
+              margin={{ top: 5, right: 100, left: 0, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis type="number" label={{ value: "Counts", position: "insideBottom", offset: -5 }} fontSize={15} />
+              <YAxis type="category" dataKey="site" tick={{ fontSize: 12 }} width={140} fontSize={15} />
+              <Tooltip />
+              <Legend verticalAlign="top" align="right" />
+              <Bar dataKey="last" fill="#dad8cf" name="Last Quarter" />
+              <Bar dataKey="current" fill="#c5ae94" name="Current Quarter" />
+            </BarChart>
           </div>
+
+          {/* Note */}
+          <p className="text-sm text-gray-500 p-4 mt-4 print:mt-4">
+            <strong>Note:</strong> This graph shows the total visitor count compared to the previous quarter,
+            providing a clear view of trends and changes in footfall over time for performance comparison.
+          </p>
         </div>
       </div>
+
     </>
   );
 };
