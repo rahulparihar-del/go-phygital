@@ -870,6 +870,10 @@ const AllContent = () => {
         return "text-black";
     }
   };
+  const barSize = 25;
+  const barGap = 10;
+  const data = Perdata; // Assuming Perdata is your chartData
+  const containerHeight = data.length * (barSize + barGap) + 40; // 40px padding for top/bottom
 
   return (
     <>
@@ -894,7 +898,7 @@ const AllContent = () => {
 
         <div className="relative flex flex-col items-center justify-center py-24 px-6 bg-white print:py-0 print:px-0">
           {/* Red Rectangle */}
-          <div className="absolute left-[200px] top-[-100px] w-[450px] print:h-[800px] h-[600px] bg-[#bf0c0c] z-10 flex flex-col items-end justify-center space-y-6 text-white 
+          <div className="absolute left-[200px] top-[-100px] w-[450px] print:h-[750px] h-[600px] bg-[#bf0c0c] z-10 flex flex-col items-end justify-center space-y-6 text-white 
                     print:left-[50px] print:top-[-300px] print:w-[50%] print:text-right  print:items-end print:justify-center print:space-y-1">
             <div className="text-5xl print:ml-10 font-bold print:text-6xl">QUART</div>
             <div className="text-6xl font-extrabold print:text-7xl">REP</div>
@@ -902,16 +906,17 @@ const AllContent = () => {
 
           {/* White Box with Right Half */}
           <div className="border border-gray-300 px-10 py-12 text-center w-[55vw] h-[60vh] bg-white flex flex-col items-center justify-center space-y-6 
-                    print:ml-[50%] print:w-[50%] print:h-[100%] print:border-none print:bg-white print:justify-center print:px-10 print:py-20">
+                print:ml-[50%] print:w-[50%] print:h-[100%] print:border print:border-gray-400 print:bg-white print:justify-center print:px-10 print:py-20">
+
             {/* Overlaid Report Letters */}
-            <div className="absolute top-[-100px] print: left-[45%] w-[450px] h-[600px] z-10 flex flex-col items-start print:justify-start justify-center space-y-6 text-left text-red-700 
+            <div className="absolute top-[-100px] print:top-[-76px] print: left-[45%] w-[450px] h-[600px] z-10 flex flex-col items-start print:justify-start justify-center space-y-6 text-left text-red-700 
                        print:space-y-1 print:text-left print:text-red-700 print:items-start">
-              <div className="text-5xl print:ml-20 print:mt-[123px] font-bold ml-2 print:text-6xl">ERLY</div>
+              <div className="text-5xl print:ml-20 print:mt-[75px] font-bold ml-2 print:text-6xl">ERLY</div>
               <div className="text-6xl  print:ml-20  font-extrabold ml-2 print:text-7xl">ORT</div>
             </div>
 
-            <div className="flex justify-end items-end print:mb-[200px] mb-4 w-full">
-              <p className="text-md font-medium text-red-700 print:text-red-700">
+            <div className="flex justify-end items-end print:mt-[110px]  print:mr-[110px] mb-4 mt-[10px] ml-[120px] print:w-full">
+              <p className="text-xl print:text-[23px] font-medium text-red-700 print:text-red-700">
                 Jan 2025 to Mar 2025
               </p>
             </div>
@@ -919,7 +924,7 @@ const AllContent = () => {
         </div>
 
         <div className="flex-grow" />
-        <div className=" flex justify-center align-bottom print:mb-20 print:flex print:align-bottom  text-center pb-8 text-sm text-gray-700 print:pt-12 print:text-sm print:text-gray-700">
+        <div className=" flex justify-center align-bottom print:mb-1 print:flex print:align-bottom  text-center pb-8 text-sm text-gray-700 print:pt-[140px] print:text-sm print:text-gray-700">
           <span className="font-bold text-red-700 print:text-red-700">go</span>
           <span className="font-semibold">Phygital</span>
           <span>.work</span>
