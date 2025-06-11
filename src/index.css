@@ -15,6 +15,11 @@
         print-color-adjust: exact;
     }
 
+    .print-page {
+        page-break-before: always;
+        break-before: page;
+      }
+
     .page-break {
         break-before: page;
     }
@@ -69,3 +74,5 @@
       
       
 }
+
+

@@ -26,17 +26,17 @@ const sites = [
 ];
 
 const data = [
-  { volume: 55, closure: 80, aging: "0-10" }, // Index 0 (Row 1)
-  { volume: 65, closure: 29, aging: "21-30" }, // Index 1
+  { volume: 55, closure: 80, aging: "0-10" }, // Index 0 (Row 1, Col 1)
+  { volume: 65, closure: 29, aging: "21-30" }, // Index 1 (Row 1, Col 2)
   { volume: 59, closure: 29, aging: "0-10" }, // Index 2
   { volume: 39, closure: 29, aging: "21-30" }, // Index 3
   { volume: 9, closure: 29, aging: "0-10" }, // Index 4
   { volume: 16, closure: 29, aging: "0-10" }, // Index 5
-  { volume: 19, closure: 29, aging: "0-10" },
-  { volume: 6, closure: 29, aging: "21-30" }, // Index 6
-  { volume: 15, closure: 29, aging: "0-10" }, // Index 7
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 8
-  { volume: 19, closure: 79, aging: "0-10" }, // Index 10 (Row 2)
+  { volume: 19, closure: 29, aging: "0-10" }, // Index 6
+  { volume: 6, closure: 29, aging: "21-30" }, // Index 7
+  { volume: 15, closure: 29, aging: "0-10" }, // Index 8
+  { volume: 19, closure: 29, aging: "0-10" }, // Index 9
+  { volume: 19, closure: 79, aging: "0-10" }, // Index 10 (Row 2, Col 1)
   { volume: 19, closure: 29, aging: "21-30" }, // Index 11
   { volume: 19, closure: 29, aging: "0-10" }, // Index 12
   { volume: 19, closure: 29, aging: "21-30" }, // Index 13
@@ -46,7 +46,7 @@ const data = [
   { volume: 19, closure: 29, aging: "0-10" }, // Index 17
   { volume: 19, closure: 29, aging: "0-10" }, // Index 18
   { volume: 19, closure: 29, aging: "0-10" }, // Index 19
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 20 (Row 3)
+  { volume: 19, closure: 29, aging: "0-10" }, // Index 20 (Row 3, Col 1)
   { volume: 19, closure: 29, aging: "21-30" }, // Index 21
   { volume: 19, closure: 29, aging: "0-10" }, // Index 22
   { volume: 19, closure: 29, aging: "21-30" }, // Index 23
@@ -56,7 +56,7 @@ const data = [
   { volume: 19, closure: 29, aging: "0-10" }, // Index 27
   { volume: 19, closure: 29, aging: "0-10" }, // Index 28
   { volume: 19, closure: 29, aging: "0-10" }, // Index 29
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 30 (Row 4)
+  { volume: 19, closure: 29, aging: "0-10" }, // Index 30 (Row 4, Col 1)
   { volume: 19, closure: 29, aging: "21-30" }, // Index 31
   { volume: 19, closure: 29, aging: "0-10" }, // Index 32
   { volume: 19, closure: 29, aging: "21-30" }, // Index 33
@@ -66,7 +66,7 @@ const data = [
   { volume: 19, closure: 29, aging: "0-10" }, // Index 37
   { volume: 19, closure: 29, aging: "0-10" }, // Index 38
   { volume: 19, closure: 29, aging: "0-10" }, // Index 39
-  { volume: 19, closure: 29, aging: "11-20" }, // Index 40 (Row 5)
+  { volume: 19, closure: 29, aging: "11-20" }, // Index 40 (Row 5, Col 1)
   { volume: 19, closure: 29, aging: "21-30" }, // Index 41
   { volume: 19, closure: 29, aging: "0-10" }, // Index 42
   { volume: 19, closure: 29, aging: "21-30" }, // Index 43
@@ -76,7 +76,7 @@ const data = [
   { volume: 19, closure: 29, aging: "0-10" }, // Index 47
   { volume: 19, closure: 29, aging: "0-10" }, // Index 48
   { volume: 19, closure: 29, aging: "0-10" }, // Index 49
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 50 (Row 6)
+  { volume: 19, closure: 29, aging: "0-10" }, // Index 50 (Row 6, Col 1)
   { volume: 19, closure: 29, aging: "21-30" }, // Index 51
   { volume: 19, closure: 29, aging: "0-10" }, // Index 52
   { volume: 19, closure: 29, aging: "21-30" }, // Index 53
@@ -86,7 +86,7 @@ const data = [
   { volume: 19, closure: 29, aging: "0-10" }, // Index 57
   { volume: 19, closure: 29, aging: "0-10" }, // Index 58
   { volume: 19, closure: 29, aging: "0-10" }, // Index 59
-  { volume: 19, closure: 29, aging: "21-30" }, // Index 60 (Row 7)
+  { volume: 19, closure: 29, aging: "0-10" }, // Index 60 (Row 7, Col 1)
   { volume: 19, closure: 29, aging: "21-30" }, // Index 61
   { volume: 19, closure: 29, aging: "0-10" }, // Index 62
   { volume: 19, closure: 29, aging: "21-30" }, // Index 63
@@ -96,7 +96,7 @@ const data = [
   { volume: 19, closure: 29, aging: "0-10" }, // Index 67
   { volume: 19, closure: 29, aging: "0-10" }, // Index 68
   { volume: 19, closure: 29, aging: "0-10" }, // Index 69
-  { volume: 19, closure: 29, aging: "0-10" }, // Index 70 (Row 8)
+  { volume: 19, closure: 29, aging: "0-10" }, // Index 70 (Row 8, Col 1)
   { volume: 19, closure: 29, aging: "21-30" }, // Index 71
   { volume: 19, closure: 29, aging: "0-10" }, // Index 72
   { volume: 19, closure: 29, aging: "21-30" }, // Index 73
@@ -109,8 +109,8 @@ const data = [
 ];
 
 const agingColors = {
-  "0-10": "bg-[#C4B89D]", // Beige
-  "11-20": "bg-[#D5DBDB]", // Light gray
+  "0-10": "bg-red-300", // Light beige
+  "11-20": "bg-yellow-300", // Light gray
   "21-30": "bg-[#DAD6C9]", // Light grayish-beige
   "31-40": "bg-[#C4B89D]", // Light beige
   "40+": "bg-[#FFFFFF]", // White

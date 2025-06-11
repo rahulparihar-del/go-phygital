@@ -710,11 +710,8 @@ const AllContent = () => {
   ];
 
   const Block = ({ capital, stock }) => (
-    <td
-      className="relative border border-black w-20 h-14 text-xs overflow-hidden mx-0 my-0 
-        print:border-black print:w-20 print:h-16 print:overflow-hidden print:absolute print:relative print:mx-1 print:my-1 print:text-left"
-    >
-      <div className="absolute top-0 left-0 w-full h-full">
+    <td className="border border-black w-20 h-14 p-1">
+      <div className="relative w-full h-full bg-white">
         <svg
           className="absolute top-0 left-0 w-full h-full"
           viewBox="0,0 100,100"
@@ -723,15 +720,17 @@ const AllContent = () => {
         >
           <polygon points="0,0 100,0 100,100" style={{ fill: '#C4B89D' }} />
         </svg>
-      </div>
-      <div className="absolute top-[2px] right-[4px] text-white font-semibold text-xs print:text-white">
-        {capital}k
-      </div>
-      <div className="absolute bottom-[2px] left-[4px] text-black text-xs print:text-black">
-        {stock}%
+
+        <div className="absolute top-[2px] right-[4px] text-white font-semibold text-xs print:text-white">
+          {capital}k
+        </div>
+        <div className="absolute bottom-[2px] left-[4px] text-black text-xs print:text-black">
+          {stock}%
+        </div>
       </div>
     </td>
   );
+
 
   const categories = [
     "Air Conditioning",
@@ -759,93 +758,104 @@ const AllContent = () => {
 
   const Newdata = [
     { volume: 55, closure: 80, aging: "0-10" }, // Index 0 (Row 1)
-    { volume: 65, closure: 29, aging: "21-30" }, // Index 1
+    { volume: 65, closure: 29, aging: "0-10" }, // Index 1
     { volume: 59, closure: 29, aging: "0-10" }, // Index 2
     { volume: 39, closure: 29, aging: "21-30" }, // Index 3
-    { volume: 9, closure: 29, aging: "0-10" }, // Index 4
-    { volume: 16, closure: 29, aging: "0-10" }, // Index 5
-    { volume: 19, closure: 29, aging: "0-10" },
-    { volume: 6, closure: 29, aging: "21-30" }, // Index 6
-    { volume: 15, closure: 29, aging: "0-10" }, // Index 7
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 8
-    { volume: 19, closure: 79, aging: "0-10" }, // Index 10 (Row 2)
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 11
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 12
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 13
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 14
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 15
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 16
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 17
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 18
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 19
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 20 (Row 3)
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 21
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 22
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 23
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 24
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 25
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 26
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 27
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 28
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 29
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 30 (Row 4)
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 31
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 32
+    { volume: 9, closure: 29, aging: "31-40" }, // Index 4
+    { volume: 19, closure: 29, aging: "31-40" },
+
+    { volume: 16, closure: 29, aging: "21-30" }, // Index 5
+    { volume: 6, closure: 29, aging: "40+" }, // Index 6
+    { volume: 15, closure: 29, aging: "11-20" }, // Index 7
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 8
+    { volume: 19, closure: 79, aging: "11-20" }, // Index 10 (Row 2)
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 11
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 12
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 13
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 14
+    { volume: 19, closure: 29, aging: "40+" }, // Index 15
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 16
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 17
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 18
+    { volume: 19, closure: 29, aging: "40+" }, // Index 19
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 20 (Row 3)
+    { volume: 19, closure: 29, aging: "40+" }, // Index 21
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 22
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 23
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 24
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 25
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 26
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 27
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 28
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 29
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 30 (Row 4)
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 31
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 32
     { volume: 19, closure: 29, aging: "21-30" }, // Index 33
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 34
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 35
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 36
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 37
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 38
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 39
-    { volume: 19, closure: 29, aging: "11-20" }, // Index 40 (Row 5)
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 41
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 42
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 43
-    { volume: 29, aging: "0-10" }, // Index 44
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 45
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 46
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 47
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 48
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 49
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 50 (Row 6)
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 51
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 52
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 53
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 54
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 55
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 56
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 57
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 58
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 59
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 60 (Row 7)
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 61
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 62
+    { volume: 19, closure: 29, aging: "40+" }, // Index 34
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 35
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 36
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 37
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 38
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 39
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 40 (Row 5)
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 41
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 42
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 43
+    { volume: 29, closure: 19, aging: "11-20" }, // Index 44
+    { volume: 19, closure: 29, aging: "40+" }, // Index 45
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 46
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 47
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 48
+    { volume: 19, closure: 29, aging: "40+" }, // Index 49
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 50 (Row 6)
+    { volume: 19, closure: 29, aging: "40+" }, // Index 51
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 52
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 53
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 54
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 55
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 56
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 57
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 58
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 59
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 60 (Row 7)
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 61
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 62
     { volume: 19, closure: 29, aging: "21-30" }, // Index 63
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 64
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 65
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 66
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 67
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 68
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 69
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 70 (Row 8)
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 71
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 72
-    { volume: 19, closure: 29, aging: "21-30" }, // Index 73
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 74
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 75
+    { volume: 19, closure: 29, aging: "40+" }, // Index 64
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 65
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 66
+    { volume: 19, closure: 29, aging: "40+" }, // Index 67
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 68
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 69
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 70 (Row 8)
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 71
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 72
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 73
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 74
+    { volume: 19, closure: 29, aging: "40+" }, // Index 75
     { volume: 19, closure: 29, aging: "21-30" }, // Index 76
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 77
-    { volume: 19, closure: 29, aging: "0-10" }, // Index 78
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 77
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 78
     { volume: 19, closure: 29, aging: "0-10" }, // Index 79
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 80 (Row 9)
+    { volume: 19, closure: 29, aging: "40+" }, // Index 81
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 82
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 83
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 84
+    { volume: 19, closure: 29, aging: "31-40" }, // Index 85
+    { volume: 19, closure: 29, aging: "40+" }, // Index 86
+    { volume: 19, closure: 29, aging: "11-20" }, // Index 87
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 88
+    { volume: 19, closure: 29, aging: "21-30" }, // Index 89
   ];
 
   const agingColors = {
-    "0-10": "bg-[#C4B89D]", // Beige
-    "11-20": "bg-[#D5DBDB]", // Light gray
+    "0-10": "bg-[#F6F4EE]", // Beige
+    "11-20": "bg-[#C4B89D]", // Light gray
     "21-30": "bg-[#DAD6C9]", // Light grayish-beige
-    "31-40": "bg-[#C4B89D]", // Light beige
-    "40+": "bg-[#FFFFFF]", // White
+    "31-40": "bg-[#D5DBDB]", // Light beige
+    "40+": "bg-[#C5AF9E]", // White
   };
 
   const getTextColor = (aging) => {
@@ -866,14 +876,13 @@ const AllContent = () => {
 
       {/* main page */}
       <div className="font-sans bg-white min-h-screen print:break-before-page print:h-screen print:scale-95">
-        <div className="relative h-[700px] w-full print:h-screen print:overflow-hidden">
+        <div className="relative h-[700px] w-full print:h-[600px] print:overflow-hidden">
           <img
             src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1200"
             alt="Meeting Room"
-            className="w-full h-full object-cover print:object-cover print:h-[600px] print:scale-95"
+            className="w-full h-full object-cover print:h-[600px] print:object-cover"
           />
-
-          <div className="absolute bottom-6 right-10 text-white text-sm leading-relaxed print:text-white">
+          <div className="absolute bottom-6 right-10 text-white text-sm leading-relaxed print:text-white print:bottom-4 print:right-8">
             <p>
               <span className="font-semibold">Company</span>: UrbanWrk
             </p>
@@ -883,21 +892,25 @@ const AllContent = () => {
           </div>
         </div>
 
-        <div className="relative flex flex-col items-center justify-center py-24 px-6 bg-white print:py-24 print:px-6">
+        <div className="relative flex flex-col items-center justify-center py-24 px-6 bg-white print:py-0 print:px-0">
           {/* Red Rectangle */}
-          <div className="absolute left-[200px] print:left-[80px] print:top-[-700px] top-[-120px] w-[450px] h-[600px] bg-[#bf0c0c] z-10 flex flex-col items-end justify-center space-y-6 print:bg-[#bf0c0c] print:text-white">
-            <div className="text-5xl font-bold text-white print:text-white">QUART</div>
-            <div className="text-6xl font-extrabold text-white print:text-white">REP</div>
+          <div className="absolute left-[200px] top-[-100px] w-[450px] print:h-[800px] h-[600px] bg-[#bf0c0c] z-10 flex flex-col items-end justify-center space-y-6 text-white 
+                    print:left-[50px] print:top-[-300px] print:w-[50%] print:text-right  print:items-end print:justify-center print:space-y-1">
+            <div className="text-5xl print:ml-10 font-bold print:text-6xl">QUART</div>
+            <div className="text-6xl font-extrabold print:text-7xl">REP</div>
           </div>
 
-          {/* White Content Box */}
-          <div className=" border border-gray-300 px-10 py-12 text-center w-[55vw] h-[60vh] bg-white flex flex-col items-center justify-center space-y-6  print:border print:bg-[#bf0c0c] print:border-gray-300">
-            <div className="absolute print:top-[-900px] top-[-120px] left-[45%] w-[450px] h-[600px] z-10 flex flex-col items-start justify-center space-y-6 text-left print:text-red-700">
-              <div className="text-5xl font-bold text-red-700 ml-2 print:text-red-700">ERLY</div>
-              <div className="text-6xl font-extrabold text-red-700 ml-2 print:text-red-700">ORT</div>
+          {/* White Box with Right Half */}
+          <div className="border border-gray-300 px-10 py-12 text-center w-[55vw] h-[60vh] bg-white flex flex-col items-center justify-center space-y-6 
+                    print:ml-[50%] print:w-[50%] print:h-[100%] print:border-none print:bg-white print:justify-center print:px-10 print:py-20">
+            {/* Overlaid Report Letters */}
+            <div className="absolute top-[-100px] print: left-[45%] w-[450px] h-[600px] z-10 flex flex-col items-start print:justify-start justify-center space-y-6 text-left text-red-700 
+                       print:space-y-1 print:text-left print:text-red-700 print:items-start">
+              <div className="text-5xl print:ml-20 print:mt-[123px] font-bold ml-2 print:text-6xl">ERLY</div>
+              <div className="text-6xl  print:ml-20  font-extrabold ml-2 print:text-7xl">ORT</div>
             </div>
 
-            <div className="flex justify-end items-end mb-4 w-full">
+            <div className="flex justify-end items-end print:mb-[200px] mb-4 w-full">
               <p className="text-md font-medium text-red-700 print:text-red-700">
                 Jan 2025 to Mar 2025
               </p>
@@ -905,12 +918,16 @@ const AllContent = () => {
           </div>
         </div>
 
-        <div className="text-center pb-8 text-sm text-gray-700 print:text-gray-700">
+        <div className="flex-grow" />
+        <div className=" flex justify-center align-bottom print:mb-20 print:flex print:align-bottom  text-center pb-8 text-sm text-gray-700 print:pt-12 print:text-sm print:text-gray-700">
           <span className="font-bold text-red-700 print:text-red-700">go</span>
           <span className="font-semibold">Phygital</span>
           <span>.work</span>
         </div>
       </div>
+
+
+
 
       {/* Disclaimer Page */}
       <div className="flex flex-col min-h-screen font-sans bg-white px-6 py-10 relative">
@@ -1513,14 +1530,14 @@ const AllContent = () => {
 
       {/* Fifth Section: Helpdesk Management */}
       <div className="print-page break-before-page">
-        <h1 className="report-title text-3xl font-bold text-center mb-6 bg-[#F6F4EE] py-5 text-gray-800 print:text-black print:text-xl print:mb-1 print:py-2">
+        <h1 className="report-title text-3xl font-bold text-center mb-6 bg-[#F6F4EE] py-5 text-gray-800 print:text-black print:text-xl print:mb-5 print:py-2">
           Helpdesk Management
         </h1>
         <div className="bg-white border p-8 print:border print:border-gray-300 print:p-2 print:w-[95%] print:mx-auto no-break">
           {/* Snapshot Section */}
-          <div className="mb-10 print:mb-1">
+          <div className="mb-10 print:mb-8">
             <h2 className="text-xl font-semibold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Snapshot</h2>
-            <div className="grid grid-cols-3 gap-6 print:gap-1">
+            <div className="grid grid-cols-3 gap-6 print:gap-3">
               <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-1">
                 <div className="text-3xl font-bold print:text-xl">657</div>
                 <div className="text-sm font-medium print:text-[10px]">100.0 %</div>
@@ -1552,15 +1569,15 @@ const AllContent = () => {
           </div>
 
           {/* Table Section 1 */}
-          <div className="table-section w-full overflow-x-auto print:overflow-visible border py-3 px-3 mb-5 print:p-1 print:mb-1">
-            <h2 className="text-xl font-semibold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Ticket Ageing, Closure Efficiency & Feedback Overview by Center</h2>
-            <table className="w-full border text-sm text-center break-words print:table-fixed print:w-full print:text-[8px]">
+          <div className="table-section w-full overflow-x-auto print:overflow-visible border py-3 px-3 mb-5 print:p-1 print:mb-5">
+            <h2 className="text-xl font-semibold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-5 print:pb-1">Ticket Ageing, Closure Efficiency & Feedback Overview by Center</h2>
+            <table className="w-full border text-sm text-center break-words print:table-fixed print:w-full print:text-[12px]">
               <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030] font-semibold print-bg-red">
                 <tr>
                   {siteNames.map((site, idx) => (
                     <th
                       key={idx}
-                      className="border border-gray-200 px-2 py-3 text-[10px] print:text-[7px] print:px-1 print:py-1 print:w-[10%] print:min-h-[20px]"
+                      className="border border-gray-200 px-2 py-3 text-[10px] print:text-[7px] print:px-1 print:py-1 print:w-[10%] print:min-h-[30px]"
                       style={{ wordWrap: "break-word", whiteSpace: "normal" }}
                     >
                       {site}
@@ -1574,13 +1591,13 @@ const AllContent = () => {
                     key={idx}
                     className={`${idx === 5 ? "bg-[#DAD6C9] font-semibold print:bg-[#DAD6C9]" : ""}`}
                   >
-                    <td className="border border-gray-200 px-2 py-3 font-medium bg-[#F3F1EB80] print:px-1 print:py-1 print:bg-[#F3F1EB80] print:min-h-[20px]">
+                    <td className="border border-gray-200 px-2 py-3 font-medium bg-[#F3F1EB80] print:px-1 print:py-1 print:bg-[#F3F1EB80] print:min-h-[30px]">
                       {label}
                     </td>
                     {values.map((value, vIdx) => (
                       <td
                         key={vIdx}
-                        className="border border-gray-200 px-2 py-3 print:px-1 print:py-1 print:min-h-[20px]"
+                        className="border border-gray-200 px-2 py-3 print:px-1 print:py-1 print:min-h-[30px]"
                       >
                         {value}
                       </td>
@@ -1593,11 +1610,18 @@ const AllContent = () => {
               <strong>Note</strong> : This chart illustrates the number of tickets closed below or above the average aging time, along with the number of customer responses received. It also reflects the percentage of responded tickets relative to the total tickets raised.
             </p>
           </div>
+        </div>
 
-          {/* Ticket Performance Metrics Section */}
-          <div className="ticket-metrics-section mb-10 print:mb-1">
-            <div className="border border-gray-300 flex flex-col justify-center m-auto w-[100%] p-10 print:w-[100%] print:mx-auto print:p-2">
-              <style>{`
+
+
+
+      </div>
+
+      <div className="print-page break-before-page">
+        {/* Ticket Performance Metrics Section */}
+        <div className="ticket-metrics-section mb-10 print:mb-1">
+          <div className=" flex flex-col justify-start m-auto w-[100%] p-10 print:w-[100%]  print:p-8">
+            <style>{`
           .clip-triangle-tr { clip-path: polygon(100% 0, 0 0, 100% 100%); }
           .clip-triangle-bl { clip-path: polygon(0 0, 0 100%, 100% 100%); }
 
@@ -1616,154 +1640,153 @@ const AllContent = () => {
             }
           }
         `}</style>
-              <div className="">
-                <h1 className="text-lg font-bold mb-2 print:text-sm print:mb-1">
-                  Ticket Performance Metrics by Category – Volume, Closure Rate & Ageing
-                </h1>
-                <div className="flex items-center justify-between gap-4 flex-wrap text-sm print:text-xs print:gap-2">
-                  <div className="flex items-center gap-1">
-                    <span>% of tickets raised by category</span>
-                    <ArrowRightLeft className="w-4 h-4 rotate-180 text-gray-500" />
-                    <span>% of tickets closure by category</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span>Ageing:</span>
-                    <div className="flex items-center gap-2 print:gap-1">
-                      {Object.entries(agingColors).map(([range, color]) => (
-                        <div key={range} className="flex items-center gap-1">
-                          <span className={`w-4 h-4 rounded-full ${color} print:w-3 print:h-3`}></span>
-                          <span>{range}</span>
-                        </div>
-                      ))}
-                    </div>
+            <div className="print:mt-5">
+              <h1 className="text-lg font-bold mb-2 print:text-sm print:mb-1">
+                Ticket Performance Metrics by Category – Volume, Closure Rate & Ageing
+              </h1>
+              <div className="flex items-center justify-between gap-4 flex-wrap text-sm print:text-xs print:gap-2">
+                <div className="flex items-center gap-1">
+                  <span>% of tickets raised by category</span>
+                  <ArrowRightLeft className="w-4 h-4 rotate-180 text-gray-500" />
+                  <span>% of tickets closure by category</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span>Ageing:</span>
+                  <div className="flex items-center gap-2 print:gap-1">
+                    {Object.entries(agingColors).map(([range, color]) => (
+                      <div key={range} className="flex items-center gap-1">
+                        <span className={`w-4 h-4 rounded-full ${color} print:w-3 print:h-3`}></span>
+                        <span>{range}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Main Grid and Site Row Container */}
-              <div className="flex justify-center mt-10 print:mt-2">
-                <div className="flex">
-                  {/* Left Categories */}
-                  <div className="flex flex-col justify-around gap-[2px]">
-                    {categories.map((cat, idx) => (
-                      <div key={idx} className="h-16 flex items-center justify-end pr-1 text-[10px] font-medium print:text-[8px] print:h-10">
-                        {cat}
+            {/* Main Grid and Site Row Container */}
+            <div className="flex justify-center mt-10 print:mt-5">
+              <div className="flex">
+                {/* Left Categories */}
+                <div className="flex flex-col justify-around gap-[2px]">
+                  {categories.map((cat, idx) => (
+                    <div key={idx} className="h-16 flex items-center justify-end pr-1 text-[10px] font-medium print:text-[8px] print:h-15">
+                      {cat}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Grid and Site Labels */}
+                <div className="flex flex-col">
+                  {/* Grid Box */}
+                  <div className="grid grid-cols-10 gap-[10px] border-l border-b p-1 print:gap-[10px]">
+                    {Newdata.map((item, index) => (
+                      <div key={index} className="relative w-[100px] h-16 print:w-[50px] print:h-15 border border-[#C4AE9D] bg-white">
+                        <div className={`absolute inset-0 clip-triangle-tr ${agingColors[item.aging]}`}></div>
+                        <div className="absolute inset-0 clip-triangle-bl bg-white"></div>
+
+                        <div className={`absolute top-1 right-1 text-xs print:text-[9px] ${getTextColor(item.aging)} print:rotate-print`}>
+                          <span className="font-bold">{item.volume}%</span>
+                        </div>
+                        <div className={`absolute bottom-1 left-2 text-xs print:text-[9px] ${getTextColor(item.aging)}`}>
+                          <span>{item.closure ?? ""}%</span>
+                        </div>
                       </div>
                     ))}
                   </div>
 
-                  {/* Grid and Site Labels */}
-                  <div className="flex flex-col">
-                    {/* Grid Box */}
-                    <div className="grid grid-cols-10 gap-[10px] border-l border-b p-1 print:gap-[10px]">
-                      {Newdata.map((item, index) => (
-                        <div key={index} className="relative w-[100px] h-16 print:w-[50px] print:h-10 border border-[#C4AE9D] bg-white">
-                          <div className={`absolute inset-0 clip-triangle-tr ${agingColors[item.aging]}`}></div>
-                          <div className="absolute inset-0 clip-triangle-bl bg-white"></div>
-
-                          <div className={`absolute top-1 right-1 text-xs print:text-[9px] ${getTextColor(item.aging)} print:rotate-print`}>
-                            <span className="font-bold">{item.volume}%</span>
-                          </div>
-                          <div className={`absolute bottom-1 left-2 text-xs print:text-[9px] ${getTextColor(item.aging)}`}>
-                            <span>{item.closure ?? ""}%</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Site Row */}
-                    <div className="grid grid-cols-10 gap-[2px] print:gap-[2px] mt-2 print:mt-1">
-                      {Newsites.map((site, index) => (
-                        <div key={index} className="text-center text-[10px] font-medium print:text-[8px] w-[100px] print:w-[50px]">
-                          {site}
-                        </div>
-                      ))}
-                    </div>
+                  {/* Site Row */}
+                  <div className="grid grid-cols-10 gap-[2px] print:gap-[2px] mt-2 print:mt-1">
+                    {Newsites.map((site, index) => (
+                      <div key={index} className="text-center text-[10px] font-medium print:text-[8px] w-[100px] print:w-[50px]">
+                        {site}
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Customer Experience Feedback and Site Performance on New Page */}
-        <div className="print-page break-before-page  print:w-[95%] print:m-auto">
-          {/* Customer Experience Feedback */}
-          <div className="border border-gray-300 p-6 mb-10 no-break print:p-2 print:mb-2">
-            <h2 className="text-xl font-bold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Customer Experience Feedback</h2>
-            <div className="grid grid-cols-5 print:gap-1">
-              {customerExperienceData.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex flex-col items-center justify-center h-[140px] print:h-[150px] border-r last:border-r-0"
-                  style={{ backgroundColor: item.bg, color: item.text || "#000" }}
-                >
-                  <div className="text-3xl font-bold print:text-xl">{item.value}</div>
-                  <div className="text-sm font-medium print:text-[10px]">{item.percent}</div>
-                  <div className="text-base font-semibold mt-1 print:text-[10px] print:mt-0">{item.label}</div>
-                </div>
-              ))}
-            </div>
+      {/* Customer Experience Feedback and Site Performance on New Page */}
+      <div className="print-page break-before-page  print:w-[95%] print:m-auto">
+        {/* Customer Experience Feedback */}
+        <div className="border print:mt-10 border-gray-300 p-6 mb-10 no-break print:p-2 print:mb-2">
+          <h2 className="text-xl font-bold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Customer Experience Feedback</h2>
+          <div className="grid grid-cols-5 print:gap-1">
+            {customerExperienceData.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col items-center justify-center h-[140px] print:h-[100px] border-r last:border-r-0"
+                style={{ backgroundColor: item.bg, color: item.text || "#000" }}
+              >
+                <div className="text-3xl font-bold print:text-xl">{item.value}</div>
+                <div className="text-sm font-medium print:text-[10px]">{item.percent}</div>
+                <div className="text-base font-semibold mt-1 print:text-[10px] print:mt-0">{item.label}</div>
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* Site Performance Table 2 */}
-          <div className="site-performance bg-white border p-6 overflow-auto no-break print:p-2">
-            <h2 className="text-xl font-bold mb-4 print:text-base print:mb-2">
-              Site Performance: Customer Rating Overview
-            </h2>
-            <table className="min-w-full text-base text-center border print:table-fixed print:w-full print:text-[12px]">
-              <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030]">
-                <tr>
-                  <th className="border border-gray-200 px-3 py-6 print:px-2 print:py-10 print:min-h-[50px]">
-                    Site Name
+        {/* Site Performance Table 2 */}
+        <div className="site-performance bg-white border p-6 overflow-auto no-break print:p-2">
+          <h2 className="text-xl font-bold mb-4 print:text-base print:mb-2">
+            Site Performance: Customer Rating Overview
+          </h2>
+          <table className="min-w-full text-base text-center border print:table-fixed print:w-full print:text-[10px]">
+            <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030]">
+              <tr>
+                <th className="border border-gray-200 px-3 py-6 print:px-2 print:py-4 print:min-h-[40px]">
+                  Site Name
+                </th>
+                {customerRatingTable.headers.map((site, idx) => (
+                  <th
+                    key={idx}
+                    className="border border-gray-200 px-3 py-6 print:px-2 print:py-4 print:min-h-[40px]"
+                  >
+                    {site}
                   </th>
-                  {customerRatingTable.headers.map((site, idx) => (
-                    <th
-                      key={idx}
-                      className="border border-gray-200 px-3 py-6 print:px-2 print:py-10 print:min-h-[50px]"
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {customerRatingTable.rows.map((row, idx) => {
+                const isTotal = row.label === "Total %";
+                return (
+                  <tr key={idx} className={isTotal ? "font-semibold bg-[#DAD6C9]" : ""}>
+                    <td
+                      className={`px-3 py-6 print:px-2 print:py-4 print:min-h-[40px] font-medium ${isTotal
+                        ? "border border-gray-300"
+                        : "border-l border-r border-gray-200 bg-[#F3F1EB80] print:bg-[#F3F1EB80]"
+                        }`}
                     >
-                      {site}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {customerRatingTable.rows.map((row, idx) => {
-                  const isTotal = row.label === "Total %";
-                  return (
-                    <tr key={idx} className={isTotal ? "font-semibold bg-[#DAD6C9]" : ""}>
+                      {row.label}
+                    </td>
+                    {row.values.map((val, vIdx) => (
                       <td
-                        className={`px-3 py-6 print:px-2 print:py-10 print:min-h-[50px] font-medium ${isTotal
+                        key={vIdx}
+                        className={`px-3 py-6 print:px-2 print:py-4 print:min-h-[40px] ${isTotal
                           ? "border border-gray-300"
-                          : "border-l border-r border-gray-200 bg-[#F3F1EB80] print:bg-[#F3F1EB80]"
+                          : "border-l border-r border-gray-200"
                           }`}
                       >
-                        {row.label}
+                        {val}
                       </td>
-                      {row.values.map((val, vIdx) => (
-                        <td
-                          key={vIdx}
-                          className={`px-3 py-6 print:px-2 print:py-10 print:min-h-[50px] ${isTotal
-                            ? "border border-gray-300"
-                            : "border-l border-r border-gray-200"
-                            }`}
-                        >
-                          {val}
-                        </td>
-                      ))}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
 
-            <p className="text-sm mt-3 text-gray-600 print:text-[9px] print:mt-2">
-              <strong>Note</strong>: This table displays customer rating percentages categorized from Excellent to Bad, with a site-level comparison to evaluate performance and satisfaction trends across locations.
-            </p>
-          </div>
-
-
+          <p className="text-sm mt-3 text-gray-600 print:text-[9px] print:mt-2">
+            <strong>Note</strong>: This table displays customer rating percentages categorized from Excellent to Bad, with a site-level comparison to evaluate performance and satisfaction trends across locations.
+          </p>
         </div>
+
+
       </div>
 
 
@@ -2483,7 +2506,7 @@ const AllContent = () => {
                   {itemss.map((item, rowIdx) => (
                     <tr key={rowIdx}>
                       <td
-                        className="p-2 text-xs font-semibold bg-white w-[150px] mx-0 my-0 
+                        className="p-2 text-xs text-end font-semibold bg-white w-[150px] mx-0 my-0 
                                     print:text-[10px] print:font-semibold print:bg-white print:w-[150px] print:text-left print:mx-2 print:my-1"
                       >
                         {item.name}
@@ -2646,163 +2669,154 @@ const AllContent = () => {
       {/* Parking and vistor Management */}
       <div className="print-page break-before-page">
         {/* Parking Management */}
-        <div className="no-break print:w-[95%] print:mx-auto">
-          <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
-            Parking Management
-          </h1>
-          <div className="bg-white max-w-8xl mx-auto shadow-md border p-6 rounded print:p-4 print:shadow-none print:border-gray-300">
-            <h2 className="text-left font-semibold text-xl mb-2 print:text-[16px] print:mb-2">
-              Parking Allocation Overview – Paid, Free & Vacant
-            </h2>
+        <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
+          Parking Management
+        </h1>
+        <div className="bg-white max-w-8xl mx-auto shadow-md border p-6 rounded print:p-4 print:shadow-none print:border-gray-300">
+          <h2 className="text-left font-semibold text-xl mb-2 print:text-[16px] print:mb-2">
+            Parking Allocation Overview – Paid, Free & Vacant
+          </h2>
 
-            <div className="h-[500px] print:h-[300px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={Perdata} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis
-                    dataKey="site"
-                    interval={0}
-                    height={100}
-                    tick={({ x, y, payload }) => {
-                      const lines = payload.value.split(', ');
-                      return (
-                        <g transform={`translate(${x},${y + 10})`}>
-                          {lines.map((line, index) => (
-                            <text
-                              key={index}
-                              x={0}
-                              y={index * 14}
-                              textAnchor="middle"
-                              fontSize="14"
-                              fill="#000"
-                            >
-                              {line}
-                            </text>
-                          ))}
-                        </g>
-                      );
-                    }}
-                    label={{
-                      value: "Sites",
-                      position: "bottom",
-                      offset: 50,
-                      fontSize: 16,
-                      fontWeight: "bold",
-                    }}
-                  />
-                  <YAxis
-                    domain={[0, 160]}
-                    tickCount={9}
-                    label={{
-                      value: "Counts of Parking Slots",
-                      angle: -90,
-                      position: "insideLeft",
-                    }}
-                  />
+          <div className="h-[500px] print:h-[500px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                layout="vertical"
+                data={Perdata}
+                margin={{ top: 20, right: 30, left: 100, bottom: 20 }}
+                barCategoryGap="90%"
+              >
+                <CartesianGrid strokeDasharray="3 3" />
 
-                  <Tooltip />
-                  <Legend verticalAlign="top" align="right" wrapperStyle={{ top: 0 }} />
+                <XAxis
+                  type="number"
+                  domain={[0, 140]}
+                  ticks={[0, 20, 40, 60, 80, 100, 120, 140]}
+                  label={{
+                    value: "Counts of Parking Slots",
+                    position: 'insideBottom',
+                    offset: -5,
+                  }}
+                  tick={{ fontSize: 12 }}
+                />
+                <YAxis
+                  dataKey="site"
+                  type="category"
+                  interval={0}
+                  width={120}
+                  tick={({ x, y, payload }) => {
+                    const lines = payload.value.split(', ');
+                    return (
+                      <g transform={`translate(${x},${y})`}>
+                        {lines.map((line, index) => (
+                          <text
+                            key={index}
+                            x={-10}
+                            y={index * 14}
+                            textAnchor="end"
+                            fontSize="12"
+                            fill="#000"
+                          >
+                            {line}
+                          </text>
+                        ))}
+                      </g>
+                    );
+                  }}
+                />
+                <Tooltip />
+                <Legend verticalAlign="top" align="right" />
+                <Bar dataKey="Free" fill="#dad8cf">
+                  <LabelList dataKey="Free" position="right" />
+                </Bar>
+                <Bar dataKey="Paid" fill="#c5ae94">
+                  <LabelList dataKey="Paid" position="right" />
+                </Bar>
+                <Bar dataKey="Vacant" fill="#a0b5c1">
+                  <LabelList dataKey="Vacant" position="right" />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
 
-                  <Bar dataKey="Free" fill="#dad8cf">
-                    <LabelList dataKey="Free" position="top" />
-                  </Bar>
-                  <Bar dataKey="Paid" fill="#c5ae94">
-                    <LabelList dataKey="Paid" position="top" />
-                  </Bar>
-                  <Bar dataKey="Vacant" fill="#a0b5c1">
-                    <LabelList dataKey="Vacant" position="top" />
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-
-            <div className="text-left text-sm print:text-[11px] print:mt-2">
-              <span className="font-bold">Note :</span> This graph presents the current status of parking
-              allocation, showing the distribution between paid, free, and vacant slots.
-            </div>
+          <div className="text-left text-sm print:text-[11px] print:mt-2">
+            <span className="font-bold">Note :</span> This graph presents the current status of parking
+            allocation, showing the distribution between paid, free, and vacant slots.
           </div>
         </div>
+      </div>
+      <div className='print-page break-before-page'>
         {/* Visitor Management */}
-        <div className="print-page-break no-break print:w-[95%] print:mx-auto print:mt-3">
-          <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
-            Visitor Management
-          </h1>
-          <div className="bg-white max-w-8xl mx-auto shadow-md border p-6 rounded print:p-4 print:shadow-none print:border-gray-300">
-            <h2 className="text-left font-semibold text-xl mb-2 print:text-[16px] print:mb-2">
-              Visitor Trend Analysis
-            </h2>
+        <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
+          Visitor Management
+        </h1>
+        <div className="bg-white max-w-8xl mx-auto shadow-md border p-6 rounded print:p-4 print:shadow-none print:border-gray-300">
+          <h2 className="text-left font-semibold text-xl mb-2 print:text-[16px] print:mb-2">
+            Visitor Trend Analysis
+          </h2>
 
-            <div className="h-[500px] print:h-[300px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={visitorData}
-                  margin={{ top: 20, right: 30, left: 20, bottom: 100 }}
-                  barCategoryGap="30%" // space between categories (bar groups)
-                  barGap={5} // space between bars inside a group
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis
-                    dataKey="site"
-                    interval={0}
-                    height={90}
-                    tick={({ x, y, payload }) => {
-                      const lines = payload.value.split(', ');
-                      return (
-                        <g transform={`translate(${x},${y + 10})`}>
-                          {lines.map((line, index) => (
-                            <text
-                              key={index}
-                              x={0}
-                              y={index * 14}
-                              textAnchor="middle"
-                              fontSize="14"
-                              fill="#000"
-                            >
-                              {line}
-                            </text>
-                          ))}
-                        </g>
-                      );
-                    }}
-                    label={{
-                      value: 'Sites',
-                      position: 'bottom',
-                      offset: 50,
-                      fontSize: 16,
-                      fontWeight: 'bold'
-                    }}
-                  />
-                  <YAxis
-                    domain={[0, 160]}
-                    ticks={[0, 20, 40, 60, 80, 100, 120, 140, 160]}
-                    tick={{ fontSize: 14 }}
-                    label={{
-                      value: 'Counts',
-                      angle: -90,
-                      position: 'insideLeft',
-                      fontSize: 14,
-                      offset: 10
-                    }}
-                  />
-                  <Tooltip />
-                  <Legend verticalAlign="top" align="right" />
-                  <Bar dataKey="lastQuarter" name="Last Quarter" fill="#c5ae94">
-                    <LabelList dataKey="lastQuarter" position="top" />
-                  </Bar>
-                  <Bar dataKey="currentQuarter" name="Current Quarter" fill="#dad8cf">
-                    <LabelList dataKey="currentQuarter" position="top" />
-                  </Bar>
-                </BarChart>
+          <div className="h-[500px] print:h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                layout="vertical"
+                data={visitorData}
+                margin={{ top: 20, right: 30, left: 100, bottom: 20 }}
+                barCategoryGap="90%"
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis
+                  type="number"
+                  domain={[0, 140]}
+                  ticks={[0, 20, 40, 60, 80, 100, 120, 140]}
+                  label={{
+                    value: 'Visitor Count',
+                    position: 'insideBottom',
+                    offset: -5,
+                  }}
+                  tick={{ fontSize: 12 }}
+                />
+                <YAxis
+                  dataKey="site"
+                  type="category"
+                  interval={0}
+                  width={120}
+                  tick={({ x, y, payload }) => {
+                    const lines = payload.value.split(', ');
+                    return (
+                      <g transform={`translate(${x},${y})`}>
+                        {lines.map((line, index) => (
+                          <text
+                            key={index}
+                            x={-10}
+                            y={index * 14}
+                            textAnchor="end"
+                            fontSize="12"
+                            fill="#000"
+                          >
+                            {line}
+                          </text>
+                        ))}
+                      </g>
+                    );
+                  }}
+                />
+                <Tooltip />
+                <Legend verticalAlign="top" align="right" />
+                <Bar dataKey="lastQuarter" name="Last Quarter" fill="#c5ae94">
+                  <LabelList dataKey="lastQuarter" position="right" />
+                </Bar>
+                <Bar dataKey="currentQuarter" name="Current Quarter" fill="#dad8cf">
+                  <LabelList dataKey="currentQuarter" position="right" />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
 
-              </ResponsiveContainer>
-            </div>
-
-            <div className="mt-6 text-left text-sm print:text-[11px] print:mt-2">
-              <span className="font-bold">Note :</span> This graph shows the total visitor count compared to the previous quarter, providing a clear view of trends and changes in footfall over time for performance comparison.
-            </div>
+          <div className="mt-6 text-left text-sm print:text-[11px] print:mt-2">
+            <span className="font-bold">Note :</span> This graph shows the total visitor count compared to the previous quarter, providing a clear view of trends and changes in footfall over time for performance comparison.
           </div>
         </div>
-      </div></>
+      </div>
+    </>
   );
 };
 
