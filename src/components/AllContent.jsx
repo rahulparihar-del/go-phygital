@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   BarChart,
   Bar,
@@ -20,6 +20,53 @@ import logo from "../assets/urbon.svg"
 
 
 const AllContent = () => {
+
+  const token = "297348f4201fd1bc931666e13e49500a056783aa8bf10913"
+
+  const [overSumData, setOverSumData] = useState({})
+  const [siteWiseData, setSiteWiseData] = useState([])
+  const [custoWallData, setCustoWallData] = useState([])
+  const [chartWidth, setChartWidth] = useState(1200); // default desktop width
+
+  
+
+
+
+
+
+  const fetchOverSumData = async () => {
+    const response = await fetch(`https://app.lockated.com/wallet_overview_summary?token=${token}`)
+    const data = await response.json();
+    setOverSumData(data)
+  }
+
+  const fetchSiteWiseData = async () => {
+    const response = await fetch(`https://app.lockated.com/get_site_wise_wallet_summary?token=${token}`)
+    const data = await response.json();
+    setSiteWiseData(data)
+  }
+
+  const fetchCustoWallData = async () => {
+    const response = await fetch(`https://app.lockated.com/top_ten_wallet_users?token=${token}`)
+    const data = await response.json();
+    setCustoWallData(data)
+  }
+
+
+  useEffect(() => {
+    fetchOverSumData();
+    fetchSiteWiseData();
+    fetchCustoWallData();
+  }, [])
+  
+
+  
+
+
+  console.log(custoWallData)
+
+
+
 
   const revenueData = {
     table: [
@@ -179,24 +226,48 @@ const AllContent = () => {
     return roomData[site]?.[range] || ""
   }
 
-  const walletOverviewData = [
-    { label: "Total Wallet Balance", value: "50,000", bg: "bg-[#f7f4ed]" },
-    { label: "Total Wallet Top-ups", value: "₹42,000", bg: "bg-[#f7f4ed]" },
-    { label: "Total Wallet Usage (deductions)", value: "30,000", bg: "bg-[#c2a791]" },
-    { label: "Complimentary Credits Points", value: "22,000", bg: "bg-[#c2a791]" },
-    { label: "Expired Wallet Points", value: "11,000", bg: "bg-[#d7d0bf]" },
-    {
-      label: "Total Active Wallet Users (Last Vs Current Quarter)",
-      value: (
-        <>
-          160 <span className="text-green-600 text-xs">↑18%</span>
-        </>
-      ),
-      bg: "bg-[#d7d0bf]",
-    },
-  ];
+  const walletOverviewData = useMemo(
+    () => [
+      {
+        label: "Total Wallet Balance",
+        value: `₹${Number(overSumData.total_wallet_balance || 0).toLocaleString()}`,
+        bg: "bg-[#f7f4ed]",
+      },
+      {
+        label: "Total Wallet Top-ups",
+        value: `₹${Number(overSumData.total_wallet_topups || 0).toLocaleString()}`,
+        bg: "bg-[#f7f4ed]",
+      },
+      {
+        label: "Total Wallet Usage (deductions)",
+        value: `₹${Number(overSumData.total_wallet_usage || 0).toLocaleString()}`,
+        bg: "bg-[#c2a791]",
+      },
+      {
+        label: "Complimentary Credits Points",
+        value: Number(overSumData.complimentary_credit_points || 0).toLocaleString(),
+        bg: "bg-[#c2a791]",
+      },
+      {
+        label: "Expired Wallet Points",
+        value: Number(overSumData.expired_wallet_points || 0).toLocaleString(),
+        bg: "bg-[#d7d0bf]",
+      },
+      {
+        label: "Total Active Wallet Users (Last Vs Current Quarter)",
+        value: (
+          <>
+            {Number(overSumData.total_active_wallet_users || 0).toLocaleString()}{" "}
+            <span className="text-green-600 text-xs">↑18%</span>
+          </>
+        ),
+        bg: "bg-[#d7d0bf]",
+      },
+    ],
+    [overSumData]
+  );
 
-  const siteWiseData = [
+  const siteWiseWallData = [
     ["Sai Radhe, Bund Garden", "50,000", "10,000", "8,000", "1,000", "500", "0"],
     ["Westport, Baner", "50,001", "10,001", "8,001", "1,001", "5001", "1"],
     ["Westport, Baner", "50,002", "10,002", "8,002", "1,002", "5002", "2"],
@@ -210,16 +281,18 @@ const AllContent = () => {
   ];
 
   const topCustomersData = [
-    { name: "John Deere", site: "Sai Radhe, Bund Garden", usage: "15000", users: 19 },
-    { name: "HDFC", site: "Westport, Baner", usage: "1500", users: 12 },
-    { name: "Amazon", site: "Raheja Mindspace, HITEC City", usage: "1000", users: 10 },
-    { name: "Quicker", site: "Peninsula Corporate Park, Mumbai", usage: "6000", users: 8 },
-    { name: "Gilard", site: "Koregaon Park, Bund Garden", usage: "6000", users: 6 },
-    { name: "Bhart", site: "Westport, Kharadi", usage: "6000", users: 49 },
-    { name: "SBI", site: "Raheja Mindspace, HITEC City", usage: "63000", users: 4 },
-    { name: "HDFC", site: "Peninsula Corporate Park, Mumbai", usage: "3500", users: 20 },
-    { name: "John Doe", site: "Raheja Mindspace, HITEC City", usage: "2160", users: 30 },
+    { name: "John Deere", site: "Sai Radhe, Bund Garden", usage: "15000", balance: "15000", users: 15 },
+    { name: "HDFc", site: "Westport, Baner", usage: "1200", balance: "1200", users: 12 },
+    { name: "Amazon", site: "Raheja Mindspace, Hitech City", usage: "1000", balance: "1000", users: 10 },
+    { name: "Quickr", site: "Peninsula Corporate Park", usage: "8000", balance: "8000", users: 8 },
+    { name: "Bisleri", site: "Koncord, Bund Garden", usage: "6000", balance: "6000", users: 6 },
+    { name: "HP", site: "MontClaire, Baner", usage: "9000", balance: "9000", users: 9 },
+    { name: "Bisleri", site: "AeroMall, Vimaan Nagar", usage: "4980", balance: "4980", users: 49 },
+    { name: "Quickr", site: "Golf Course Road", usage: "80007", balance: "80007", users: 8 },
+    { name: "HDFc", site: "Peninsula Corporate Park", usage: "2899", balance: "2899", users: 28 },
+    { name: "John Doe", site: "Raheja Mindspace, Hitech City", usage: "2890", balance: "2890", users: 29 },
   ];
+
 
   const communityData = [
     {
@@ -905,21 +978,28 @@ const AllContent = () => {
 
       {/* main page */}
       <div className="font-sans bg-white min-h-screen print:break-before-page print:h-screen print:scale-95">
-        <div className="relative h-[700px] w-full print:h-[600px] print:overflow-hidden">
-          <img
-            src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            alt="Meeting Room"
-            className="w-full h-full object-cover print:h-[600px] print:object-cover"
-          />
-          <div className="absolute bottom-6 right-10 text-white text-sm leading-relaxed print:text-white print:bottom-4 print:right-8">
-            <p>
-              <span className="font-semibold">Company</span>: UrbanWrk
-            </p>
-            <p>
-              <span className="font-semibold">Industry</span>: Coworking Space
-            </p>
-          </div>
-        </div>
+      <div className="relative h-[700px] w-full print:h-[600px] print:overflow-hidden">
+  {/* Background Image */}
+  <img
+    src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    alt="Meeting Room"
+    className="w-full h-full object-cover print:h-[600px] print:object-cover"
+  />
+
+  {/* Black Overlay */}
+  <div className="absolute inset-0 bg-black opacity-50 print:opacity-40" />
+
+  {/* Overlay Text */}
+  <div className="absolute bottom-6 right-10 text-white text-sm leading-relaxed print:text-white print:bottom-4 print:right-8">
+    <p>
+      <span className="font-semibold">Company</span>: UrbanWrk
+    </p>
+    <p>
+      <span className="font-semibold">Industry</span>: Coworking Space
+    </p>
+  </div>
+</div>
+
 
         <div className="relative flex flex-col items-center justify-center py-24 px-6 bg-white print:py-0 print:px-0">
           {/* Red Rectangle */}
@@ -1300,13 +1380,14 @@ const AllContent = () => {
 
         {/* Overview Summary */}
         <div className="border p-6 no-break overview-summary-section print:p-3 print:w-[95%] print:mx-auto">
-          <h2 className="text-xl font-semibold mb-4 print:text-lg print:font-semibold print:mb-2">Overview Summary</h2>
+          <h2 className="text-xl font-semibold mb-4 print:text-lg print:font-semibold print:mb-2">
+            Overview Summary
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 print:grid-cols-2 print:grid-rows-3 print:gap-1">
             {walletOverviewData.map((item, index) => (
               <div
                 key={index}
-                className={`overview-box rounded-md p-6 flex flex-col justify-center items-center h-[120px] print:p-2 print:h-[80px] ${index === 2 || index === 3 || index === 5 ? 'bg-[#E8E3D7] print:bg-[#E8E3D7]' : 'bg-[#F6F4EE] print:bg-[#F6F4EE]'
-                  }`}
+                className={`overview-box rounded-md p-6 flex flex-col justify-center items-center h-[120px] print:p-2 print:h-[80px] ${item.bg} print:${item.bg}`}
               >
                 <div className="text-[28px] font-bold text-[#ba1f2f] print:text-[18px]">
                   {item.value}
@@ -1348,20 +1429,35 @@ const AllContent = () => {
                 </thead>
 
 
-                <tbody className="text-sm text-black print:text-[10px]">
+                <tbody className="text-sm text-black print:text-[10px] text-center align-middle">
                   {siteWiseData.map((row, idx) => (
                     <tr key={idx} className="bg-white border-b border-gray-300 print:border-b print:border-black">
-                      {row.map((cell, i) => (
-                        <td
-                          key={i}
-                          className={`px-4 py-2 ${i === 0 ? "bg-[#f8f6f4] font-medium" : ""} print:px-1 print:py-0.5`}
-                        >
-                          {cell}
-                        </td>
-                      ))}
+                      <td className="px-4 py-2 bg-[#f8f6f4] font-medium print:px-1 print:py-0.5 text-center align-middle">
+                        {row.site_name}
+                      </td>
+                      <td className="px-4 py-2 print:px-1 print:py-0.5 text-center align-middle">
+                        ₹{Number(row.total_wallet_balance || 0).toLocaleString()}
+                      </td>
+                      <td className="px-4 py-2 print:px-1 print:py-0.5 text-center align-middle">
+                        ₹{Number(row.topup_balance || 0).toLocaleString()}
+                      </td>
+                      <td className="px-4 py-2 print:px-1 print:py-0.5 text-center align-middle">
+                        ₹{Number(row.usage || 0).toLocaleString()}
+                      </td>
+                      <td className="px-4 py-2 print:px-1 print:py-0.5 text-center align-middle">
+                        ₹{Number(row.complimentary_points || 0).toLocaleString()}
+                      </td>
+                      <td className="px-4 py-2 print:px-1 print:py-0.5 text-center align-middle">
+                        ₹{Number(row.refunds || 0).toLocaleString()}
+                      </td>
+                      <td className="px-4 py-2 print:px-1 print:py-0.5 text-center align-middle">
+                        ₹{Number(row.expiry_points || 0).toLocaleString()}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
+
+
 
               </table>
               <p className="text-xs text-gray-700 italic mt-2 px-2 pb-2 print:text-[8px] print:mt-1 print:pb-1">
@@ -1377,25 +1473,28 @@ const AllContent = () => {
             <h2 className="text-lg font-semibold mb-2 print:text-sm print:font-semibold print:mb-1">Top 10 Customers by Wallet Usage</h2>
             <div className="overflow-auto print:overflow-visible">
               <table className="min-w-full table-auto border border-gray-300 print:text-[10px] print:w-full print:table-fixed">
-                <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030] print-bg-red">
+                <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030]">
                   <tr>
-                    <th className="px-4 py-2 print:px-1 print:py-0.5 print:w-[25%]">Customer Name</th>
-                    <th className="px-4 py-2 print:px-1 print:py-0.5 print:w-[25%]">Site</th>
-                    <th className="px-4 py-2 print:px-1 print:py-0.5 print:w-[25%]">Wallet Usage</th>
-                    <th className="px-4 py-2 print:px-1 print:py-0.5 print:w-[25%]">Active Users</th>
+                    <th className="px-4 py-2 print:px-1 print:py-0.5 print:w-[20%]">Customer Name</th>
+                    <th className="px-4 py-2 print:px-1 print:py-0.5 print:w-[30%]">Site</th>
+                    <th className="px-4 py-2 print:px-1 print:py-0.5 print:w-[15%]">Wallet Usage</th>
+                    <th className="px-4 py-2 print:px-1 print:py-0.5 print:w-[15%]">Current Wallet Balance</th>
+                    <th className="px-4 py-2 print:px-1 print:py-0.5 print:w-[10%]">Active Users</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {topCustomersData.map((cust, i) => (
+                  {custoWallData.map((cust, i) => (
                     <tr key={i} className="text-center">
-                      <td className="px-4 py-2 print:px-1 print:py-0.5 bg-[#F3F1EB]">{cust.name}</td>
-                      <td className="px-4 py-2 print:px-1 print:py-0.5">{cust.site}</td>
-                      <td className="px-4 py-2 print:px-1 print:py-0.5">{cust.usage}</td>
-                      <td className="px-4 py-2 print:px-1 print:py-0.5">{cust.users}</td>
+                      <td className="px-4 py-2 print:px-1 print:py-0.5 bg-[#F3F1EB]">{cust.entity_name}</td>
+                      <td className="px-4 py-2 print:px-1 print:py-0.5">{cust.site_name}</td>
+                      <td className="px-4 py-2 print:px-1 print:py-0.5">{Number(cust.amount).toLocaleString()}</td>
+                      <td className="px-4 py-2 print:px-1 print:py-0.5">{Number(cust.amount).toLocaleString()}</td>
+                      <td className="px-4 py-2 print:px-1 print:py-0.5">{cust.total_users}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+
               <p className="text-xs text-gray-700 italic mt-2 px-2 pb-2 print:text-[8px] print:mt-1 print:pb-1">
                 <strong>Note</strong> : This table presents the top customers by wallet usage, highlighting key
                 clients and their activity across sites.
@@ -2029,7 +2128,7 @@ const AllContent = () => {
 
           {/* Company Wise Overview */}
           <div className="bg-white border border-black p-4 mb-10 print:p-2 print:mb-2 no-break">
-            <h2 className="text-xl font-semibold mb-4 border-b border-black py-4 print:text-[12px] print:mb-1 print:py-2.5">
+            <h2 className="text-xl font-semibold mb-4 border-b border-black py-4 print:text-[15px] print:mb-1 print:py-2.5">
               Company Wise Asset Overview
             </h2>
             <div className="grid grid-cols-3 bg-[#DAD6C9] text-[#C72030] text-center font-semibold overflow-hidden print-bg-red">
@@ -2048,7 +2147,7 @@ const AllContent = () => {
 
           {/* Table 1 */}
           <div className="center-metrics-table overflow-x-auto print:overflow-visible no-break print:p-1 print:mb-1">
-            <h2 className="text-xl font-semibold py-4 border-b border-black mb-4 print:text-[10px] print:py-1 print:mb-1">
+            <h2 className="text-xl font-semibold py-4 border-b border-black mb-4 print:text-[13px] print:py-1 print:mb-1">
               Center Wise – Assets And Downtime Metrics
             </h2>
 
@@ -2100,7 +2199,7 @@ const AllContent = () => {
 
           {/* Table 2 */}
           <div className="bg-white border border-black mt-4 mb-6 print:mt-2 print:p-1 print:mb-1">
-            <h2 className="text-xl font-semibold mb-4 print:text-[10px] print:mb-1">
+            <h2 className="text-xl font-semibold mb-4 print:text-[13px] print:mb-1">
               Assets With Highest Maintenance Spend
             </h2>
             <div className="overflow-x-auto print:overflow-visible">
@@ -2158,7 +2257,7 @@ const AllContent = () => {
       {/*  Active AMC Contracts */}
       <div className="print-page break-before-page print:w-[95%] print:m-auto">
         <div className="bg-white p-2 amc-summary no-break print:p-4 print:px-0 mt-1 print:mt-4 border border-gray-300">
-          <h2 className="text-xl font-semibold px-4 py-3 border-gray-400 print:text-[14px] print:py-2">
+          <h2 className="text-xl font-semibold px-4 py-3 border-gray-400 print:text-[15px] print:py-2">
             AMC Contract Summary
           </h2>
 
@@ -2180,7 +2279,7 @@ const AllContent = () => {
 
 
         <div className="border print:border py-3 px-3 mb-6 break-inside-avoid print:break-inside-avoid">
-          <h2 className="bg-white font-bold print:text-2xl text-lg p-3 border-b border-gray-300 print:text-[8px] print:p-1 print:leading-relaxed">
+          <h2 className="bg-white font-bold print:text-2xl text-lg p-3 border-b border-gray-300 print:text-[13px] print:p-1 print:leading-relaxed">
             AMC Contract Summary – Expiry in 90 Days
           </h2>
           <div className="overflow-x-auto">
@@ -2286,7 +2385,7 @@ const AllContent = () => {
           </p>
         </div>
         <div className="border py-3 px-3 shadow print:shadow-none print:border break-inside-avoid print:break-inside-avoid">
-          <h2 className="bg-white font-bold text-lg p-3 border-b border-gray-300 print:text-[8px] print:p-1 print:leading-relaxed">
+          <h2 className="bg-white font-bold text-lg p-3 border-b border-gray-300 print:text-[13px] print:p-1 print:leading-relaxed">
             AMC Contract Summary – Expired
           </h2>
           <div className="overflow-x-auto">
@@ -2392,7 +2491,7 @@ const AllContent = () => {
 
           {/* Table 1: Checklist Progress Status */}
           <div className="border border-gray-300 rounded mb-10 comment  print:mb-2 min-h-[300px]">
-            <div className="p-4 font-semibold border-b border-gray-300 print:p-2 print:text-[12px] ">
+            <div className="p-4 font-semibold border-b border-gray-300 print:p-2 print:text-[13px] ">
               Checklist Progress Status – Center-Wise Quarterly Comparison
             </div>
             <table className="w-full border print:table-fixed print:w-full print:text-[11px] ">
@@ -2491,7 +2590,7 @@ const AllContent = () => {
 
           {/* Table 2: Top 10 Overdue Checklists */}
           <div className="border border-gray-300 rounded comment  min-h-[300px]">
-            <div className="p-4 font-semibold border-b border-gray-300 print:p-2 print:text-[12px] ">
+            <div className="p-4 font-semibold border-b border-gray-300 print:p-2 print:text-[13px] ">
               Top 10 Overdue Checklists – Center-wise Contribution Comparison
             </div>
             <table className="w-full border text-sm print:table-fixed print:w-full print:text-[11px] ">
@@ -2630,7 +2729,7 @@ const AllContent = () => {
                     margin-right: 4px;
                 }
             `}</style>
-            <div className="mb-4 print:mb-1">
+            <div className="mb-4 print:mb-1 print:mt-4">
               <h1 className="text-xl font-semibold mb-4 print:text-[12px] print:mb-1 print:py-0">
                 Inventory Overstock Report – Top 10 Items
               </h1>
