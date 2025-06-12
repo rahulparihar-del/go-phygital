@@ -28,7 +28,7 @@ const AllContent = () => {
   const [custoWallData, setCustoWallData] = useState([])
   const [chartWidth, setChartWidth] = useState(1200); // default desktop width
 
-  
+
 
 
 
@@ -58,9 +58,9 @@ const AllContent = () => {
     fetchSiteWiseData();
     fetchCustoWallData();
   }, [])
-  
 
-  
+
+
 
 
   console.log(custoWallData)
@@ -978,27 +978,27 @@ const AllContent = () => {
 
       {/* main page */}
       <div className="font-sans bg-white min-h-screen print:break-before-page print:h-screen print:scale-95">
-      <div className="relative h-[700px] w-full print:h-[600px] print:overflow-hidden">
-  {/* Background Image */}
-  <img
-    src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1200"
-    alt="Meeting Room"
-    className="w-full h-full object-cover print:h-[600px] print:object-cover"
-  />
+        <div className="relative h-[700px] w-full print:h-[600px] print:overflow-hidden">
+          {/* Background Image */}
+          <img
+            src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            alt="Meeting Room"
+            className="w-full h-full object-cover print:h-[600px] print:object-cover"
+          />
 
-  {/* Black Overlay */}
-  <div className="absolute inset-0 bg-black opacity-50 print:opacity-40" />
+          {/* Black Overlay */}
+          <div className="absolute inset-0 bg-black opacity-50 print:opacity-40" />
 
-  {/* Overlay Text */}
-  <div className="absolute bottom-6 right-10 text-white text-sm leading-relaxed print:text-white print:bottom-4 print:right-8">
-    <p>
-      <span className="font-semibold">Company</span>: UrbanWrk
-    </p>
-    <p>
-      <span className="font-semibold">Industry</span>: Coworking Space
-    </p>
-  </div>
-</div>
+          {/* Overlay Text */}
+          <div className="absolute bottom-6 right-10 text-white text-sm leading-relaxed print:text-white print:bottom-4 print:right-8">
+            <p>
+              <span className="font-semibold">Company</span>: UrbanWrk
+            </p>
+            <p>
+              <span className="font-semibold">Industry</span>: Coworking Space
+            </p>
+          </div>
+        </div>
 
 
         <div className="relative flex flex-col items-center justify-center py-24 px-6 bg-white print:py-0 print:px-0">
