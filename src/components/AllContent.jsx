@@ -1664,7 +1664,7 @@ const AllContent = () => {
         <h1 className="report-title text-3xl font-bold text-center mb-6 bg-[#F6F4EE] py-5 text-gray-800 print:text-black print:text-xl print:mb-5 print:py-2">
           Helpdesk Management
         </h1>
-        <div className="bg-white border p-8 print:border print:border-gray-300 print:p-2 print:w-[95%] print:mx-auto no-break">
+        <div className="bg-white  p-8 py-0  print:p-2 print:w-[95%] print:mx-auto no-break">
           {/* Snapshot Section */}
           <div className="mb-10 print:mb-8">
             <h2 className="text-lg font-semibold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Snapshot</h2>
@@ -1750,8 +1750,8 @@ const AllContent = () => {
 
       <div className="print-page break-before-page">
         {/* Ticket Performance Metrics Section */}
-        <div className="ticket-metrics-section mb-10 print:mb-1">
-          <div className=" flex flex-col justify-start m-auto w-[100%] p-10 print:w-[100%]  print:p-8">
+        <div className="ticket-metrics-section mb-10 print:mt-8">
+          <div className=" flex flex-col justify-start border m-auto print:w-[95.5%] w-[95.5%] p-10   print:p-8">
             <style>{`
           .clip-triangle-tr { clip-path: polygon(100% 0, 0 0, 100% 100%); }
           .clip-triangle-bl { clip-path: polygon(0 0, 0 100%, 100% 100%); }
@@ -1772,7 +1772,7 @@ const AllContent = () => {
           }
         `}</style>
             <div className="print:mt-5">
-              <h1 className="text-lg font-bold mb-2 print:text-sm print:mb-1">
+              <h1 className="text-lg font-bold mb-2 border-b border-gray-300 pb-2 print:text-sm print:mb-1">
                 Ticket Performance Metrics by Category – Volume, Closure Rate & Ageing
               </h1>
               <div className="flex items-center justify-between gap-4 flex-wrap text-sm print:text-xs print:gap-2">
@@ -1842,9 +1842,9 @@ const AllContent = () => {
       </div>
 
       {/* Customer Experience Feedback and Site Performance on New Page */}
-      <div className="print-page break-before-page  print:w-[95%] print:m-auto">
+      <div className="print-page break-before-page   print:m-auto">
         {/* Customer Experience Feedback */}
-        <div className="border print:mt-10 border-gray-300 p-6 mb-10 no-break print:p-2 print:mb-2">
+        <div className="border print:w-[95%] w-[95%] m-auto print:mt-10 border-gray-300 p-6 mb-10 no-break print:p-2 print:mb-2">
           <h2 className="text-lg font-bold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Customer Experience Feedback</h2>
           <div className="grid grid-cols-5 print:gap-1">
             {customerExperienceData.map((item, idx) => (
@@ -1862,7 +1862,7 @@ const AllContent = () => {
         </div>
 
         {/* Site Performance Table 2 */}
-        <div className="site-performance bg-white border p-6 overflow-auto no-break print:p-2">
+        <div className="site-performance print:w-[95%] w-[95%] m-auto bg-white border p-6 overflow-auto no-break print:p-2">
           <h2 className="text-lg font-bold mb-4 print:text-base print:mb-2">
             Site Performance: Customer Rating Overview
           </h2>
@@ -1922,7 +1922,7 @@ const AllContent = () => {
 
 
       <div className="print-page break-before-page">
-        <div className="max-w-9xl bg-white rounded-lg mb-10 flex flex-col print:pb-0">
+        <div className="max-w-9xl  bg-white rounded-lg mb-10 flex flex-col print:pb-0">
 
           {/* Title */}
           <h1 className="text-2xl font-bold text-center bg-[#F6F4EE] py-3 mb-2 print:text-xl print:py-2 print:mb-0 border-b border-dashed border-gray-300">
@@ -1930,7 +1930,7 @@ const AllContent = () => {
           </h1>
 
           {/* Legend Row */}
-          <div className="flex flex-col items-end gap-2 px-6 print:px-4 print:py-4 text-sm print:text-xs mb-4">
+          <div className="flex print:w-[95%] w-[95%] m-auto flex-col items-end gap-2 px-6 print:px-4 print:py-4 text-sm print:text-xs mb-4">
             {/* Row 1: Response Achieved */}
             <div className="flex items-center gap-2">
               <span className="font-semibold">Response Achieved</span>
@@ -2126,10 +2126,10 @@ const AllContent = () => {
         </h1>
 
         {/* Main Container */}
-        <div className="bg-white border p-4 print:border-black print:p-2 print:w-[95%] print:mx-auto no-break">
+        <div className="bg-white border print:w-[95%] w-[95%] m-auto p-4 print:border-black print:p-2  print:mx-auto no-break">
 
           {/* Company Wise Overview */}
-          <div className="bg-white border border-black p-4 mb-10 print:p-2 print:mb-2 no-break">
+          <div className="bg-white border border-gray-300 p-4 mb-10 print:p-2 print:mb-2 no-break">
             <h2 className="text-lg font-semibold mb-4 border-b border-black py-4 print:text-[15px] print:mb-1 print:py-2.5">
               Company Wise Asset Overview
             </h2>
@@ -2148,7 +2148,7 @@ const AllContent = () => {
           {/* Center Wise Metrics Table */}
 
           {/* Table 1 */}
-          <div className="center-metrics-table overflow-x-auto print:overflow-visible no-break print:p-1 print:mb-1">
+          <div className="center-metrics-table border px-3 border-gray-300  overflow-x-auto print:overflow-visible no-break print:p-1 print:mb-1">
             <h2 className="text-lg font-semibold py-4 border-b border-black mb-4 print:text-[13px] print:py-1 print:mb-1">
               Center Wise – Assets And Downtime Metrics
             </h2>
@@ -2200,8 +2200,8 @@ const AllContent = () => {
 
 
           {/* Table 2 */}
-          <div className="bg-white border border-black mt-4 mb-6 print:mt-2 print:p-1 print:mb-1">
-            <h2 className="text-lg ml-2 font-semibold mb-4 print:text-[13px] print:mb-1">
+          <div className="bg-white border px-3 border-gray-300    mt-4 mb-6 print:mt-2 print:p-1 print:mb-1">
+            <h2 className="text-lg ml-2 border-b border-gray-300 font-semibold mb-4 print:text-[13px] print:mb-1">
               Assets With Highest Maintenance Spend
             </h2>
             <div className="overflow-x-auto print:overflow-visible">
