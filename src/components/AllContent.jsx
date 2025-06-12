@@ -1293,7 +1293,7 @@ const AllContent = () => {
       <div className="mt-4 bg-white break-before-page print:p-2 print:bg-white print:overflow-visible print:origin-top-left meeting-room-utilization min-h-[800px] print:min-h-[300px]">
         <div className="border border-gray-400 p-4 w-full print:w-[95%] print:max-w-none print:mx-auto">
           {/* Title */}
-          <h1 className="text-xl text-left font-bold mb-6 print:text-xl">
+          <h1 className="text-lg text-left font-bold mb-6 print:text-xl">
             Center Wise - Meeting Room Utilization
           </h1>
 
@@ -1404,7 +1404,7 @@ const AllContent = () => {
         <div className="border py-4 px-4 no-break wallet-tables print:p-3 print:w-[95%] print:mx-auto">
           {/* Site-wise Wallet Summary */}
           <div className="no-break">
-            <h2 className="text-xl font-semibold mb-4 print:text-base print:font-semibold print:mb-1">Site-wise Wallet Summary</h2>
+            <h2 className="text-lg font-semibold mb-4 print:text-base print:font-semibold print:mb-1">Site-wise Wallet Summary</h2>
             <div className="overflow-x-auto print:overflow-visible">
               <table className="min-w-full divide-y divide-gray-300 border print:text-[10px] print:w-full print:table-fixed">
                 <thead>
@@ -1546,7 +1546,7 @@ const AllContent = () => {
             </div>
           </div>
 
-          <h2 className="text-xl font-semibold text-gray-700 mb-4 print:text-black print:text-sm print:mb-1">Community Health and Engagement Summary</h2>
+          <h2 className="text-lg font-semibold text-gray-700 mb-4 print:text-black print:text-sm print:mb-1">Community Health and Engagement Summary</h2>
           <hr className="border-t border-gray-400 mb-4 print:border-black print:mb-1" />
 
           <div className="overflow-x-auto print:overflow-visible mb-12 community-section print:mb-2">
@@ -1579,7 +1579,7 @@ const AllContent = () => {
           </div>
 
           {/* Section Heading & Divider */}
-          <h2 className="text-xl font-semibold text-gray-700 mb-4 print:text-black print:text-sm print:mb-1">            Site Wise Adoption Rate
+          <h2 className="text-lg font-semibold text-gray-700 mb-4 print:text-black print:text-sm print:mb-1">            Site Wise Adoption Rate
           </h2>
           <hr className="border-t border-gray-400 mb-4 print:border-black print:mb-1" />
 
@@ -1665,7 +1665,7 @@ const AllContent = () => {
         <div className="bg-white border p-8 print:border print:border-gray-300 print:p-2 print:w-[95%] print:mx-auto no-break">
           {/* Snapshot Section */}
           <div className="mb-10 print:mb-8">
-            <h2 className="text-xl font-semibold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Snapshot</h2>
+            <h2 className="text-lg font-semibold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Snapshot</h2>
             <div className="grid grid-cols-3 gap-6 print:gap-3">
               <div className="bg-[#f9f7f2] p-6 text-center print:bg-[#f9f7f2] print:p-1">
                 <div className="text-3xl font-bold print:text-xl">657</div>
@@ -1699,7 +1699,7 @@ const AllContent = () => {
 
           {/* Table Section 1 */}
           <div className="table-section w-full overflow-x-auto print:overflow-visible border py-3 px-3 mb-5 print:p-1 print:mb-5">
-            <h2 className="text-xl font-semibold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-5 print:pb-1">Ticket Ageing, Closure Efficiency & Feedback Overview by Center</h2>
+            <h2 className="text-lg font-semibold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-5 print:pb-1">Ticket Ageing, Closure Efficiency & Feedback Overview by Center</h2>
             <table className="w-full border text-sm text-center break-words print:table-fixed print:w-full print:text-[12px]">
               <thead className="bg-[#DAD6C9] text-[#C72030] print:bg-[#DAD6C9] print:text-[#C72030] font-semibold print-bg-red">
                 <tr>
@@ -1843,7 +1843,7 @@ const AllContent = () => {
       <div className="print-page break-before-page  print:w-[95%] print:m-auto">
         {/* Customer Experience Feedback */}
         <div className="border print:mt-10 border-gray-300 p-6 mb-10 no-break print:p-2 print:mb-2">
-          <h2 className="text-xl font-bold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Customer Experience Feedback</h2>
+          <h2 className="text-lg font-bold mb-4 border-b border-gray-300 pb-2 print:text-sm print:mb-1 print:pb-1">Customer Experience Feedback</h2>
           <div className="grid grid-cols-5 print:gap-1">
             {customerExperienceData.map((item, idx) => (
               <div
@@ -1861,7 +1861,7 @@ const AllContent = () => {
 
         {/* Site Performance Table 2 */}
         <div className="site-performance bg-white border p-6 overflow-auto no-break print:p-2">
-          <h2 className="text-xl font-bold mb-4 print:text-base print:mb-2">
+          <h2 className="text-lg font-bold mb-4 print:text-base print:mb-2">
             Site Performance: Customer Rating Overview
           </h2>
           <table className="min-w-full text-base text-center border print:table-fixed print:w-full print:text-[10px]">
@@ -1961,7 +1961,7 @@ const AllContent = () => {
 
           {/* Section Header for Chart */}
           <div className="flex flex-col px-6 print:p-4 mb-6">
-            <h2 className="text-xl font-semibold mb-2">Response Achieved (TAT in Percentage)</h2>
+            <h2 className="text-lg font-semibold mb-2">Response Achieved (TAT in Percentage)</h2>
             <div className="border-b border-gray-300 w-full" />
           </div>
 
@@ -2033,7 +2033,7 @@ const AllContent = () => {
         <div className="max-w-9xl bg-white mb-10 rounded-lg flex flex-col print:pb-0">
 
           <div className="flex p-4 flex-col print:p-4 mb-8">
-            <h2 className="text-xl font-semibold mb-2">Resolution Achieved (TAT in Percentage)</h2>
+            <h2 className="text-lg font-semibold mb-2">Resolution Achieved (TAT in Percentage)</h2>
             <div className="border-b border-gray-300 w-full" />
           </div>
 
@@ -2128,7 +2128,7 @@ const AllContent = () => {
 
           {/* Company Wise Overview */}
           <div className="bg-white border border-black p-4 mb-10 print:p-2 print:mb-2 no-break">
-            <h2 className="text-xl font-semibold mb-4 border-b border-black py-4 print:text-[15px] print:mb-1 print:py-2.5">
+            <h2 className="text-lg font-semibold mb-4 border-b border-black py-4 print:text-[15px] print:mb-1 print:py-2.5">
               Company Wise Asset Overview
             </h2>
             <div className="grid grid-cols-3 bg-[#DAD6C9] text-[#C72030] text-center font-semibold overflow-hidden print-bg-red">
@@ -2147,7 +2147,7 @@ const AllContent = () => {
 
           {/* Table 1 */}
           <div className="center-metrics-table overflow-x-auto print:overflow-visible no-break print:p-1 print:mb-1">
-            <h2 className="text-xl font-semibold py-4 border-b border-black mb-4 print:text-[13px] print:py-1 print:mb-1">
+            <h2 className="text-lg font-semibold py-4 border-b border-black mb-4 print:text-[13px] print:py-1 print:mb-1">
               Center Wise – Assets And Downtime Metrics
             </h2>
 
@@ -2199,7 +2199,7 @@ const AllContent = () => {
 
           {/* Table 2 */}
           <div className="bg-white border border-black mt-4 mb-6 print:mt-2 print:p-1 print:mb-1">
-            <h2 className="text-xl font-semibold mb-4 print:text-[13px] print:mb-1">
+            <h2 className="text-lg ml-2 font-semibold mb-4 print:text-[13px] print:mb-1">
               Assets With Highest Maintenance Spend
             </h2>
             <div className="overflow-x-auto print:overflow-visible">
@@ -2257,7 +2257,7 @@ const AllContent = () => {
       {/*  Active AMC Contracts */}
       <div className="print-page break-before-page print:w-[95%] print:m-auto">
         <div className="bg-white p-2 amc-summary no-break print:p-4 print:px-0 mt-1 print:mt-4 border border-gray-300">
-          <h2 className="text-xl font-semibold px-4 py-3 border-gray-400 print:text-[15px] print:py-2">
+          <h2 className="text-lg font-semibold px-4 py-3 border-gray-400 print:text-[15px] print:py-2">
             AMC Contract Summary
           </h2>
 
@@ -2279,7 +2279,7 @@ const AllContent = () => {
 
 
         <div className="border print:border py-3 px-3 mb-6 break-inside-avoid print:break-inside-avoid">
-          <h2 className="bg-white font-bold print:text-2xl text-lg p-3 border-b border-gray-300 print:text-[13px] print:p-1 print:leading-relaxed">
+          <h2 className="bg-white text-lg font-bold print:text-2xl text-lg p-3 border-b border-gray-300 print:text-[13px] print:p-1 print:leading-relaxed">
             AMC Contract Summary – Expiry in 90 Days
           </h2>
           <div className="overflow-x-auto">
@@ -2491,7 +2491,7 @@ const AllContent = () => {
 
           {/* Table 1: Checklist Progress Status */}
           <div className="border border-gray-300 rounded mb-10 comment  print:mb-2 min-h-[300px]">
-            <div className="p-4 font-semibold border-b border-gray-300 print:p-2 print:text-[13px] ">
+            <div className="p-4 text-lg font-semibold border-b border-gray-300 print:p-2 print:text-[13px] ">
               Checklist Progress Status – Center-Wise Quarterly Comparison
             </div>
             <table className="w-full border print:table-fixed print:w-full print:text-[11px] ">
@@ -2590,7 +2590,7 @@ const AllContent = () => {
 
           {/* Table 2: Top 10 Overdue Checklists */}
           <div className="border border-gray-300 rounded comment  min-h-[300px]">
-            <div className="p-4 font-semibold border-b border-gray-300 print:p-2 print:text-[13px] ">
+            <div className="p-4 text-lg font-semibold border-b border-gray-300 print:p-2 print:text-[13px] ">
               Top 10 Overdue Checklists – Center-wise Contribution Comparison
             </div>
             <table className="w-full border text-sm print:table-fixed print:w-full print:text-[11px] ">
@@ -2679,7 +2679,7 @@ const AllContent = () => {
         <div className="bg-white p-6 print:p-2 print:mb-2 print:w-[95%] print:mx-auto  no-break">
 
           <div className="border border-gray-300 p-3">
-            <h2 className="text-xl font-semibold mb-4 print:text-[12px] print:mb-1 print:py-0">
+            <h2 className="text-lg font-semibold mb-4 print:text-[12px] print:mb-1 print:py-0">
               Overview Summary
             </h2>
             <hr className="border-t border-gray-300 mb-6 print:mb-2" />
@@ -2705,7 +2705,7 @@ const AllContent = () => {
           </div>
 
           {/* OverstockGridExact Component */}
-          <div className="p-6 print:p-0">
+          <div className="p-0 mt-3 print:p-0">
             <style>{`
                 /* Screen view styles only, scoped to overstock-table class */
                 .overstock-table {
@@ -2730,7 +2730,7 @@ const AllContent = () => {
                 }
             `}</style>
             <div className="mb-4 print:mb-1 print:mt-4">
-              <h1 className="text-xl font-semibold mb-4 print:text-[12px] print:mb-1 print:py-0">
+              <h1 className="text-lg font-semibold mb-4 print:text-[12px] print:mb-1 print:py-0">
                 Inventory Overstock Report – Top 10 Items
               </h1>
               <hr className="my-2 border-gray-300 print:border-gray-300" />
@@ -2793,15 +2793,15 @@ const AllContent = () => {
 
       {/*Consumables Overview */}
       <div className="print-page break-before-page">
-        <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
+        <h1 className="report-title text-2xl font-bold mb-0 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
           Consumables Overview
         </h1>
         <div className="bg-white p-6 no-break print:p-4 print:w-[99%] print:mx-auto">
 
 
           {/* Top Consumables – Centre-wise Overview */}
-          <div className="border border-gray-300 rounded comment p-4 mt-8 print:border-gray-300 print:rounded print:p-4 print:mt-0">
-            <div className="p-4 font-semibold border-b border-gray-300 print:p-3 print:text-[14px] print:border-gray-300">
+          <div className="border border-gray-300 rounded comment p-4 mt-0 print:border-gray-300 print:rounded print:p-4 print:mt-0">
+            <div className="p-4 text-lg font-semibold border-b border-gray-300 print:p-3 print:text-[14px] print:border-gray-300">
               Top Consumables – Centre-wise Overview
             </div>
             <div className="overflow-auto print:overflow-visible">
@@ -2848,7 +2848,7 @@ const AllContent = () => {
           {/* Consumable Inventory Value – Quarterly Comparison */}
           {/* Consumable Inventory Value – Quarterly Comparison */}
           <div className="p-8 bg-white border border-gray-300 rounded shadow print-page-break print:p-3 print:border-gray-300 print:rounded print:shadow-none print:mt-2">
-            <h2 className="text-xl font-bold mb-4 text-gray-900 border-b pb-2 print:text-[14px] print:mb-1 print:pb-1 print:border-gray-300">
+            <h2 className="text-lg font-bold mb-4 text-gray-900 border-b pb-2 print:text-[14px] print:mb-1 print:pb-1 print:border-gray-300">
               Consumable Inventory Value – Quarterly Comparison
             </h2>
             <div className="h-[500px] print:h-[300px]">
@@ -2918,7 +2918,7 @@ const AllContent = () => {
             <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-0 print:py-2">
               Parking Management            </h1>
             <div className="flex flex-col print:p-4 mb-8">
-              <h2 className="text-xl  p-4  font-semibold mb-2">Parking Allocation Overview – Paid, Free & Vacant</h2>
+              <h2 className="text-lg  p-4  font-semibold mb-2">Parking Allocation Overview – Paid, Free & Vacant</h2>
               <div className="border-b border-gray-300 w-full" />
             </div>
 
@@ -2980,7 +2980,7 @@ const AllContent = () => {
               Visitor Management
             </h1>
             <div className="flex  p-4  flex-col print:p-4 mb-8">
-              <h2 className="text-xl font-semibold mb-2">Visitor Trend Analysis</h2>
+              <h2 className="text-lg font-semibold mb-2">Visitor Trend Analysis</h2>
               <div className="border-b border-gray-300 w-full" />
             </div>
 
