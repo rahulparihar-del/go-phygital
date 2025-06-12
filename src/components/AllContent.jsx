@@ -17,6 +17,7 @@ import {
 import { ArrowRightLeft } from "lucide-react";
 
 import logo from "../assets/urbon.svg"
+import GoPhygital from "../assets/Gophygital.svg"
 
 
 const AllContent = () => {
@@ -26,12 +27,6 @@ const AllContent = () => {
   const [overSumData, setOverSumData] = useState({})
   const [siteWiseData, setSiteWiseData] = useState([])
   const [custoWallData, setCustoWallData] = useState([])
-  const [chartWidth, setChartWidth] = useState(1200); // default desktop width
-
-
-
-
-
 
 
   const fetchOverSumData = async () => {
@@ -610,8 +605,8 @@ const AllContent = () => {
 
   const Perdata = [
     { site: "Sai Radhe, Bund Garden", Free: 80, Paid: 55, Vacant: 143 },
-    { site: "Westport, Baner", Free: 90, Paid: 50, Vacant: 90 },
-    { site: "Peninsula Corporate Park, Lower Parel", Free: 125, Paid: 20, Vacant: 90 },
+    { site: "Westport, Baner", Free: 50, Paid: 90, Vacant: 90 },
+    { site: "Peninsula Corporate Park, Lower Parel", Free: 20, Paid: 20, Vacant: 125 },
     { site: "Koncord Towers, Bund Garden", Free: 60, Paid: 40, Vacant: 80 },
     { site: "Nandan Probiz, Balewadi", Free: 90, Paid: 30, Vacant: 110 },
     { site: "Aeromall, Vimaan nagar", Free: 70, Paid: 30, Vacant: 70 },
@@ -1029,11 +1024,14 @@ const AllContent = () => {
         </div>
 
         <div className="flex-grow" />
-        <div className=" flex justify-center align-bottom print:mb-1 print:flex print:align-bottom  text-center pb-8 text-sm text-gray-700 print:pt-[140px] print:text-sm print:text-gray-700">
-          <span className="font-bold text-red-700 print:text-red-700">go</span>
-          <span className="font-semibold">Phygital</span>
-          <span>.work</span>
+        <div className="flex justify-center items-end print:mb-1 print:pt-[140px] pb-8 text-center">
+          <img
+            src={GoPhygital} // update this path to the actual path of your image
+            alt="goPhygital"
+            className="h-6 print:h-5" // adjust height as needed
+          />
         </div>
+
       </div>
 
 
@@ -1067,9 +1065,11 @@ const AllContent = () => {
         </div>
         <div className="flex-grow" />
         <div className="text-center flex justify-center align-bottom pb-8 text-sm text-gray-700 print:text-gray-700">
-          <span className="font-bold text-red-700 print:text-red-700">go</span>
-          <span className="font-semibold">Phygital</span>
-          <span>.work</span>
+          <img
+            src={GoPhygital} // update this path to the actual path of your image
+            alt="goPhygital"
+            className="h-6 print:h-5" // adjust height as needed
+          />
         </div>
         <div className="absolute bottom-0 left-0 w-full h-4 bg-red-700 print-footer-bar"></div>
         <div className="absolute bottom-6 right-0 w-30 h-3 bg-red-700 print-footer-small"></div>
@@ -1174,9 +1174,11 @@ const AllContent = () => {
 
         <div className="flex-grow" />
         <div className="text-center flex justify-center align-bottom pb-5 text-sm text-gray-700 print:text-gray-700">
-          <span className="font-bold text-red-700 print:text-red-700">go</span>
-          <span className="font-semibold">Phygital</span>
-          <span>.work</span>
+          <img
+            src={GoPhygital} // update this path to the actual path of your image
+            alt="goPhygital"
+            className="h-6 print:h-5" // adjust height as needed
+          />
         </div>
         <div className="absolute bottom-0 left-0 w-full h-4 bg-red-700 print-footer-bar"></div>
         <div className="absolute bottom-6 right-0 w-30 h-3 bg-red-700 print-footer-small"></div>
@@ -1579,12 +1581,12 @@ const AllContent = () => {
           </div>
 
           {/* Section Heading & Divider */}
-          <h2 className="text-lg font-semibold text-gray-700 mb-4 print:text-black print:text-sm print:mb-1">            Site Wise Adoption Rate
+          <h2 className="text-lg font-semibold text-gray-700 mb-4 print:text-black print:text-sm ">            Site Wise Adoption Rate
           </h2>
-          <hr className="border-t border-gray-400 mb-4 print:border-black print:mb-1" />
+          <hr className="border-t border-gray-400 mb-4 print:border-black " />
 
           {/* Legend */}
-          <div className="flex items-end gap-16 mb-4 justify-end print:gap-2 print:mb-1 print:text-[8.8px]">
+          <div className="flex items-end gap-16 mb-4 justify-end print:gap-2  print:text-[8.8px]">
             {[
               { color: "bg-red-600", underline: "border-red-600", label: "0–39%" },
               { color: "bg-yellow-400", underline: "border-yellow-400", label: "40–69%" },
@@ -2483,14 +2485,14 @@ const AllContent = () => {
 
       {/* Checklist Management */}
       <div className="print-page break-before-page">
-        <div className="p-6 bg-white min-h-screen text-black print:bg-white print:text-black print:p-2 print:w-[95%] print:mx-auto no-break">
+        <div className="py-6 bg-white min-h-screen text-black print:bg-white print:text-black print:p-2 print:w-[100%] print:mx-auto no-break">
 
           <h1 className="report-title text-2xl font-bold mb-6 text-center bg-[#F6F4EE] py-3 print:text-xl print:mb-1 print:py-2">
             Checklist Management
           </h1>
 
           {/* Table 1: Checklist Progress Status */}
-          <div className="border border-gray-300 rounded mb-10 comment  print:mb-2 min-h-[300px]">
+          <div className="border border-gray-300 px-3 rounded mb-10 comment  print:mb-2 min-h-[300px]">
             <div className="p-4 text-lg font-semibold border-b border-gray-300 print:p-2 print:text-[13px] ">
               Checklist Progress Status – Center-Wise Quarterly Comparison
             </div>
@@ -2589,7 +2591,7 @@ const AllContent = () => {
           </div>
 
           {/* Table 2: Top 10 Overdue Checklists */}
-          <div className="border border-gray-300 rounded comment  min-h-[300px]">
+          <div className="border border-gray-300 px-3 rounded comment  min-h-[300px]">
             <div className="p-4 text-lg font-semibold border-b border-gray-300 print:p-2 print:text-[13px] ">
               Top 10 Overdue Checklists – Center-wise Contribution Comparison
             </div>
