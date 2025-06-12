@@ -1514,7 +1514,7 @@ const AllContent = () => {
             {/* Total Active Users Block */}
             <div className="bg-[#DAD6C9] p-6 rounded shadow print:p-2 print:shadow-none">
               {/* Top section: 450 + Total Active Users */}
-              <div className="flex items-center gap-4 mb-6 print:mb-2">
+              <div className="flex items-center justify-center gap-4 mb-6 print:mb-2">
                 <p className="text-4xl font-bold text-[#C72030] print:text-xl">450</p>
                 <div>
                   <p className="text-lg font-bold text-black leading-tight print:text-sm">Total Active Users</p>
@@ -1523,7 +1523,7 @@ const AllContent = () => {
               </div>
 
               {/* Bottom section: Android and iOS */}
-              <div className="flex items-center justify-start gap-6 text-[#C72030] print:gap-2">
+              <div className="flex items-center justify-center gap-6 text-[#C72030] print:gap-2">
                 <div className="flex items-center gap-2">
                   <p className="text-2xl font-bold print:text-sm">250</p>
                   <p className="text-black font-semibold text-sm print:text-[10px]">Android</p>
@@ -1538,11 +1538,11 @@ const AllContent = () => {
 
             {/* New Users Block */}
             <div className="bg-[#DAD6C9] p-6 rounded shadow print:p-2 print:shadow-none">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center gap-3">
                 <p className="text-4xl font-bold text-[#C72030] print:text-xl">56</p>
                 <span className="text-green-600 text-2xl print:text-base">↑</span>
               </div>
-              <p className="text-black font-semibold text-lg mt-2 print:text-[10px]">New Users</p>
+              <p className="text-black text-center font-semibold text-lg mt-2 print:text-[10px]">New Users</p>
             </div>
           </div>
 
